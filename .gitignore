@@ -1,11 +1,11 @@
-Assets/_External/.*
+Assets/_External/
 Assets/_External.meta
 
 # =============== #
 # Unity generated #
 # =============== #
-Library/.*
-Temp/.*
+Library/
+Temp/
 
 syntax: glob
 # ===================================== #
