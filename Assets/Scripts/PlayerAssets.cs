@@ -13,6 +13,7 @@ public class PlayerAssets : MonoBehaviour {
 	CustomTeleporter teleportAScript;
 	CustomTeleporter teleportBaseScript;
 	public AudioClip cashClip;
+	public AudioClip errorClip;
 	AudioSource playerAudio;
 	public GameObject BaseTeleport;
 
@@ -25,8 +26,8 @@ public class PlayerAssets : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Q)) {
-			placeTorch();
+		if (Input.GetKeyDown(KeyCode.F)) {
+			tryToPlaceTorch();
 		}
 		if (Input.GetKeyDown(KeyCode.E)){
 			placeTeleport();
@@ -45,9 +46,17 @@ public class PlayerAssets : MonoBehaviour {
 		
 	}
 
-	public void placeTorch(){
+	public void tryToPlaceTorch(){
 		Vector3 torchPosition = transform.position + transform.forward * 2.0f;
-		Instantiate(torchInstance, torchPosition, Quaternion.identity);
+		if (GetClosestTorchDistance(torchPosition) > 3.0f) {
+			Instantiate(torchInstance, torchPosition, Quaternion.identity);
+		}
+		else {
+			// NEED TO SAVE THE CLIP THAT WAS IN playerAudio before that anot? :(
+			//AudioClip temp = playerAudio.clip;
+			playerAudio.clip = errorClip;
+			playerAudio.Play();
+		}
 	}
 
 	public void placeTeleport(){
@@ -65,6 +74,27 @@ public class PlayerAssets : MonoBehaviour {
 		teleportBaseScript.teleportPadOn = true;
 		
 		
+	}
+	private float GetClosestTorchDistance(Vector3 torchPos)
+	{
+		GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("Torch");
+		GameObject closestObject = null;
+		float closestDistance = float.MaxValue;
+		foreach (GameObject obj in objectsWithTag)
+		{
+			if(!closestObject)
+			{
+				closestObject = obj;
+				closestDistance = Vector3.Distance(torchPos, obj.transform.position);
+			}
+			//compares distances
+			if(Vector3.Distance(torchPos, obj.transform.position) <= Vector3.Distance(torchPos, closestObject.transform.position))
+			{
+				closestObject = obj;
+				closestDistance = Vector3.Distance(torchPos, obj.transform.position);
+			}
+		}
+		return closestDistance;
 	}
 
 
