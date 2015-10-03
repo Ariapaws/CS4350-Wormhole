@@ -22,7 +22,7 @@ public class Maze : MonoBehaviour {
 	public int crateAmount = 5;
 	public int golemAmount = 5;
 	public int clockAmount = 5;
-	public int teleportAmount = 5;
+	public int teleportAmount = 0;
 	public GameObject clockInstance;
 	public GameObject golemInstance;
 	public GameObject zombieInstance;

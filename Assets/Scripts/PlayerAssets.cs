@@ -11,10 +11,10 @@ public class PlayerAssets : MonoBehaviour {
 	public GameObject teleportInstance;
 	public GameObject teleportA;
 	CustomTeleporter teleportAScript;
-	CustomTeleporter teleportBScript;
-	public GameObject teleportB;
+	CustomTeleporter teleportBaseScript;
 	public AudioClip cashClip;
 	AudioSource playerAudio;
+	public GameObject BaseTeleport;
 
 	// Use this for initialization
 	void Awake () {
@@ -52,32 +52,35 @@ public class PlayerAssets : MonoBehaviour {
 
 	public void placeTeleport(){
 		Vector3 teleportPosition = transform.position + transform.forward * 2.0f;
+		
+		if (teleportA != null) {
+			Destroy(teleportA);
+		}
+		teleportA = (GameObject)Instantiate (teleportInstance, teleportPosition, Quaternion.identity);
+		teleportAScript = teleportA.GetComponentInChildren<CustomTeleporter>();
+		teleportBaseScript = BaseTeleport.GetComponentInChildren<CustomTeleporter>();
+		teleportAScript.destinationPad.SetValue (teleportBaseScript.gameObject.transform, 0);
+		teleportAScript.teleportPadOn = true;
+		teleportBaseScript.destinationPad.SetValue (teleportAScript.gameObject.transform, 0);
+		teleportBaseScript.teleportPadOn = true;
+		
+		
+	}
 
-		if (teleportA == null) {
+
+
+		/*else{
+			Destroy (teleportA);
 			teleportA = (GameObject)Instantiate (teleportInstance, teleportPosition, Quaternion.identity);
 			teleportAScript = teleportA.GetComponentInChildren<CustomTeleporter>();
-			teleportAScript.teleportPadOn = false;
-		} else if(teleportB != null){
-			Destroy (teleportA);
-			teleportA = teleportB;
-			teleportB = (GameObject)Instantiate (teleportInstance, teleportPosition, Quaternion.identity);
-			teleportAScript = teleportA.GetComponentInChildren<CustomTeleporter>();
 			teleportBScript = teleportB.GetComponentInChildren<CustomTeleporter>();
 			teleportAScript.destinationPad.SetValue(teleportBScript.gameObject.transform, 0); 
 			teleportAScript.teleportPadOn = true;
 			teleportBScript.destinationPad.SetValue(teleportAScript.gameObject.transform, 0); 
 			teleportBScript.teleportPadOn = true;
-		} else {
-			teleportB = (GameObject)Instantiate (teleportInstance, teleportPosition, Quaternion.identity);
-			teleportAScript = teleportA.GetComponentInChildren<CustomTeleporter>();
-			teleportBScript = teleportB.GetComponentInChildren<CustomTeleporter>();
-			teleportAScript.destinationPad.SetValue(teleportBScript.gameObject.transform, 0); 
-			teleportAScript.teleportPadOn = true;
-			teleportBScript.destinationPad.SetValue(teleportAScript.gameObject.transform, 0); 
-			teleportBScript.teleportPadOn = true;
-		}
+		} */
 
-	}
+	
 
 
 }
