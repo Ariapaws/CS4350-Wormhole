@@ -951,6 +951,7 @@ MonoBehaviour:
   teleportInstance: {fileID: 132024, guid: fea82ba2a84c16342988157078627196, type: 2}
   teleportA: {fileID: 0}
   cashClip: {fileID: 8300000, guid: f39996c30d32b48439d60e2505988532, type: 3}
+  errorClip: {fileID: 8300000, guid: 6026f8428c999d84ba5c7d2ef16280bf, type: 3}
   BaseTeleport: {fileID: 884880288}
 --- !u!143 &317416655
 CharacterController:
@@ -2466,6 +2467,10 @@ Prefab:
       propertyPath: BypassListenerEffects
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11487290, guid: b4727120ea8667b428460ca5f62bd474, type: 2}
+      propertyPath: errorClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6026f8428c999d84ba5c7d2ef16280bf, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4727120ea8667b428460ca5f62bd474, type: 2}
   m_IsPrefabParent: 0
