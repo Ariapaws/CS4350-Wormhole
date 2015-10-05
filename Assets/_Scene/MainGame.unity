@@ -304,7 +304,6 @@ MonoBehaviour:
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
-  m_RepeatDelay: .5
   m_AllowActivationOnMobileDevice: 0
 --- !u!114 &86792359
 MonoBehaviour:
@@ -626,6 +625,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1915844049}
   m_RootOrder: 0
+--- !u!1 &239810707
+GameObject:
+  m_PrefabParentObject: {fileID: 100132, guid: e156495aa9aa3424d85dac51d5fdbd21, type: 3}
+  m_PrefabInternal: {fileID: 1412152757}
+--- !u!114 &239810708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 239810707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f4ec5e40b816124f91da0a659b951c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canPurchase: 0
+  distance: 0
+  player: {fileID: 317416649}
+  feedback: {fileID: 0}
 --- !u!1 &250515497
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,6 +817,7 @@ GameObject:
   - 82: {fileID: 317416651}
   - 114: {fileID: 317416654}
   - 114: {fileID: 317416659}
+  - 114: {fileID: 317416660}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1068,6 +1087,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   footStepSound: {fileID: 8300000, guid: 21481b01668776b429b9a39f3c915138, type: 3}
+--- !u!114 &317416660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 317416649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52c4fe472e933cb46ae92320aeea5a87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showPurchaseUI: 0
+  toggle: 0
+  feedback: {fileID: 0}
+  HUDcanvas: {fileID: 0}
 --- !u!1 &338354982
 GameObject:
   m_ObjectHideFlags: 0
@@ -1864,12 +1898,10 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
-  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
-  m_StereoMirrorMode: 0
 --- !u!4 &869097194
 Transform:
   m_ObjectHideFlags: 0
@@ -2063,7 +2095,7 @@ Transform:
   - {fileID: 176987883}
   m_Father: {fileID: 363285011}
   m_RootOrder: 2
---- !u!1 &884880288 stripped
+--- !u!1 &884880288
 GameObject:
   m_PrefabParentObject: {fileID: 109784, guid: af80b74fac44a5b4487111b9640a3b6c, type: 2}
   m_PrefabInternal: {fileID: 164547174}
@@ -3327,12 +3359,10 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
-  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
-  m_StereoMirrorMode: 0
 --- !u!4 &1836838571
 Transform:
   m_ObjectHideFlags: 0
@@ -3590,12 +3620,10 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
-  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
-  m_StereoMirrorMode: 0
 --- !u!4 &1974443401
 Transform:
   m_ObjectHideFlags: 0
