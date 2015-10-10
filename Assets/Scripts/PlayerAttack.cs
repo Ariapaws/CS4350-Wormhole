@@ -2,14 +2,26 @@
 using System.Collections;
 
 public class PlayerAttack : MonoBehaviour {
+
+/**************** Start of variables to be changed ********************************/
+
+	//attack range
+	public float range = 5f;
+
+	// attack speed (for animation...not sure does it really kill faster)
+	public float attackSpeed = 1f;
+
+	// base damage
+	public int damagePerHit = 20;
+
+/**************** End of variables to be changed ********************************/
+
 	public GameObject target;
 	public string[] attacks;
 	int attacknumber = 0;
 	Ray shootRay;
 	RaycastHit shootHit;
-	public float range = 5f;
 	int shootableMask;
-	public int damagePerHit = 20;
 	AudioSource playerAudio;
 	public AudioClip hitClip;
 	public AudioClip swingClip;
@@ -41,6 +53,7 @@ public class PlayerAttack : MonoBehaviour {
 		} else {
 			attackPerforming = true;
 			target.GetComponent<Animation>().Play (attacks[attacknumber]);
+			target.GetComponent<Animation>()[attacks[attacknumber]].speed = attackSpeed;
 			attacknumber++;
 			if (attacknumber == 3) {
 				attacknumber = 0;

@@ -4,7 +4,16 @@ using System.Collections;
 
 public class PlayerHealth : MonoBehaviour {
 
+/*********************** Start of the variable to be changed ************************/
+
+	// initial health of the player
 	public int startingHealth = 300;
+
+	// mitigation (armor or defence)
+	public int armor = 0;
+	
+/*********************** End of the variable to be changed ************************/
+
 	public int currentHealth;
 	public Slider healthSlider;
 	public Image damageImage;
@@ -57,9 +66,13 @@ public class PlayerHealth : MonoBehaviour {
 	public void TakeDamage (int amount)
 	{
 		damaged = true;
-		
-		currentHealth -= amount;
-		
+
+		// if armor value is smaller than damage amount, smaller damage amount on player
+		// else no damage on player
+		if (armor < amount) {
+			currentHealth -= amount - armor;
+		}
+
 		healthSlider.value = currentHealth;
 		
 		//playerAudio.Play ();
@@ -82,8 +95,7 @@ public class PlayerHealth : MonoBehaviour {
 		
 		healthSlider.value = currentHealth;
 		playerAudio.clip = potionClip;
-		playerAudio.Play ();
-		
+		playerAudio.Play ();	
 
 	}
 	
