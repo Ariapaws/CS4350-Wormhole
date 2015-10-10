@@ -8,8 +8,8 @@ public class PlayerPurchaseUI : MonoBehaviour {
 	public bool showPurchaseUI;
 	public bool toggle;
 
+    public GameObject canvas = GameObject.FindGameObjectWithTag("Shop");
 	public Text feedback;
-	public GameObject HUDcanvas = GameObject.FindGameObjectWithTag("Shop");
 	
 	// Use this for initialization
 	void Start () {
@@ -33,15 +33,21 @@ public class PlayerPurchaseUI : MonoBehaviour {
 			if(toggle==true) {
 				Debug.Log ("toggled 0");
 				showPurchaseUI = false;
+                PurchaseUI ();
 				//hide purchase UI
 			}
 			toggle = !toggle;
 		}
 	}
 
-	void PurchaseUI(){
-		
-		
+    void PurchaseUI()
+    {
+        if (showPurchaseUI == true) {
+            canvas.GetComponent<Image>().enabled = true;
+        }
 
-	}
+        if (showPurchaseUI == false) {
+            canvas.GetComponent<Image>().enabled = false;
+        }
+    }
 }

@@ -6,6 +6,7 @@ public class PlayerAssets : MonoBehaviour {
 
 	public int startingCash = 0;
 	public int currentCash;
+	public int numOfTorchesLeft = 10;
 	public Text cashAmountDisplay;
 	public GameObject torchInstance;
 	public GameObject teleportInstance;
@@ -48,8 +49,9 @@ public class PlayerAssets : MonoBehaviour {
 
 	public void tryToPlaceTorch(){
 		Vector3 torchPosition = transform.position + transform.forward * 2.0f;
-		if (GetClosestTorchDistance(torchPosition) > 3.0f) {
+		if (numOfTorchesLeft > 0 && GetClosestTorchDistance(torchPosition) > 3.0f) {
 			Instantiate(torchInstance, torchPosition, Quaternion.identity);
+			numOfTorchesLeft--;
 		}
 		else {
 			// NEED TO SAVE THE CLIP THAT WAS IN playerAudio before that anot? :(

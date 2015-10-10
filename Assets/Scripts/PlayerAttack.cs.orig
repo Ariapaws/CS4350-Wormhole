@@ -18,16 +18,25 @@ public class PlayerAttack : MonoBehaviour {
 
 	public GameObject target;
 	public string[] attacks;
-
+<<<<<<< HEAD
 	int attacknumber = 0;
 	Ray shootRay;
 	RaycastHit shootHit;
 	int shootableMask;
 	AudioSource playerAudio;
-
+=======
+	public float range = 5f;
+	public int damagePerHit = 20;
+>>>>>>> 89839b256e27f0f35328b28c10f5dfa1df2546a8
 	public AudioClip hitClip;
 	public AudioClip swingClip;
 	public bool attackPerforming = false;
+
+	int attacknumber = 0;
+	int shootableMask;
+	Ray shootRay;
+	RaycastHit shootHit;
+	AudioSource playerAudio;
 
 	// For spherecast (torch)
 	float sphereThickness = 0.4f;

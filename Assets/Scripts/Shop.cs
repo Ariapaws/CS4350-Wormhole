@@ -18,6 +18,9 @@ public class Shop : MonoBehaviour {
 		distance = 2.8f;
 		canPurchase = false;
 
+        GameObject feedbackObject = GameObject.FindGameObjectWithTag("Feedback");
+        feedback = feedbackObject.GetComponent<Text>();
+
 		InstantiateShop ();
 
 
@@ -27,6 +30,8 @@ public class Shop : MonoBehaviour {
 	void Update () {
 		if (Vector3.Distance (this.gameObject.transform.position, player.transform.position) < distance) {
 			Debug.Log("Player is near.");
+            feedback.color = new Color(0, 1, 0, 2);
+            feedback.text = "You are near the shop. Press P to purchase.";
 			if (player.GetComponent<PlayerPurchaseUI>().showPurchaseUI == true) {
 				Debug.Log("Player can make purchase.");
 				Debug.Log(player.GetComponent<PlayerPurchaseUI>().showPurchaseUI);
