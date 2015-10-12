@@ -37,6 +37,9 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+--- !u!127 &3
+LevelGameManager:
+  m_ObjectHideFlags: 0
 --- !u!157 &4
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -65,7 +68,6 @@ LightmapSettings:
     m_TextureCompression: 0
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
-    m_ReflectionCompression: 2
   m_LightmapSnapshot: {fileID: 0}
   m_RuntimeCPUUsage: 25
 --- !u!196 &5
@@ -132,12 +134,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: .988235295, g: .988235295, b: .988235295, a: .384313732}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: ac394e6e5080d754e8b437e5936fca3b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -345,7 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 1997211142, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ForceModuleActive: 0
+  m_AllowActivationOnStandalone: 0
 --- !u!114 &86792358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,7 +359,7 @@ MonoBehaviour:
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
   m_RepeatDelay: .5
-  m_ForceModuleActive: 0
+  m_AllowActivationOnMobileDevice: 0
 --- !u!114 &86792359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,12 +433,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: .988235295, g: .988235295, b: .988235295, a: .384313732}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: a863cb5177b01ee438c179586683372a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -828,12 +818,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: d9bc50e5204b74244b70e5be4feb8f96, type: 3}
     m_FontSize: 18
@@ -908,12 +892,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50fdc92d7d1687f418d4588a11bd6356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  attacks: []
   range: 5
+  attackSpeed: 1
   damagePerHit: 20
-  hitClip: {fileID: 0}
-  swingClip: {fileID: 0}
+  target: {fileID: 100080, guid: e8e7479bcb1ffe54283c0121e6b27c30, type: 2}
+  attacks: []
+  hitClip: {fileID: 8300000, guid: 6026f8428c999d84ba5c7d2ef16280bf, type: 3}
+  swingClip: {fileID: 8300000, guid: 2f0267b5f35484249b3865cd03af411c, type: 3}
   attackPerforming: 0
 --- !u!82 &317416651
 AudioSource:
@@ -931,7 +916,6 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -1015,14 +999,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 300
+  armor: 0
   currentHealth: 0
-  healthSlider: {fileID: 0}
-  damageImage: {fileID: 0}
+  healthSlider: {fileID: 1577614976}
+  damageImage: {fileID: 1211267512}
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: .100000001}
   feedback: {fileID: 0}
-  teleportClip: {fileID: 0}
-  potionClip: {fileID: 0}
+  teleportClip: {fileID: 8300000, guid: 865d0ee0c596ad247824703f6605b1e6, type: 3}
+  potionClip: {fileID: 8300000, guid: f39996c30d32b48439d60e2505988532, type: 3}
 --- !u!114 &317416654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1037,13 +1022,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingCash: 0
   currentCash: 0
-  cashAmountDisplay: {fileID: 0}
-  torchInstance: {fileID: 0}
-  teleportInstance: {fileID: 0}
+  numOfTorchesLeft: 10
+  cashAmountDisplay: {fileID: 271821575}
+  torchInstance: {fileID: 149790, guid: 195476654c7cb7342bc81f40bedbbf85, type: 2}
+  teleportInstance: {fileID: 132024, guid: fea82ba2a84c16342988157078627196, type: 2}
   teleportA: {fileID: 0}
-  cashClip: {fileID: 0}
-  errorClip: {fileID: 0}
-  BaseTeleport: {fileID: 0}
+  cashClip: {fileID: 8300000, guid: f39996c30d32b48439d60e2505988532, type: 3}
+  errorClip: {fileID: 8300000, guid: 6026f8428c999d84ba5c7d2ef16280bf, type: 3}
+  BaseTeleport: {fileID: 884880288}
 --- !u!143 &317416655
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1158,7 +1144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86dfbaa04c8c20145884751a98b0dfc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footStepSound: {fileID: 0}
+  footStepSound: {fileID: 8300000, guid: 21481b01668776b429b9a39f3c915138, type: 3}
 --- !u!114 &317416660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1309,12 +1295,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: d9bc50e5204b74244b70e5be4feb8f96, type: 3}
     m_FontSize: 14
@@ -1410,12 +1390,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: .486274511, g: .65882355, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: d9bc50e5204b74244b70e5be4feb8f96, type: 3}
     m_FontSize: 14
@@ -1970,12 +1944,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: .897058845, g: 0, b: 0, a: .600000024}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -2744,6 +2712,42 @@ Prefab:
       propertyPath: errorClip
       value: 
       objectReference: {fileID: 8300000, guid: 6026f8428c999d84ba5c7d2ef16280bf, type: 3}
+    - target: {fileID: 11487286, guid: b4727120ea8667b428460ca5f62bd474, type: 2}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 100080, guid: e8e7479bcb1ffe54283c0121e6b27c30, type: 2}
+    - target: {fileID: 11487286, guid: b4727120ea8667b428460ca5f62bd474, type: 2}
+      propertyPath: hitClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6026f8428c999d84ba5c7d2ef16280bf, type: 3}
+    - target: {fileID: 11487286, guid: b4727120ea8667b428460ca5f62bd474, type: 2}
+      propertyPath: swingClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2f0267b5f35484249b3865cd03af411c, type: 3}
+    - target: {fileID: 11487288, guid: b4727120ea8667b428460ca5f62bd474, type: 2}
+      propertyPath: teleportClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 865d0ee0c596ad247824703f6605b1e6, type: 3}
+    - target: {fileID: 11487288, guid: b4727120ea8667b428460ca5f62bd474, type: 2}
+      propertyPath: potionClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f39996c30d32b48439d60e2505988532, type: 3}
+    - target: {fileID: 11487290, guid: b4727120ea8667b428460ca5f62bd474, type: 2}
+      propertyPath: torchInstance
+      value: 
+      objectReference: {fileID: 149790, guid: 195476654c7cb7342bc81f40bedbbf85, type: 2}
+    - target: {fileID: 11487290, guid: b4727120ea8667b428460ca5f62bd474, type: 2}
+      propertyPath: teleportInstance
+      value: 
+      objectReference: {fileID: 132024, guid: fea82ba2a84c16342988157078627196, type: 2}
+    - target: {fileID: 11487290, guid: b4727120ea8667b428460ca5f62bd474, type: 2}
+      propertyPath: cashClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f39996c30d32b48439d60e2505988532, type: 3}
+    - target: {fileID: 11487298, guid: b4727120ea8667b428460ca5f62bd474, type: 2}
+      propertyPath: axes
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4727120ea8667b428460ca5f62bd474, type: 2}
   m_IsPrefabParent: 0
@@ -2882,12 +2886,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: .984313726, g: .984313726, b: .984313726, a: 0}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -3119,7 +3117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae0fcacd7d8c464bb488d4784e2d893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mazePrefab: {fileID: 0}
+  mazePrefab: {fileID: 11400000, guid: a2395bb8a91944f21b621f2614d6db99, type: 2}
 --- !u!4 &1464554643
 Transform:
   m_ObjectHideFlags: 0
@@ -3148,7 +3146,6 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -3215,13 +3212,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1d07732f7661d244972efc2b117a501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initGameTime: 0
-  countDownDisplay: {fileID: 0}
-  player: {fileID: 0}
+  initGameTime: 180
+  countDownDisplay: {fileID: 402173733}
+  player: {fileID: 317416649}
   freezeTime: 5
   isCounting: 0
-  teleportClip: {fileID: 0}
-  timeClip: {fileID: 0}
+  teleportClip: {fileID: 8300000, guid: 865d0ee0c596ad247824703f6605b1e6, type: 3}
+  timeClip: {fileID: 8300000, guid: f39996c30d32b48439d60e2505988532, type: 3}
 --- !u!1 &1464817177
 GameObject:
   m_ObjectHideFlags: 0
@@ -3277,6 +3274,33 @@ Transform:
   - {fileID: 268933077}
   m_Father: {fileID: 1409162465}
   m_RootOrder: 2
+--- !u!1 &1478805255
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 81418058}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1478805256}
+  m_Layer: 0
+  m_Name: Missing Prefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1478805256
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 81418058}
+  m_GameObject: {fileID: 1478805255}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1546544381}
+  m_RootOrder: 0
 --- !u!1 &1514300846
 GameObject:
   m_ObjectHideFlags: 0
@@ -3324,12 +3348,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: .117647059}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -3557,7 +3575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c2cd04b4d5a664cb8a4a048dbbf8b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  axes: 0
+  axes: 2
   sensitivityX: 15
   sensitivityY: 15
   minimumX: -360
@@ -3832,6 +3850,23 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 317416649}
+    - target: {fileID: 11425024, guid: 3245d724da48cf24ab00705d07a4993d, type: 2}
+      propertyPath: mazePrefab
+      value: 
+      objectReference: {fileID: 11400000, guid: a2395bb8a91944f21b621f2614d6db99,
+        type: 2}
+    - target: {fileID: 11425026, guid: 3245d724da48cf24ab00705d07a4993d, type: 2}
+      propertyPath: teleportClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 865d0ee0c596ad247824703f6605b1e6, type: 3}
+    - target: {fileID: 11425026, guid: 3245d724da48cf24ab00705d07a4993d, type: 2}
+      propertyPath: timeClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f39996c30d32b48439d60e2505988532, type: 3}
+    - target: {fileID: 11425026, guid: 3245d724da48cf24ab00705d07a4993d, type: 2}
+      propertyPath: initGameTime
+      value: 180
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3245d724da48cf24ab00705d07a4993d, type: 2}
   m_IsPrefabParent: 0
@@ -3882,12 +3917,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: fbe8f3ac2b6bfc349be89a5af8021861, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -3976,7 +4005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa1768f56d2599c4d9add3bc7cabbcd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 317416649}
 --- !u!1 &1994325140
 GameObject:
   m_ObjectHideFlags: 0
