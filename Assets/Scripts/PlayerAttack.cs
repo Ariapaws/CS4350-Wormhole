@@ -17,14 +17,13 @@ public class PlayerAttack : MonoBehaviour {
 /**************** End of variables to be changed ********************************/
 
 	public GameObject target;
-	public string[] attacks;
 
 	int attacknumber = 0;
 	Ray shootRay;
 	RaycastHit shootHit;
 	int shootableMask;
 	AudioSource playerAudio;
-
+	public Animator animator;
 	public AudioClip hitClip;
 	public AudioClip swingClip;
 	public bool attackPerforming = false;
@@ -39,18 +38,17 @@ public class PlayerAttack : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		playerAudio = GetComponent <AudioSource> ();
-		attacks = new string[3];
-		attacks[0] = "attack1";
-		attacks[1] = "attack2";
-		attacks[2] = "attack3";
 		shootableMask = LayerMask.GetMask ("Shootable");
+		animator = GetComponentInChildren<Animator> ();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetAxis ("Fire1")>0) {
+
 			shootRay.origin = transform.position;
 			shootRay.direction = transform.forward;
+
 
 			// For spherecast (torch)
 			sphereOrigin = transform.position;
@@ -64,13 +62,9 @@ public class PlayerAttack : MonoBehaviour {
 		if (attackPerforming) {
 			yield return new WaitForSeconds(0);
 		} else {
+			animator.SetTrigger("Attack");
+
 			attackPerforming = true;
-			target.GetComponent<Animation>().Play (attacks[attacknumber]);
-			target.GetComponent<Animation>()[attacks[attacknumber]].speed = attackSpeed;
-			attacknumber++;
-			if (attacknumber == 3) {
-				attacknumber = 0;
-			}
 			bool isSphereCastHit = Physics.SphereCast(sphereOrigin, sphereThickness, sphereDirection, out sphereHit, sphereRange);
 			if(Physics.Raycast (shootRay, out shootHit, range))
 			{
@@ -94,22 +88,8 @@ public class PlayerAttack : MonoBehaviour {
 				playerAudio.Play();
 			}
 			yield return new WaitForSeconds(0.5f);
-			target.GetComponent<Animation>().Play ("idle");
 			attackPerforming = false;
 		}
-	}
-
-
-	IEnumerator  powerattack() {
-		target.GetComponent<Animation>().Play ("powerAttack");
-		yield return new WaitForSeconds(1.7f);
-		target.GetComponent<Animation>().Play ("idle");
-	}
-
-	IEnumerator  finishattack() {
-		target.GetComponent<Animation>().Play ("finishAttack");
-		yield return new WaitForSeconds(1.5f);
-		target.GetComponent<Animation>().Play ("idle");
 	}
 
 	void tryToHitTorch(RaycastHit sphereHit){
