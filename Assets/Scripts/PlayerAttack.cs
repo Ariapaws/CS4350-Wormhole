@@ -13,6 +13,10 @@ public class PlayerAttack : MonoBehaviour {
 
 	// base damage
 	public int damagePerHit = 20;
+	
+	// defense
+	public int defense = 5;
+
 
 /**************** End of variables to be changed ********************************/
 
@@ -44,16 +48,28 @@ public class PlayerAttack : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetAxis ("Fire1")>0) {
+		if (Input.GetMouseButtonDown (1)) {
+			//block animation enabled
+			animator.SetBool ("Guard", true);
+			GetComponent<PlayerHealth>().armor += defense;
 
+		} else if (Input.GetMouseButtonUp (1)) {
+			//block animation disabled
+			animator.SetBool("Guard", false);
+			GetComponent<PlayerHealth>().armor -= defense;
+		}
+			
+		else if (Input.GetAxis ("Fire1")>0) {
+
+			// attack animation enabled
 			shootRay.origin = transform.position;
 			shootRay.direction = transform.forward;
-
 
 			// For spherecast (torch)
 			sphereOrigin = transform.position;
 			sphereDirection = transform.TransformDirection(Vector3.forward);
 			StartCoroutine(attack());
+
 		}
 	}
 

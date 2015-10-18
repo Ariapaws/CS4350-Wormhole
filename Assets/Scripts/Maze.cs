@@ -104,8 +104,8 @@ public class Maze : MonoBehaviour {
 		rightWall.transform.position = new Vector3 (NewX, rightWall.transform.position.y, rightNewZ);
 		*/
 
-		player = GameObject.FindGameObjectWithTag ("Player");
-		playerCharacterMotor = player.GetComponent <CharacterMotor> ();
+		//player = GameObject.FindGameObjectWithTag ("Player");
+		//playerCharacterMotor = player.GetComponent <CharacterMotor> ();
 		WaitForSeconds delay = new WaitForSeconds(generationStepDelay);
 		cells = new MazeCell[size.x, size.z];
 		List<MazeCell> activeCells = new List<MazeCell>();
@@ -115,7 +115,7 @@ public class Maze : MonoBehaviour {
 			//yield return delay;
 			DoNextGenerationStep(activeCells);
 		}
-		playerCharacterMotor.movement.gravity = 9.81f;
+		//playerCharacterMotor.movement.gravity = 9.81f;
 
 
 

@@ -12,10 +12,18 @@ public class PlayerHealth : MonoBehaviour {
 	// mitigation (armor or defence)
 	public int armor = 0;
 	
+	// stamina
+	public int startingStamina = 100;
+
+	// speed of regeneration of stamina
+	public float staminaRegenSpeed = 5;
+	
 /*********************** End of the variable to be changed ************************/
 
 	public int currentHealth;
 	public Slider healthSlider;
+	public float currentStamina;
+	public Slider staminaSlider;
 	public Image damageImage;
 	//public AudioClip deathClip;
 	public float flashSpeed = 5f;
@@ -40,6 +48,7 @@ public class PlayerHealth : MonoBehaviour {
 		//playerMovement = GetComponent <PlayerMovement> ();
 		//playerShooting = GetComponentInChildren <PlayerShooting> ();
 		currentHealth = startingHealth;
+		currentStamina = startingStamina;
 		playerAudio = GetComponent <AudioSource> ();
 		GameObject feedbackObject = GameObject.FindGameObjectWithTag("Feedback");
 		feedback = feedbackObject.GetComponent<Text>();
@@ -60,19 +69,28 @@ public class PlayerHealth : MonoBehaviour {
 		if (transform.position.y < 0) {
 			transform.position = new Vector3(transform.position.x, 6.0f, transform.position.z);
 		}
+
+		//regen stamina if not pressing shift
+		if (!Input.GetKey (KeyCode.LeftShift)) {
+			currentStamina += staminaRegenSpeed * Time.deltaTime;
+			if (currentStamina > startingHealth) {
+				currentStamina = startingStamina;
+			}
+			staminaSlider.value = currentStamina;
+		}
 	}
 	
 	
 	public void TakeDamage (int amount)
 	{
-		damaged = true;
-
 		// if armor value is smaller than damage amount, smaller damage amount on player
 		// else no damage on player
 		if (armor < amount) {
+			damaged = false;
 			currentHealth -= amount - armor;
+		} else {
+			damaged = true;
 		}
-
 		healthSlider.value = currentHealth;
 		
 		//playerAudio.Play ();
@@ -98,7 +116,20 @@ public class PlayerHealth : MonoBehaviour {
 		playerAudio.Play ();	
 
 	}
-	
+
+
+	public void ReduceStamina (float amount)
+	{
+		currentStamina -= amount;
+		if (currentStamina < 0)
+			currentStamina = 0;
+		staminaSlider.value = currentStamina;
+	}
+
+	public bool HasStamina()
+	{
+		return currentStamina > 0;
+	}
 	
 	void Death ()
 	{
