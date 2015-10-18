@@ -1881,7 +1881,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1d07732f7661d244972efc2b117a501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initGameTime: 0
+  initGameTime: 180
   countDownDisplay: {fileID: 402173733}
   player: {fileID: 2105220758}
   freezeTime: 5
