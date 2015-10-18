@@ -104,7 +104,7 @@ public class Maze : MonoBehaviour {
 		rightWall.transform.position = new Vector3 (NewX, rightWall.transform.position.y, rightNewZ);
 		*/
 
-		//player = GameObject.FindGameObjectWithTag ("Player");
+		player = GameObject.FindGameObjectWithTag ("Player");
 		//playerCharacterMotor = player.GetComponent <CharacterMotor> ();
 		WaitForSeconds delay = new WaitForSeconds(generationStepDelay);
 		cells = new MazeCell[size.x, size.z];

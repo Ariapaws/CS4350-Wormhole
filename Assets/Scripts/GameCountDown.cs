@@ -4,7 +4,7 @@ using System.Collections;
 
 public class GameCountDown : MonoBehaviour {
 
-	public float initGameTime = 0;
+	public float initGameTime = 180;
 	private float gameTime;
 	public Text countDownDisplay;
 	public GameObject player;
