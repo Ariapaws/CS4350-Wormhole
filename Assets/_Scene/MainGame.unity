@@ -400,8 +400,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canPurchase: 0
   distance: 0
-  player: {fileID: 1084634757}
-  feedback: {fileID: 440573739}
+  player: {fileID: 0}
+  feedback: {fileID: 0}
 --- !u!1 &271821574
 GameObject:
   m_ObjectHideFlags: 0
@@ -1562,10 +1562,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: efdf155e29b063e48a1a315326175481, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1084634757 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-  m_PrefabInternal: {fileID: 906879867}
 --- !u!1 &1211267510
 GameObject:
   m_ObjectHideFlags: 0
@@ -1699,7 +1695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae0fcacd7d8c464bb488d4784e2d893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mazePrefab: {fileID: 11400000, guid: a2395bb8a91944f21b621f2614d6db99, type: 2}
+  mazePrefab: {fileID: 0}
 --- !u!4 &1464554643
 Transform:
   m_ObjectHideFlags: 0
@@ -1794,13 +1790,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1d07732f7661d244972efc2b117a501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initGameTime: 180
-  countDownDisplay: {fileID: 402173733}
+  initGameTime: 0
+  countDownDisplay: {fileID: 0}
   player: {fileID: 0}
   freezeTime: 5
   isCounting: 0
-  teleportClip: {fileID: 8300000, guid: 865d0ee0c596ad247824703f6605b1e6, type: 3}
-  timeClip: {fileID: 8300000, guid: f39996c30d32b48439d60e2505988532, type: 3}
+  teleportClip: {fileID: 0}
+  timeClip: {fileID: 0}
 --- !u!1 &1478805255
 GameObject:
   m_ObjectHideFlags: 0
