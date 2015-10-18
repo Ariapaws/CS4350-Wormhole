@@ -64,7 +64,7 @@ MonoBehaviour:
   crateAmount: 2
   golemAmount: 0
   clockAmount: 20
-  teleportAmount: 10
+  teleportAmount: 0
   clockInstance: {fileID: 128138, guid: 6bb63662e0281ac459e09b9e44ef5e3c, type: 2}
   golemInstance: {fileID: 107308, guid: 45cb3047c6c16134b894569e3d0a75ef, type: 2}
   zombieInstance: {fileID: 102234, guid: f35dffc1e8aba744e892d8fed62f4845, type: 2}
@@ -82,9 +82,12 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: teleportAmount
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100000}
   m_IsPrefabParent: 1
-  m_IsExploded: 1
