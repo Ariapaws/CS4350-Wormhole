@@ -400,8 +400,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canPurchase: 0
   distance: 0
-  player: {fileID: 0}
-  feedback: {fileID: 0}
+  player: {fileID: 2105220758}
+  feedback: {fileID: 440573739}
 --- !u!1 &271821574
 GameObject:
   m_ObjectHideFlags: 0
@@ -1230,7 +1230,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 869097189}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ebdc542b60b2ff4abf16774e1f1009b, type: 3}
+  m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &881142164
@@ -1391,6 +1391,38 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 11447246, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1965956492}
+    - target: {fileID: 11447246, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: feedback
+      value: 
+      objectReference: {fileID: 440573739}
+    - target: {fileID: 11421556, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: healthSlider
+      value: 
+      objectReference: {fileID: 1577614976}
+    - target: {fileID: 11421556, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: staminaSlider
+      value: 
+      objectReference: {fileID: 1599235676}
+    - target: {fileID: 11421556, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: damageImage
+      value: 
+      objectReference: {fileID: 1211267512}
+    - target: {fileID: 11421556, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: feedback
+      value: 
+      objectReference: {fileID: 440573739}
+    - target: {fileID: 11464282, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: cashAmountDisplay
+      value: 
+      objectReference: {fileID: 271821575}
+    - target: {fileID: 11464282, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: BaseTeleport
+      value: 
+      objectReference: {fileID: 884880288}
     - target: {fileID: 413374, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_LocalRotation.x
       value: .532675147
@@ -1407,42 +1439,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: -.110415131
       objectReference: {fileID: 0}
-    - target: {fileID: 11464282, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: cashAmountDisplay
-      value: 
-      objectReference: {fileID: 271821575}
-    - target: {fileID: 11464282, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: BaseTeleport
-      value: 
-      objectReference: {fileID: 884880288}
-    - target: {fileID: 11421556, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: healthSlider
-      value: 
-      objectReference: {fileID: 1577614976}
-    - target: {fileID: 11421556, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: damageImage
-      value: 
-      objectReference: {fileID: 1211267512}
-    - target: {fileID: 11447246, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: canvas
-      value: 
-      objectReference: {fileID: 1965956492}
-    - target: {fileID: 11447246, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: feedback
-      value: 
-      objectReference: {fileID: 440573739}
     - target: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 11421556, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: feedback
-      value: 
-      objectReference: {fileID: 440573739}
-    - target: {fileID: 11421556, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: staminaSlider
-      value: 
-      objectReference: {fileID: 1599235676}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
   m_IsPrefabParent: 0
@@ -1695,7 +1695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae0fcacd7d8c464bb488d4784e2d893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mazePrefab: {fileID: 0}
+  mazePrefab: {fileID: 11400000, guid: a2395bb8a91944f21b621f2614d6db99, type: 2}
 --- !u!4 &1464554643
 Transform:
   m_ObjectHideFlags: 0
@@ -1791,12 +1791,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initGameTime: 0
-  countDownDisplay: {fileID: 0}
-  player: {fileID: 0}
+  countDownDisplay: {fileID: 402173733}
+  player: {fileID: 2105220758}
   freezeTime: 5
   isCounting: 0
-  teleportClip: {fileID: 0}
-  timeClip: {fileID: 0}
+  teleportClip: {fileID: 8300000, guid: 865d0ee0c596ad247824703f6605b1e6, type: 3}
+  timeClip: {fileID: 8300000, guid: 09fcb499e144ee64d829bc6049c13e25, type: 3}
 --- !u!1 &1478805255
 GameObject:
   m_ObjectHideFlags: 0
@@ -2196,7 +2196,7 @@ Prefab:
     - target: {fileID: 11425026, guid: 3245d724da48cf24ab00705d07a4993d, type: 2}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2105220758}
     - target: {fileID: 11425024, guid: 3245d724da48cf24ab00705d07a4993d, type: 2}
       propertyPath: mazePrefab
       value: 
@@ -2209,7 +2209,7 @@ Prefab:
     - target: {fileID: 11425026, guid: 3245d724da48cf24ab00705d07a4993d, type: 2}
       propertyPath: timeClip
       value: 
-      objectReference: {fileID: 8300000, guid: f39996c30d32b48439d60e2505988532, type: 3}
+      objectReference: {fileID: 8300000, guid: 09fcb499e144ee64d829bc6049c13e25, type: 3}
     - target: {fileID: 11425026, guid: 3245d724da48cf24ab00705d07a4993d, type: 2}
       propertyPath: initGameTime
       value: 180
@@ -2353,3 +2353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+--- !u!1 &2105220758 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+  m_PrefabInternal: {fileID: 906879867}
