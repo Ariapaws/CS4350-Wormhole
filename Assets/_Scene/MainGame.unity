@@ -1171,7 +1171,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: c6b0819bb42722b40be561c32c3e0592, type: 2}
       propertyPath: speed
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: c6b0819bb42722b40be561c32c3e0592, type: 2}
       propertyPath: NightTint.r
