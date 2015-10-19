@@ -115,8 +115,16 @@ public class ZombieAttack : MonoBehaviour {
 			Vector3 direction = (new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z) - transform.position).normalized;
 			Vector3 newDir = Vector3.RotateTowards(transform.forward, direction, 2f, 0.0F);
 			transform.rotation = Quaternion.LookRotation(newDir);
-			feedback.color = new Color(1,0,0,2);
-			feedback.text = "Damage received: "+attackDamage.ToString();
+
+            if (playerHealth.armor >= attackDamage)
+            {
+                feedback.color = new Color(1, 1, 1, 1);
+                feedback.text = "Damage blocked!";
+            }
+            else {
+			    feedback.color = new Color(1,0,0,2);
+			    feedback.text = "Damage received: "+attackDamage.ToString();
+            }
 			playerHealth.TakeDamage (attackDamage);
 
 		}
