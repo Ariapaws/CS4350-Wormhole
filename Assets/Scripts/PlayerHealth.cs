@@ -73,7 +73,7 @@ public class PlayerHealth : MonoBehaviour {
 		//regen stamina if not pressing shift
 		if (!Input.GetKey (KeyCode.LeftShift)) {
 			currentStamina += staminaRegenSpeed * Time.deltaTime;
-			if (currentStamina > startingHealth) {
+			if (currentStamina > startingStamina) {
 				currentStamina = startingStamina;
 			}
 			staminaSlider.value = currentStamina;
@@ -86,10 +86,10 @@ public class PlayerHealth : MonoBehaviour {
 		// if armor value is smaller than damage amount, smaller damage amount on player
 		// else no damage on player
 		if (armor < amount) {
-			damaged = false;
+			damaged = true;
 			currentHealth -= amount - armor;
 		} else {
-			damaged = true;
+			damaged = false;
 		}
 		healthSlider.value = currentHealth;
 		

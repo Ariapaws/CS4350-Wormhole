@@ -1523,38 +1523,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 11447246, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: canvas
-      value: 
-      objectReference: {fileID: 1965956492}
-    - target: {fileID: 11447246, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: feedback
-      value: 
-      objectReference: {fileID: 440573739}
-    - target: {fileID: 11421556, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: healthSlider
-      value: 
-      objectReference: {fileID: 1577614976}
-    - target: {fileID: 11421556, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: staminaSlider
-      value: 
-      objectReference: {fileID: 1599235676}
-    - target: {fileID: 11421556, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: damageImage
-      value: 
-      objectReference: {fileID: 1211267512}
-    - target: {fileID: 11421556, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: feedback
-      value: 
-      objectReference: {fileID: 440573739}
-    - target: {fileID: 11464282, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: cashAmountDisplay
-      value: 
-      objectReference: {fileID: 271821575}
-    - target: {fileID: 11464282, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: BaseTeleport
-      value: 
-      objectReference: {fileID: 884880288}
     - target: {fileID: 413374, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_LocalRotation.x
       value: .532675147
@@ -1571,16 +1539,43 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: -.110415131
       objectReference: {fileID: 0}
+    - target: {fileID: 11464282, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: cashAmountDisplay
+      value: 
+      objectReference: {fileID: 271821575}
+    - target: {fileID: 11464282, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: BaseTeleport
+      value: 
+      objectReference: {fileID: 884880288}
+    - target: {fileID: 11421556, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: healthSlider
+      value: 
+      objectReference: {fileID: 1577614976}
+    - target: {fileID: 11421556, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: staminaSlider
+      value: 
+      objectReference: {fileID: 1599235676}
+    - target: {fileID: 11421556, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: damageImage
+      value: 
+      objectReference: {fileID: 1211267512}
+    - target: {fileID: 11421556, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: feedback
+      value: 
+      objectReference: {fileID: 440573739}
+    - target: {fileID: 11447246, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1965956492}
+    - target: {fileID: 11447246, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: feedback
+      value: 
+      objectReference: {fileID: 440573739}
     - target: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 4535038, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4535038, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &911368112
