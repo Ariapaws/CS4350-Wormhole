@@ -412,6 +412,10 @@ MonoBehaviour:
   distance: 0
   feedback: {fileID: 440573739}
   player: {fileID: 2105220758}
+  currentWeaponDamageLevel: 0
+  currentWeaponRangeLevel: 0
+  currentWeaponSpeedLevel: 0
+  currentArmourLevel: 0
 --- !u!1 &271821574
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,9 +12,9 @@ public class Upgrades : IComparable<Upgrades>
     public string name;
     public int level;
     public int cost;
-    public int upgradeAmount;
+    public float upgradeAmount;
 
-    public Upgrades(int newType, string newName, int newLevel, int newCost, int newUpgradeAmount)
+    public Upgrades(int newType, string newName, int newLevel, int newCost, float newUpgradeAmount)
     {
         // button type, upgrade name, weapon level--still upgradable?, cost, upgrade amount
         type = newType;
