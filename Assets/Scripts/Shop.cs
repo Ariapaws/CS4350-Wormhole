@@ -3,27 +3,27 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
+
 public class Shop : MonoBehaviour {
 	
 	public bool canPurchase;
 	public float distance;
-	public GameObject player;
 
 	//public List<ShopItem> shopItems = new List<Shop>();
 
-	public Text feedback; 
+	public Text feedback;
+    public GameObject player;
 
 	// Use this for initialization
 	void Start () {
 		distance = 2.8f;
 		canPurchase = false;
 
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
         GameObject feedbackObject = GameObject.FindGameObjectWithTag("Feedback");
         feedback = feedbackObject.GetComponent<Text>();
 
 		InstantiateShop ();
-
-
 	}
 	
 	// Update is called once per frame
@@ -37,8 +37,46 @@ public class Shop : MonoBehaviour {
 				Debug.Log(player.GetComponent<PlayerPurchaseUI>().showPurchaseUI);
 				canPurchase = true;
 			}
+            else if (player.GetComponent<PlayerPurchaseUI>().showPurchaseUI == false) {
+                canPurchase = false;
+            }
 		} else 
 			canPurchase = false;
+
+
+        if (canPurchase == true) { 
+            // Press 1 (upgrade WEAPON ATTACK) --------------------------------------
+            //player.GetComponent<PlayerAssets>().currentCash
+            if (Input.GetKeyUp(KeyCode.Alpha1)) {
+                // 1st upgrade = +5
+                if (CheckCost() == true) { player.GetComponent<PlayerAttack>().damagePerHit = 25; }
+            }
+
+            // Press 2 (upgrade WEAPON RANGE) --------------------------------------
+            if (Input.GetKeyUp(KeyCode.Alpha2))
+            {
+                // 1st upgrade = +0.5
+                if (CheckCost() == true) { player.GetComponent<PlayerAttack>().range = 5.5f; }
+            }
+
+            // Press 3 (upgrade ARMOUR--health) --------------------------------------
+            if (Input.GetKeyUp(KeyCode.Alpha3))
+            {
+                // 1st upgrade = +50 health
+                if (CheckCost() == true) { player.GetComponent<PlayerHealth>().startingHealth = 350; }
+            }
+
+            // Press 4 (upgrade SPEED) --------------------------------------
+            if (Input.GetKeyUp(KeyCode.Alpha4))
+            {
+                // 1st upgrade = +50 health
+                //player.GetComponent<FirstPersonController>().startingHealth = 350;
+            }
+
+            // Press 5 (purchase POTION) --------------------------------------
+
+
+        }
 	}
 
 	void InstantiateShop () {
@@ -62,6 +100,15 @@ public class Shop : MonoBehaviour {
 
 		shopItems.Add (new Shop (2, "Potion", 50, 1, 20, "health")); */
 	}
+
+    bool CheckCost() {
+        if (player.GetComponent<PlayerAssets>().currentCash >= 0)
+        {
+            return true;
+        }
+        else
+            return false;
+    }
 
 
 

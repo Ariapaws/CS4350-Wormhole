@@ -30,11 +30,12 @@ public class PlayerPurchaseUI : MonoBehaviour {
 				showPurchaseUI = true;
 				PurchaseUI ();
 			}
-			if(toggle==true) {
+			else if(toggle==true) {
 				Debug.Log ("toggled 0");
 				showPurchaseUI = false;
+                // show or hide purchase UI
                 PurchaseUI ();
-				//hide purchase UI
+
 			}
 			toggle = !toggle;
 		}
@@ -44,6 +45,7 @@ public class PlayerPurchaseUI : MonoBehaviour {
     {
         if (showPurchaseUI == true) {
             canvas.GetComponent<Image>().enabled = true;
+            // show table of available purchases
         }
 
         if (showPurchaseUI == false) {
