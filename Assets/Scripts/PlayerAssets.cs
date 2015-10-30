@@ -7,6 +7,7 @@ public class PlayerAssets : MonoBehaviour {
 	public int startingCash = 0;
 	public int currentCash;
 	public int numOfTorchesLeft = 10;
+    public int numOfPotions;
 	public Text cashAmountDisplay;
 	public GameObject torchInstance;
 	public GameObject teleportInstance;
@@ -18,10 +19,19 @@ public class PlayerAssets : MonoBehaviour {
 	AudioSource playerAudio;
 	public GameObject BaseTeleport;
 
+    public Text feedback;
+    GameObject player;
+    PlayerHealth playerHealth;
+
 	// Use this for initialization
 	void Awake () {
 		currentCash = startingCash;
+        numOfPotions = 0;
 		playerAudio = GetComponent <AudioSource> ();
+        GameObject feedbackObject = GameObject.FindGameObjectWithTag("Feedback");
+        feedback = feedbackObject.GetComponent<Text>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerHealth = player.GetComponent<PlayerHealth>();
 
 	}
 	
@@ -33,6 +43,10 @@ public class PlayerAssets : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.E)){
 			placeTeleport();
 		}
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            UsePotion(numOfPotions);
+        }
 	}
 
 	public void AddCash (int amount)
@@ -99,6 +113,14 @@ public class PlayerAssets : MonoBehaviour {
 		return closestDistance;
 	}
 
+    public void UsePotion(int noOfPotion) {
+        if (noOfPotion > 0) {
+            player.GetComponent<PlayerHealth>().currentHealth += 20;
+            feedback.color = new Color(1, 1, 1, 2);
+            feedback.text = "You have healed " + "20" + " health.";
+            noOfPotion -= 1;
+        }
+    }
 
 
 		/*else{

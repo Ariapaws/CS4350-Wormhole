@@ -120,10 +120,14 @@ public class Shop : MonoBehaviour {
                 }
             }
 
-
-
             // Press 5 (purchase POTION) --------------------------------------
-
+            if (Input.GetKeyUp(KeyCode.Alpha5))
+            {
+                if (CheckCost(50) == true) {
+                    Debug.Log("Enough gold for potion.");
+                    player.GetComponent<PlayerAssets>().numOfPotions += 1;
+                }
+            }
 
         }
 	}
@@ -166,6 +170,7 @@ public class Shop : MonoBehaviour {
     bool CheckCost(int upgradeCost) {
         if (upgradeCost <= player.GetComponent<PlayerAssets>().currentCash)
         {
+            player.GetComponent<PlayerAssets>().currentCash -= upgradeCost;
             return true;
         }
         else
