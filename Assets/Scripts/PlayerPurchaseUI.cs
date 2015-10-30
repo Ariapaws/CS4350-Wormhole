@@ -9,7 +9,7 @@ public class PlayerPurchaseUI : MonoBehaviour {
 	public bool toggle;
 
     public GameObject canvas = GameObject.FindGameObjectWithTag("Shop");
-	public Text feedback;
+    public Text feedback;
 	
 	// Use this for initialization
 	void Start () {
@@ -45,11 +45,13 @@ public class PlayerPurchaseUI : MonoBehaviour {
     {
         if (showPurchaseUI == true) {
             canvas.GetComponent<Image>().enabled = true;
+            canvas.GetComponentInChildren<Text>().enabled = true;
             // show table of available purchases
         }
 
         if (showPurchaseUI == false) {
             canvas.GetComponent<Image>().enabled = false;
+            canvas.GetComponentInChildren<Text>().enabled = false;
         }
     }
 }
