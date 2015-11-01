@@ -2069,6 +2069,10 @@ Prefab:
       propertyPath: slider
       value: .349999994
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c6b0819bb42722b40be561c32c3e0592, type: 2}
+      propertyPath: m_TagString
+      value: TOD
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6b0819bb42722b40be561c32c3e0592, type: 2}
   m_IsPrefabParent: 0
@@ -3080,6 +3084,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mazePrefab: {fileID: 11400000, guid: a2395bb8a91944f21b621f2614d6db99, type: 2}
+  feedback: {fileID: 0}
+  isNight: 0
 --- !u!4 &1464554643
 Transform:
   m_ObjectHideFlags: 0

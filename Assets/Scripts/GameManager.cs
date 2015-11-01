@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -8,6 +9,8 @@ public class GameManager : MonoBehaviour {
 	private Maze mazeInstance;
 	private bool pauseEnabled = false; 
 	GameObject player;
+	public Text feedback;
+	public bool isNight=false;
 
 	private IEnumerator Start () {
 		//BeginGame();
@@ -16,7 +19,31 @@ public class GameManager : MonoBehaviour {
 
 	}
 	
+	// Use this for initialization
+	void Awake () {
+		GameObject feedbackObject = GameObject.FindGameObjectWithTag("Feedback");
+		feedback = feedbackObject.GetComponent<Text>();
+	}
+	
 	private void Update () {
+		GameObject timeOfDayObject = GameObject.FindGameObjectWithTag ("TOD");
+		TOD todScript = (TOD)timeOfDayObject.GetComponent(typeof(TOD));
+		float hr = todScript.Hour;
+		Debug.Log (hr + "isNight is " + isNight);
+		if (isNight) {
+			if (hr > 6 && hr < 18) {
+				feedback.color = new Color (1, 1, 1, 2);
+				feedback.text = "The sun has risen. Congrats for surviving another night.";
+				isNight = false;
+			}
+		} else {
+			if (hr < 6 || hr > 18) {
+				feedback.color = new Color (1, 1, 1, 2);
+				feedback.text = "Night has fallen. Zombies have become tougher.";
+				isNight = true;
+			}
+		}
+
 		/*
 		if (Input.GetKeyDown(KeyCode.Escape)) {
 			//check if game is already paused       

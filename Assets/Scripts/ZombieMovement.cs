@@ -6,6 +6,12 @@ public class ZombieMovement : Pathfinding {
 	public float moveSpeed = 1f;
 	public float rotateSpeed = 2f;
 	public float vision = 2f;
+	public float nightMoveSpeed = 3f;
+	public float nightRotateSpeed = 5f;
+	public float nightVision = 5f;
+	public float startingMoveSpeed = 1f;
+	public float startingRotateSpeed = 2f;
+	public float startingVision = 2f;
 	Transform target;
 	GameObject player;
 	Animator anim;
@@ -132,6 +138,21 @@ public class ZombieMovement : Pathfinding {
 	
 	// Update is called once per frame
 	void Update () {
+
+		GameObject gameManagerObject = GameObject.FindGameObjectWithTag ("GameManager");
+		GameManager gameManagerScript = (GameManager)gameManagerObject.GetComponent(typeof(GameManager));
+		bool isNight = gameManagerScript.isNight;
+		
+		if (isNight) {
+			moveSpeed = nightMoveSpeed;
+			rotateSpeed = nightRotateSpeed;
+			vision = nightVision;
+		} else {
+			moveSpeed = startingMoveSpeed;
+			rotateSpeed = startingRotateSpeed;
+			vision = startingVision;
+		}
+
 		bool isDead = GetComponent<ZombieHealth>().isDead;
 		if(!isDead){
 

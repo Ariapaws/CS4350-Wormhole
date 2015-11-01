@@ -1599,6 +1599,12 @@ MonoBehaviour:
   moveSpeed: 1
   rotateSpeed: 2
   vision: 10
+  nightMoveSpeed: 3
+  nightRotateSpeed: 5
+  nightVision: 15
+  startingMoveSpeed: 1
+  startingRotateSpeed: 2
+  startingVision: 10
   playerContact: 0
   playerObserved: 0
   start: {x: 0, y: 0, z: 0}
@@ -1618,7 +1624,9 @@ MonoBehaviour:
   ratioOftimeBeforeDamage: .400000006
   ratioOfTimeForDamage: .200000003
   durationOfAnimation: 2
-  attackDamage: 5
+  attackDamage: 10
+  startingDamage: 10
+  nightDamage: 50
   attackClip: {fileID: 8300000, guid: 6026f8428c999d84ba5c7d2ef16280bf, type: 3}
   playerInRange: 0
   cooldownTimer: 0
@@ -2383,7 +2391,19 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: startingVision
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: nightVision
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attackDamage
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 140358}

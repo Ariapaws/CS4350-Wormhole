@@ -9,8 +9,11 @@ public class ZombieAttack : MonoBehaviour {
     public float ratioOfTimeForDamage = 0.2f;
     public float durationOfAnimation = 2.0f;
 	public int attackDamage = 10;
+	public int startingDamage = 10;
+	public int nightDamage = 50;
 	public AudioClip attackClip;
-	
+
+
 	Animator anim;
 	GameObject player;
 	PlayerHealth playerHealth;
@@ -66,6 +69,16 @@ public class ZombieAttack : MonoBehaviour {
 	
 	void Update ()
 	{
+		GameObject gameManagerObject = GameObject.FindGameObjectWithTag ("GameManager");
+		GameManager gameManagerScript = (GameManager)gameManagerObject.GetComponent(typeof(GameManager));
+		bool isNight = gameManagerScript.isNight;
+
+		if (isNight) {
+			attackDamage = nightDamage;
+		} else {
+			attackDamage = startingDamage;
+		}
+
         if (isCooldownTimerOn)
         {
             cooldownTimer += Time.deltaTime;

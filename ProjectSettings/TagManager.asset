@@ -19,6 +19,9 @@ TagManager:
   - randomZombie
   - Torch
   - Shop
+  - WPPathfinder
+  - Waypoint
+  - TOD
   layers:
   - Default
   - TransparentFX
