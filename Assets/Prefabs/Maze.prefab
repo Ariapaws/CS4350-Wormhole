@@ -1,15 +1,15 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &100000
+--- !u!1 &113446
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 400000}
-  - 114: {fileID: 11400000}
-  - 65: {fileID: 6569812}
+  - 4: {fileID: 479084}
+  - 114: {fileID: 11460448}
+  - 65: {fileID: 6547716}
   m_Layer: 15
   m_Name: Maze
   m_TagString: Untagged
@@ -17,36 +17,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &400000
+--- !u!4 &479084
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
+  m_GameObject: {fileID: 113446}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4, y: 1, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!65 &6569812
+--- !u!65 &6547716
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
+  m_GameObject: {fileID: 113446}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 7, y: 10, z: 7}
   m_Center: {x: -5.5, y: 5, z: -5.5}
---- !u!114 &11400000
+--- !u!114 &11460448
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
+  m_GameObject: {fileID: 113446}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1592517cf81484424a60f86dfcafc7eb, type: 3}
@@ -72,9 +72,9 @@ MonoBehaviour:
   crateInstance: {fileID: 155610, guid: 2bfead458efc86d4584d5749a29330d1, type: 2}
   countDown: {fileID: 0}
   skeletonAmount: 30
-  skeletonInstance: {fileID: 172856, guid: f653a5cc971afdd4ba8e93076546eac0, type: 2}
+  skeletonInstance: {fileID: 124964, guid: 85fb7ba765c594f4caae77a300ac4f6e, type: 2}
   monsterAmount: 20
-  monsterInstance: {fileID: 112596, guid: 1ec1b1c90fb7cdf4fa0abd25b7cfc9e4, type: 2}
+  monsterInstance: {fileID: 186386, guid: 8c4fb82ce0884424dabff7429de4d0af, type: 2}
   teleportInstance: {fileID: 109784, guid: af80b74fac44a5b4487111b9640a3b6c, type: 2}
 --- !u!1001 &100100000
 Prefab:
@@ -82,20 +82,8 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 0}
-      propertyPath: teleportAmount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Layer
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: zombieInstance
-      value: 
-      objectReference: {fileID: 140358, guid: e8242719aa8023644ae950f2e0f22f8f, type: 2}
+    m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 100000}
+  m_RootGameObject: {fileID: 113446}
   m_IsPrefabParent: 1

@@ -3083,7 +3083,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae0fcacd7d8c464bb488d4784e2d893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mazePrefab: {fileID: 11400000, guid: a2395bb8a91944f21b621f2614d6db99, type: 2}
+  mazePrefab: {fileID: 11460448, guid: 016981722fe0c6748b97c3f53e2f6284, type: 2}
   feedback: {fileID: 0}
   isNight: 0
 --- !u!4 &1464554643
@@ -3936,7 +3936,7 @@ Prefab:
     - target: {fileID: 11425024, guid: 3245d724da48cf24ab00705d07a4993d, type: 2}
       propertyPath: mazePrefab
       value: 
-      objectReference: {fileID: 11400000, guid: a2395bb8a91944f21b621f2614d6db99,
+      objectReference: {fileID: 11460448, guid: 016981722fe0c6748b97c3f53e2f6284,
         type: 2}
     - target: {fileID: 11425026, guid: 3245d724da48cf24ab00705d07a4993d, type: 2}
       propertyPath: teleportClip
