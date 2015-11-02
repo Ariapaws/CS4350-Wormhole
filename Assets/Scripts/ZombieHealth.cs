@@ -5,6 +5,7 @@ public class ZombieHealth : MonoBehaviour {
 
 	public int startingHealth = 100;
 	public int currentHealth;
+	public int cashAmount = 20;
 	public float sinkSpeed = 2.5f;
 	public int scoreValue = 10;
 	public AudioClip deathClip;
@@ -20,7 +21,8 @@ public class ZombieHealth : MonoBehaviour {
 	public GameObject crateInstance;
 	public GameObject potionInstance;
 	public GameObject clockInstance;
-	
+	GameObject player;
+	PlayerAssets PlayerAssets;
 	
 	void Awake ()
 	{
@@ -29,7 +31,8 @@ public class ZombieHealth : MonoBehaviour {
 		zombieAudio = GetComponent <AudioSource> ();
 		//hitParticles = GetComponentInChildren <ParticleSystem> ();
 		capsuleCollider = GetComponent <CapsuleCollider> ();
-		
+		player = GameObject.FindGameObjectWithTag ("Player");
+		PlayerAssets = player.GetComponent <PlayerAssets> ();
 		currentHealth = startingHealth;
 	}
 	
@@ -80,6 +83,7 @@ public class ZombieHealth : MonoBehaviour {
 
 		Vector3 dropOffPos = new Vector3(transform.position.x, 1.0f, transform.position.z);
 		float random = Random.Range(0f,1f);
+		PlayerAssets.AddCash(cashAmount);
 		if (random<0.50f){
 			Instantiate(crateInstance,dropOffPos, Quaternion.identity);
 		} else if (random<0.75f){
