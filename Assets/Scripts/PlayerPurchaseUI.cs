@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+
 using System.Collections;
 
 public class PlayerPurchaseUI : MonoBehaviour {
@@ -17,9 +18,19 @@ public class PlayerPurchaseUI : MonoBehaviour {
 		toggle = false;
 
 		feedback = GetComponent<Text>();
-		//playerInventory = gameObject.Find("Player").GetComponent(Inventory_GUI)
+        //playerInventory = gameObject.Find("Player").GetComponent(Inventory_GUI)
+        Text[] texts = canvas.GetComponentsInChildren<Text>();
+        for (int i = 0; i < texts.Length; i++)
+        {
+            texts[i].enabled = false;
+        }
+        Image[] images = canvas.GetComponentsInChildren<Image>();
+        for (int i = 0; i < images.Length; i++)
+        {
+            images[i].enabled = false;
+        }
 
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -44,14 +55,35 @@ public class PlayerPurchaseUI : MonoBehaviour {
     void PurchaseUI()
     {
         if (showPurchaseUI == true) {
-            canvas.GetComponent<Image>().enabled = true;
-            canvas.GetComponentInChildren<Text>().enabled = true;
+            //canvas.GetComponent<Image>().enabled = true;
+            //canvas.GetComponentInChildren<Text>().enabled = true;
+
+            Text[] texts = canvas.GetComponentsInChildren<Text>();
+            for (int i = 0; i < texts.Length; i++)
+            {
+                texts[i].enabled = true;
+            }
+            Image[] images = canvas.GetComponentsInChildren<Image>();
+            for (int i = 0; i < images.Length; i++)
+            {
+                images[i].enabled = true;
+            }
             // show table of available purchases
         }
 
         if (showPurchaseUI == false) {
-            canvas.GetComponent<Image>().enabled = false;
-            canvas.GetComponentInChildren<Text>().enabled = false;
+            //canvas.GetComponent<Image>().enabled = false;
+            //canvas.GetComponentInChildren<Text>().enabled = false;
+            Text[] texts = canvas.GetComponentsInChildren<Text>();
+            for (int i = 0; i < texts.Length; i++)
+            {
+                texts[i].enabled = false;
+            }
+            Image[] images = canvas.GetComponentsInChildren<Image>();
+            for (int i = 0; i < images.Length; i++)
+            {
+                images[i].enabled = false;
+            }
         }
     }
 }
