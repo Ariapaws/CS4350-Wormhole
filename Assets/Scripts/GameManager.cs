@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
 	GameObject player;
 	public Text feedback;
 	public bool isNight=false;
+    private int checkNightCount = 0;
 
 	private IEnumerator Start () {
 		//BeginGame();
@@ -26,23 +27,36 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	private void Update () {
-		GameObject timeOfDayObject = GameObject.FindGameObjectWithTag ("TOD");
-		TOD todScript = (TOD)timeOfDayObject.GetComponent(typeof(TOD));
-		float hr = todScript.Hour;
-		Debug.Log (hr + "isNight is " + isNight);
-		if (isNight) {
-			if (hr > 6 && hr < 18) {
-				feedback.color = new Color (1, 1, 1, 2);
-				feedback.text = "The sun has risen. Congrats for surviving another night.";
-				isNight = false;
-			}
-		} else {
-			if (hr < 6 || hr > 18) {
-				feedback.color = new Color (1, 1, 1, 2);
-				feedback.text = "Night has fallen. Zombies have become tougher.";
-				isNight = true;
-			}
-		}
+        if (checkNightCount == 5)
+        {
+            checkNightCount = 0;
+            GameObject timeOfDayObject = GameObject.FindGameObjectWithTag("TOD");
+            TOD todScript = (TOD)timeOfDayObject.GetComponent(typeof(TOD));
+            float hr = todScript.Hour;
+            //Debug.Log (hr + "isNight is " + isNight);
+            if (isNight)
+            {
+                if (hr > 6 && hr < 18)
+                {
+                    feedback.color = new Color(1, 1, 1, 2);
+                    feedback.text = "The sun has risen. Congrats for surviving another night.";
+                    isNight = false;
+                }
+            }
+            else
+            {
+                if (hr < 6 || hr > 18)
+                {
+                    feedback.color = new Color(1, 1, 1, 2);
+                    feedback.text = "Night has fallen. Zombies have become tougher.";
+                    isNight = true;
+                }
+            }
+        } else
+        {
+            checkNightCount++;
+        }
+		
 
 		/*
 		if (Input.GetKeyDown(KeyCode.Escape)) {
