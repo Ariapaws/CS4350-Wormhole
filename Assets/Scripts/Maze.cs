@@ -8,11 +8,18 @@ public class Maze : MonoBehaviour {
 	public MazeCell cellPrefab;
 	public float generationStepDelay;
 	public MazePassage passagePrefab;
-	public MazeWall wallPrefab;
+	public MazeWall[] wallPrefabs;
 
 	private MazeCell[,] cells;
 
-	private GameObject player;
+    public MazeRoomSettings[] roomSettings;
+    private List<MazeRoom> rooms = new List<MazeRoom>();
+
+    public MazeDoor doorPrefab;
+    [Range(0f, 1f)]
+    public float doorProbability;
+
+    private GameObject player;
 	private GameObject gameManager;
 	private CharacterMotor playerCharacterMotor;
 
@@ -308,11 +315,16 @@ public class Maze : MonoBehaviour {
 				CreateCell(new IntVector2(i,j));
 			}
 		}
+        GameObject baseObj = GameObject.Find("Base");
+        baseObj.transform.Translate(-((size.x - 20)  *2),0, -((size.z - 20) * 2));
 	}
 
 	private void DoFirstGenerationStep (List<MazeCell> activeCells) {
-		activeCells.Add(CreateCell(RandomCoordinates));
+		MazeCell newCell = CreateCell(RandomCoordinates);
+		newCell.Initialize(CreateRoom(-1));
+		activeCells.Add(newCell);
 	}
+
 
 	private void DoNextGenerationStep (List<MazeCell> activeCells) {
 		int currentIndex = activeCells.Count - 1;
@@ -330,7 +342,11 @@ public class Maze : MonoBehaviour {
 				CreatePassage(currentCell, neighbor, direction);
 				activeCells.Add(neighbor);
 			}
-			else {
+            else if (currentCell.room == neighbor.room)
+            {
+                CreatePassageInSameRoom(currentCell, neighbor, direction);
+            }
+            else {
 				CreateWall(currentCell, neighbor, direction);
 			}
 		}
@@ -350,18 +366,57 @@ public class Maze : MonoBehaviour {
 	}
 
 	private void CreatePassage (MazeCell cell, MazeCell otherCell, MazeDirection direction) {
-		MazePassage passage = Instantiate(passagePrefab) as MazePassage;
+        MazePassage prefab = Random.value < doorProbability ? doorPrefab : passagePrefab;
+        MazePassage passage = Instantiate(prefab) as MazePassage;
 		passage.Initialize(cell, otherCell, direction);
-		passage = Instantiate(passagePrefab) as MazePassage;
-		passage.Initialize(otherCell, cell, direction.GetOpposite());
+		passage = Instantiate(prefab) as MazePassage;
+        if (passage is MazeDoor)
+        {
+            otherCell.Initialize(CreateRoom(cell.room.settingsIndex));
+        }
+        else
+        {
+            otherCell.Initialize(cell.room);
+        }
+        passage.Initialize(otherCell, cell, direction.GetOpposite());
 	}
 
 	private void CreateWall (MazeCell cell, MazeCell otherCell, MazeDirection direction) {
-		MazeWall wall = Instantiate(wallPrefab) as MazeWall;
-		wall.Initialize(cell, otherCell, direction);
+        MazeWall wall = Instantiate(wallPrefabs[Random.Range(0, wallPrefabs.Length)]) as MazeWall;
+        wall.Initialize(cell, otherCell, direction);
 		if (otherCell != null) {
-			wall = Instantiate(wallPrefab) as MazeWall;
-			wall.Initialize(otherCell, cell, direction.GetOpposite());
+            wall = Instantiate(wallPrefabs[Random.Range(0, wallPrefabs.Length)]) as MazeWall;
+            wall.Initialize(otherCell, cell, direction.GetOpposite());
 		}
 	}
+
+    private MazeRoom CreateRoom(int indexToExclude)
+    {
+        MazeRoom newRoom = ScriptableObject.CreateInstance<MazeRoom>();
+        newRoom.settingsIndex = Random.Range(0, roomSettings.Length);
+        if (newRoom.settingsIndex == indexToExclude)
+        {
+            newRoom.settingsIndex = (newRoom.settingsIndex + 1) % roomSettings.Length;
+        }
+        newRoom.settings = roomSettings[newRoom.settingsIndex];
+        rooms.Add(newRoom);
+        return newRoom;
+    }
+
+    private void CreatePassageInSameRoom(MazeCell cell, MazeCell otherCell, MazeDirection direction)
+    {
+        MazePassage passage = Instantiate(passagePrefab) as MazePassage;
+        passage.Initialize(cell, otherCell, direction);
+        passage = Instantiate(passagePrefab) as MazePassage;
+        passage.Initialize(otherCell, cell, direction.GetOpposite());
+        /*if (cell.room != otherCell.room)
+        {
+            MazeRoom roomToAssimilate = otherCell.room;
+            cell.room.Assimilate(roomToAssimilate);
+            rooms.Remove(roomToAssimilate);
+            Destroy(roomToAssimilate);
+        
+        }*/
+    }
+
 }
