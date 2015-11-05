@@ -22,6 +22,15 @@ TagManager:
   - WPPathfinder
   - Waypoint
   - TOD
+  - armor-cost
+  - armor-upgrade
+  - range-cost
+  - range-upgrade
+  - speed-cost
+  - speed-upgrade
+  - damage-cost
+  - damage-upgrade
+  - potion-number
   layers:
   - Default
   - TransparentFX

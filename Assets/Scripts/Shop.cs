@@ -22,8 +22,35 @@ public class Shop : MonoBehaviour {
     public int currentWeaponSpeedLevel;
     public int currentArmourLevel;
 
+    public GameObject DamageUpgrade;
+    public GameObject DamageCost;
+    public GameObject SpeedUpgrade;
+    public GameObject SpeedCost;
+    public GameObject RangeUpgrade;
+    public GameObject RangeCost;
+    public GameObject ArmorUpgrade;
+    public GameObject ArmorCost;
+
+    public Text damageUpgrade;
+    public Text damageCost;
+    public Text speedUpgrade;
+    public Text speedCost;
+    public Text rangeUpgrade;
+    public Text rangeCost;
+    public Text armorUpgrade;
+    public Text armorCost;
+
 	// Use this for initialization
 	void Start () {
+        DamageUpgrade = GameObject.FindGameObjectWithTag("damage-upgrade");
+        DamageCost = GameObject.FindGameObjectWithTag("damage-cost");
+        SpeedUpgrade = GameObject.FindGameObjectWithTag("speed-upgrade");
+        SpeedCost = GameObject.FindGameObjectWithTag("speed-cost");
+        RangeUpgrade = GameObject.FindGameObjectWithTag("range-upgrade");
+        RangeCost = GameObject.FindGameObjectWithTag("range-cost");
+        ArmorUpgrade = GameObject.FindGameObjectWithTag("armor-upgrade");
+        ArmorCost = GameObject.FindGameObjectWithTag("armor-cost");
+
 		distance = 2.8f;
 		canPurchase = false;
 
@@ -41,6 +68,7 @@ public class Shop : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        // if near shop, can purchase
 		if (Vector3.Distance (this.gameObject.transform.position, player.transform.position) < distance) {
             feedback.color = new Color(0, 1, 0, 2);
             feedback.text = "You are near the shop. Press P to purchase.";
@@ -53,7 +81,17 @@ public class Shop : MonoBehaviour {
 		} else 
 			canPurchase = false;
 
+        //updating purchase UI
+        DamageUpgrade.GetComponent<Text>().text = "" + WeaponDamage[currentWeaponDamageLevel + 1].upgradeAmount;
+        DamageCost.GetComponent<Text>().text = "" + WeaponDamage[currentWeaponDamageLevel+1].cost;
+        SpeedUpgrade.GetComponent<Text>().text = "" + WeaponSpeed[currentWeaponSpeedLevel + 1].upgradeAmount;
+        SpeedCost.GetComponent<Text>().text = "" + WeaponSpeed[currentWeaponSpeedLevel + 1].cost;
+        RangeUpgrade.GetComponent<Text>().text = "" + WeaponRange[currentWeaponRangeLevel + 1].upgradeAmount;
+        RangeCost.GetComponent<Text>().text = "" + WeaponRange[currentWeaponRangeLevel + 1].cost;
+        ArmorUpgrade.GetComponent<Text>().text = "" + Armour[currentArmourLevel + 1].upgradeAmount;
+        ArmorCost.GetComponent<Text>().text = "" + Armour[currentArmourLevel + 1].cost;
 
+        // purchasing system
         if (canPurchase == true) { 
             // Press 1 (upgrade WEAPON ATTACK) --------------------------------------
             if (Input.GetKeyUp(KeyCode.Alpha1)) {
@@ -123,7 +161,7 @@ public class Shop : MonoBehaviour {
             // Press 5 (purchase POTION) --------------------------------------
             if (Input.GetKeyUp(KeyCode.Alpha5))
             {
-                if (CheckCost(50) == true) {
+                if (CheckCost(0) == true) {
                     Debug.Log("Enough gold for potion.");
                     player.GetComponent<PlayerAssets>().numOfPotions += 1;
                 }

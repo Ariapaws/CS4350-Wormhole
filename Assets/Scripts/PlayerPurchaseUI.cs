@@ -11,6 +11,9 @@ public class PlayerPurchaseUI : MonoBehaviour {
 
     public GameObject canvas = GameObject.FindGameObjectWithTag("Shop");
     public Text feedback;
+
+
+
 	
 	// Use this for initialization
 	void Start () {

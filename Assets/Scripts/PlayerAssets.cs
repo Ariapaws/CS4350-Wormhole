@@ -21,6 +21,7 @@ public class PlayerAssets : MonoBehaviour {
 
     public Text feedback;
     GameObject player;
+    public GameObject potionUI;
     PlayerHealth playerHealth;
 
 	// Use this for initialization
@@ -31,6 +32,7 @@ public class PlayerAssets : MonoBehaviour {
         GameObject feedbackObject = GameObject.FindGameObjectWithTag("Feedback");
         feedback = feedbackObject.GetComponent<Text>();
         player = GameObject.FindGameObjectWithTag("Player");
+        potionUI = GameObject.FindGameObjectWithTag("potion-number");
         playerHealth = player.GetComponent<PlayerHealth>();
 
 	}
@@ -43,10 +45,11 @@ public class PlayerAssets : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.E)){
 			placeTeleport();
 		}
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyUp(KeyCode.R))
         {
             UsePotion(numOfPotions);
         }
+        potionUI.GetComponent<Text>().text = "" + numOfPotions;
 	}
 
 	public void AddCash (int amount)
@@ -115,10 +118,11 @@ public class PlayerAssets : MonoBehaviour {
 
     public void UsePotion(int noOfPotion) {
         if (noOfPotion > 0) {
+            Debug.Log(noOfPotion);
             player.GetComponent<PlayerHealth>().currentHealth += 20;
             feedback.color = new Color(1, 1, 1, 2);
-            feedback.text = "You have healed " + "20" + " health.";
-            noOfPotion -= 1;
+            numOfPotions -= 1;
+            Debug.Log(noOfPotion);
         }
     }
 
