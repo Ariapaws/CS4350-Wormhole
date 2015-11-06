@@ -137,12 +137,16 @@ public class Maze : MonoBehaviour {
 		*/
 
 		GameObject exitCell = GameObject.Find ("Maze Cell " + (size.x - 1) + ", " + (size.z - 2));
-		GameObject entryCell = GameObject.Find ("Maze Cell "+(int)baseI.y+", "+(int)(baseJ.x+3));
-		GameObject otherSideOfEntryCell = GameObject.Find ("Maze Cell "+(int)(baseI.y+1)+", "+(int)(baseJ.x+3));
+		//GameObject entryCell = GameObject.Find ("Maze Cell "+(int)baseI.y+", "+(int)(baseJ.x+3));
+		//GameObject otherSideOfEntryCell = GameObject.Find ("Maze Cell "+(int)(baseI.y+1)+", "+(int)(baseJ.x+3));
+
+        //Destroy(entryCell, 0f);
+        //Destroy(otherSideOfEntryCell, 0f);
+
+
+        Destroy (exitCell, 0f);
+        Destroy(GameObject.Find("Maze Cell 0, 1"));
 		
-		Destroy (exitCell, 0f);
-		Destroy (entryCell, 0f);
-		Destroy (otherSideOfEntryCell, 0f);
 		for (int i = 0; i < potionAmount; i++) {
 			float randomX = Random.Range (-2 * size.x, 2 * size.x);
 			float randomZ = Random.Range (-2 * size.z, 2 * size.z);
@@ -310,13 +314,14 @@ public class Maze : MonoBehaviour {
 
 	private void PlopBaseAtSide(){
 		//7x7base
-		for (int i=(int)baseI.x; i<=(int)baseI.y; i++){
+		/*for (int i=(int)baseI.x; i<=(int)baseI.y; i++){
 			for (int j=(int)baseJ.x; j<=(int)baseJ.y; j++){
 				CreateCell(new IntVector2(i,j));
 			}
-		}
+		}*/
         GameObject baseObj = GameObject.Find("Base");
-        baseObj.transform.Translate(-((size.x - 20)  *2),0, -((size.z - 20) * 2));
+        //baseObj.transform.Translate(-((size.x - 20) * 2),0, -((size.z - 20) * 2));
+        baseObj.transform.Translate(-29, 0, -13);
 	}
 
 	private void DoFirstGenerationStep (List<MazeCell> activeCells) {
