@@ -16,6 +16,13 @@ public class MazeRoom : ScriptableObject
         cells.Add(cell);
     }
 
+    public MazeCell getRandomCell()
+    {
+        int cellNum = cells.Count;
+        int randCellIndex = Random.Range(1, cellNum + 1) - 1;
+        return cells[randCellIndex];
+    }
+
     public void Assimilate(MazeRoom room)
     {
         for (int i = 0; i < room.cells.Count; i++)
