@@ -346,7 +346,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1 &100860623
 GameObject:
   m_ObjectHideFlags: 0
@@ -3132,6 +3132,26 @@ Prefab:
       propertyPath: m_CullingMask.m_Bits
       value: 4096
       objectReference: {fileID: 0}
+    - target: {fileID: 8200000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: dec9027c9654742cd9b5d5921e4a96ae, type: 3}
+    - target: {fileID: 11432000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: swingClip
+      value: 
+      objectReference: {fileID: 8300000, guid: dec9027c9654742cd9b5d5921e4a96ae, type: 3}
+    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: m_FootstepSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0de0f9cd1b0cf42929a49a7e12d6c3ca, type: 3}
+    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: m_FootstepSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: f2347f272f9fa4a9ea0c18a701c83814, type: 3}
+    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: m_LandSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 0de0f9cd1b0cf42929a49a7e12d6c3ca, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
   m_IsPrefabParent: 0
