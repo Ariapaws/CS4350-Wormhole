@@ -320,8 +320,7 @@ public class Maze : MonoBehaviour {
 			}
 		}*/
         GameObject baseObj = GameObject.Find("Base");
-        //baseObj.transform.Translate(-((size.x - 20) * 2),0, -((size.z - 20) * 2));
-        baseObj.transform.Translate(-29, 0, -13);
+        baseObj.transform.Translate(-((size.x - 20) * 2) - 29,0, -((size.z - 20) * 2) - 13);
 	}
 
 	private void DoFirstGenerationStep (List<MazeCell> activeCells) {
