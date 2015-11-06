@@ -55,15 +55,18 @@ MonoBehaviour:
   size:
     x: 20
     z: 20
-  cellPrefab: {fileID: 11400000, guid: 8cc5710f710a24360a566370d7049cf8, type: 2}
+  cellPrefab: {fileID: 11479572, guid: a2173f126865b684aa6eeb30931238d9, type: 2}
   generationStepDelay: .00999999978
   passagePrefab: {fileID: 11400000, guid: 4db582300649e4e399ee4a2665f9e8e6, type: 2}
   wallPrefabs:
   - {fileID: 11400000, guid: 2970089c471ef4c599835c1992954af5, type: 2}
   roomSettings:
   - wallMaterial: {fileID: 2100000, guid: 52b41f045d3d98344bff10ccf483ea8d, type: 2}
+    floorMaterial: {fileID: 2100000, guid: 52b41f045d3d98344bff10ccf483ea8d, type: 2}
   - wallMaterial: {fileID: 2100000, guid: 060a056fe84af6e47be704ddc08b1294, type: 2}
-  - wallMaterial: {fileID: 2100000, guid: b2fc062b61babb14ba162c3adbc527f3, type: 2}
+    floorMaterial: {fileID: 2100000, guid: 060a056fe84af6e47be704ddc08b1294, type: 2}
+  - wallMaterial: {fileID: 2100000, guid: 8e53f458c50238748a0e25fbe049b465, type: 2}
+    floorMaterial: {fileID: 2100000, guid: 8e53f458c50238748a0e25fbe049b465, type: 2}
   doorPrefab: {fileID: 11400000, guid: 83d7e9d87aca423429af81d2d0a9702d, type: 2}
   doorProbability: .100000001
   zombieAmount: 5
@@ -132,7 +135,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: roomSettings.Array.data[2].wallMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: b2fc062b61babb14ba162c3adbc527f3, type: 2}
+      objectReference: {fileID: 2100000, guid: 8e53f458c50238748a0e25fbe049b465, type: 2}
     - target: {fileID: 0}
       propertyPath: roomSettings.Array.data[3].wallMaterial
       value: 
@@ -160,6 +163,31 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: zombieAmount
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cellPrefab
+      value: 
+      objectReference: {fileID: 11479572, guid: a2173f126865b684aa6eeb30931238d9,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: roomSettings.Array.data[0].floorMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 52b41f045d3d98344bff10ccf483ea8d, type: 2}
+    - target: {fileID: 0}
+      propertyPath: roomSettings.Array.data[1].floorMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 060a056fe84af6e47be704ddc08b1294, type: 2}
+    - target: {fileID: 0}
+      propertyPath: roomSettings.Array.data[2].floorMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 8e53f458c50238748a0e25fbe049b465, type: 2}
+    - target: {fileID: 0}
+      propertyPath: size.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: size.z
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
