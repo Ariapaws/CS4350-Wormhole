@@ -12,7 +12,7 @@ GameObject:
   - 65: {fileID: 6547716}
   m_Layer: 15
   m_Name: Maze
-  m_TagString: Untagged
+  m_TagString: Maze
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -251,6 +251,10 @@ Prefab:
       propertyPath: roomSettings.Array.data[9].floorMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 1d07db5e93ecebb4f9b89bf31e776227, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Maze
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 113446}
