@@ -48,6 +48,8 @@ public class Maze : MonoBehaviour {
 	Vector2 baseI; //x: minI, y:maxI
 	Vector2 baseJ; //x: minJ, y:minJ
 
+    
+
 
 	void Awake(){
 		gameManager = GameObject.FindGameObjectWithTag ("GameManager");
@@ -137,17 +139,37 @@ public class Maze : MonoBehaviour {
 		*/
 
 		GameObject exitCell = GameObject.Find ("Maze Cell " + (size.x - 1) + ", " + (size.z - 2));
-		//GameObject entryCell = GameObject.Find ("Maze Cell "+(int)baseI.y+", "+(int)(baseJ.x+3));
-		//GameObject otherSideOfEntryCell = GameObject.Find ("Maze Cell "+(int)(baseI.y+1)+", "+(int)(baseJ.x+3));
+        foreach (Transform childT in exitCell.transform)
+        {
+            GameObject child = childT.gameObject;
+            if (child.name == "Maze Wall(Clone)" && (childT.rotation.eulerAngles.y > 89))
+            {
+                Destroy(child);
+            }
+        }
+        GameObject entryCell = GameObject.Find("Maze Cell 0, 1");
+        foreach (Transform childT in entryCell.transform)
+        {
+            GameObject child = childT.gameObject;
+            if (child.name == "Maze Wall(Clone)" && (childT.rotation.eulerAngles.y > 269))
+            {
+                Destroy(child);
+            }
+        }
+
+
+        //Destroy(GameObject.Find("Maze Cell 0, 1"));
+        //Destroy(exitCell, 0f);
+        //GameObject entryCell = GameObject.Find ("Maze Cell "+(int)baseI.y+", "+(int)(baseJ.x+3));
+        //GameObject otherSideOfEntryCell = GameObject.Find ("Maze Cell "+(int)(baseI.y+1)+", "+(int)(baseJ.x+3));
 
         //Destroy(entryCell, 0f);
         //Destroy(otherSideOfEntryCell, 0f);
 
 
-        Destroy (exitCell, 0f);
-        Destroy(GameObject.Find("Maze Cell 0, 1"));
-		
-		for (int i = 0; i < potionAmount; i++) {
+
+
+        for (int i = 0; i < potionAmount; i++) {
 			float randomX = Random.Range (-2 * size.x, 2 * size.x);
 			float randomZ = Random.Range (-2 * size.z, 2 * size.z);
 			if(randomX < -2 * size.x+32 && randomZ < -2 * size.z+32){
