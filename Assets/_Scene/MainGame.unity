@@ -518,7 +518,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 3349906, guid: f4ba784076ad0dd4fb47c687f47a3ed9,
     type: 2}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 13093368}
+  m_GameObject: {fileID: 0}
   m_Mesh: {fileID: 4300000, guid: 08170dd4d8d521f49a99199199f35808, type: 2}
 --- !u!193 &13093372
 Tree:
@@ -590,7 +590,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 3347558, guid: f4ba784076ad0dd4fb47c687f47a3ed9,
     type: 2}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 13184449}
+  m_GameObject: {fileID: 0}
   m_Mesh: {fileID: 4300000, guid: 08170dd4d8d521f49a99199199f35808, type: 2}
 --- !u!193 &13184453
 Tree:

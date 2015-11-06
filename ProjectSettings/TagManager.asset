@@ -34,6 +34,7 @@ TagManager:
   - CurrentStats-Damage
   - CurrentStats-Speed
   - CurrentStats-Range
+  - Maze
   layers:
   - Default
   - TransparentFX
