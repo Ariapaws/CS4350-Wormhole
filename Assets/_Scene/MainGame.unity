@@ -8406,14 +8406,14 @@ MonoBehaviour:
   currentWeaponRangeLevel: 0
   currentWeaponSpeedLevel: 0
   currentArmourLevel: 0
-  DamageUpgrade: {fileID: 0}
-  DamageCost: {fileID: 0}
-  SpeedUpgrade: {fileID: 0}
-  SpeedCost: {fileID: 0}
-  RangeUpgrade: {fileID: 0}
-  RangeCost: {fileID: 0}
-  ArmorUpgrade: {fileID: 0}
-  ArmorCost: {fileID: 0}
+  DamageUpgrade: {fileID: 295026035}
+  DamageCost: {fileID: 1210589284}
+  SpeedUpgrade: {fileID: 2014024584}
+  SpeedCost: {fileID: 154799070}
+  RangeUpgrade: {fileID: 901877146}
+  RangeCost: {fileID: 2044279120}
+  ArmorUpgrade: {fileID: 2111647547}
+  ArmorCost: {fileID: 1092582478}
 --- !u!1 &240610756
 GameObject:
   m_ObjectHideFlags: 0
@@ -34706,14 +34706,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 57
       objectReference: {fileID: 0}
-    - target: {fileID: 11447246, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: canvas
+    - target: {fileID: 11464282, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: cashAmountDisplay
       value: 
-      objectReference: {fileID: 1965956492}
-    - target: {fileID: 11447246, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: feedback
+      objectReference: {fileID: 271821575}
+    - target: {fileID: 11464282, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: BaseTeleport
       value: 
-      objectReference: {fileID: 440573739}
+      objectReference: {fileID: 884880288}
     - target: {fileID: 11421556, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: healthSlider
       value: 
@@ -34730,24 +34730,19 @@ Prefab:
       propertyPath: feedback
       value: 
       objectReference: {fileID: 440573739}
-    - target: {fileID: 11464282, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: cashAmountDisplay
+    - target: {fileID: 11447246, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: canvas
       value: 
-      objectReference: {fileID: 271821575}
-    - target: {fileID: 11464282, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: BaseTeleport
+      objectReference: {fileID: 1965956492}
+    - target: {fileID: 11447246, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: feedback
       value: 
-      objectReference: {fileID: 884880288}
+      objectReference: {fileID: 440573739}
     - target: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6578764, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: m_Size.z
-      value: 2
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6578764, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &909411309
