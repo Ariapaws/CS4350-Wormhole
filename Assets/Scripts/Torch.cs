@@ -10,7 +10,7 @@ public class Torch : MonoBehaviour {
 	public GameObject Fumee;
 	public float MaxLightIntensity;
 	public float IntensityLight;
-	
+	GameObject Player;
 	
 	void Start () {
 		TorchLight.GetComponent<Light>().intensity=IntensityLight;
@@ -19,6 +19,8 @@ public class Torch : MonoBehaviour {
 		Etincelles.GetComponent<ParticleSystem>().emissionRate=IntensityLight*7f;
 		Fumee.GetComponent<ParticleSystem>().emissionRate=IntensityLight*12f;
 
+		Player = GameObject.FindGameObjectWithTag ("Player");
+		Physics.IgnoreCollision (Player.GetComponent<Collider> (), GetComponent<BoxCollider> ());
 	}
 	
 	

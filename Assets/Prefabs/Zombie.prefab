@@ -1627,7 +1627,7 @@ MonoBehaviour:
   attackDamage: 10
   startingDamage: 10
   nightDamage: 50
-  attackClip: {fileID: 8300000, guid: 6026f8428c999d84ba5c7d2ef16280bf, type: 3}
+  attackClip: {fileID: 8300000, guid: 3a190de1ad3e245be9add576d283dfd0, type: 3}
   playerInRange: 0
   cooldownTimer: 0
   damageTimer: 0
@@ -1646,6 +1646,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100
   currentHealth: 0
+  cashAmount: 20
   sinkSpeed: .200000003
   scoreValue: 10
   deathClip: {fileID: 8300000, guid: 9c84ccd493165b041b89bce73c78e49e, type: 3}
@@ -2404,6 +2405,10 @@ Prefab:
       propertyPath: attackDamage
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attackClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3a190de1ad3e245be9add576d283dfd0, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 140358}

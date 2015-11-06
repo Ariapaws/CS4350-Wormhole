@@ -106,7 +106,7 @@ public class ZombieHealth : MonoBehaviour {
 
 		isSinking = true;
 		//ScoreManager.score += scoreValue;
-		Destroy (gameObject, 2f);
+		Destroy (gameObject, 5f);
 	}
 }
 
