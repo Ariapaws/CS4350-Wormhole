@@ -1619,7 +1619,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: cfe3c52cf4a38554485e1702130e53ad, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d0b27a4b70956452f9cfdbb1b37984c9, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1742,9 +1742,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 50
   currentHealth: 0
+  cashAmount: 20
   sinkSpeed: 2.5
   scoreValue: 10
-  deathClip: {fileID: 8300000, guid: ddc57d9465f90834597c1d71f9b90b3d, type: 3}
+  deathClip: {fileID: 8300000, guid: cfdad652b534e4c9e98a19010b821a77, type: 3}
   rb: {fileID: 0}
   isDead: 0
   crateInstance: {fileID: 155610, guid: 2bfead458efc86d4584d5749a29330d1, type: 2}
@@ -1768,7 +1769,7 @@ MonoBehaviour:
   attackDamage: 5
   startingDamage: 5
   nightDamage: 20
-  attackClip: {fileID: 8300000, guid: 6026f8428c999d84ba5c7d2ef16280bf, type: 3}
+  attackClip: {fileID: 8300000, guid: 3a190de1ad3e245be9add576d283dfd0, type: 3}
   playerInRange: 0
   cooldownTimer: 0
   damageTimer: 0
@@ -1918,7 +1919,19 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: deathClip
+      value: 
+      objectReference: {fileID: 8300000, guid: cfdad652b534e4c9e98a19010b821a77, type: 3}
+    - target: {fileID: 0}
+      propertyPath: attackClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3a190de1ad3e245be9add576d283dfd0, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d0b27a4b70956452f9cfdbb1b37984c9, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 186386}
