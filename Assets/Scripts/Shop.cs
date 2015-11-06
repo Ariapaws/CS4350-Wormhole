@@ -31,14 +31,9 @@ public class Shop : MonoBehaviour {
     public GameObject ArmorUpgrade;
     public GameObject ArmorCost;
 
-    public Text damageUpgrade;
-    public Text damageCost;
-    public Text speedUpgrade;
-    public Text speedCost;
-    public Text rangeUpgrade;
-    public Text rangeCost;
-    public Text armorUpgrade;
-    public Text armorCost;
+    GameObject currDisplayDamage;
+    GameObject currDisplayRange;
+    GameObject currDisplaySpeed;
 
 	// Use this for initialization
 	void Start () {
@@ -50,6 +45,10 @@ public class Shop : MonoBehaviour {
         RangeCost = GameObject.FindGameObjectWithTag("range-cost");
         ArmorUpgrade = GameObject.FindGameObjectWithTag("armor-upgrade");
         ArmorCost = GameObject.FindGameObjectWithTag("armor-cost");
+
+        currDisplayDamage = GameObject.FindGameObjectWithTag("CurrentStats-Damage");
+        currDisplayRange = GameObject.FindGameObjectWithTag("CurrentStats-Range");
+        currDisplaySpeed = GameObject.FindGameObjectWithTag("CurrentStats-Speed");
 
 		distance = 2.8f;
 		canPurchase = false;
@@ -82,14 +81,19 @@ public class Shop : MonoBehaviour {
 			canPurchase = false;
 
         //updating purchase UI
-        DamageUpgrade.GetComponent<Text>().text = "" + WeaponDamage[currentWeaponDamageLevel + 1].upgradeAmount;
-        DamageCost.GetComponent<Text>().text = "" + WeaponDamage[currentWeaponDamageLevel+1].cost;
-        SpeedUpgrade.GetComponent<Text>().text = "" + WeaponSpeed[currentWeaponSpeedLevel + 1].upgradeAmount;
-        SpeedCost.GetComponent<Text>().text = "" + WeaponSpeed[currentWeaponSpeedLevel + 1].cost;
-        RangeUpgrade.GetComponent<Text>().text = "" + WeaponRange[currentWeaponRangeLevel + 1].upgradeAmount;
-        RangeCost.GetComponent<Text>().text = "" + WeaponRange[currentWeaponRangeLevel + 1].cost;
-        ArmorUpgrade.GetComponent<Text>().text = "" + Armour[currentArmourLevel + 1].upgradeAmount;
-        ArmorCost.GetComponent<Text>().text = "" + Armour[currentArmourLevel + 1].cost;
+        DamageUpgrade.GetComponent<Text>().text = "+" + WeaponDamage[currentWeaponDamageLevel + 1].upgradeAmount + " Damage";
+        DamageCost.GetComponent<Text>().text = WeaponDamage[currentWeaponDamageLevel+1].cost + " G";
+        SpeedUpgrade.GetComponent<Text>().text = "+" + WeaponSpeed[currentWeaponSpeedLevel + 1].upgradeAmount + " Speed";
+        SpeedCost.GetComponent<Text>().text = WeaponSpeed[currentWeaponSpeedLevel + 1].cost + " G";
+        RangeUpgrade.GetComponent<Text>().text = "+" + WeaponRange[currentWeaponRangeLevel + 1].upgradeAmount + " Range";
+        RangeCost.GetComponent<Text>().text = WeaponRange[currentWeaponRangeLevel + 1].cost + " G";
+        ArmorUpgrade.GetComponent<Text>().text = "+" + Armour[currentArmourLevel + 1].upgradeAmount + " Health";
+        ArmorCost.GetComponent<Text>().text = Armour[currentArmourLevel + 1].cost + " G";
+
+        //update display UI
+        currDisplayDamage.GetComponent<Text>().text = "" + player.GetComponent<PlayerAttack>().damagePerHit;
+        currDisplayRange.GetComponent<Text>().text = "" + player.GetComponent<PlayerAttack>().range;
+        currDisplaySpeed.GetComponent<Text>().text = "" + player.GetComponent<PlayerAttack>().attackSpeed;
 
         // purchasing system
         if (canPurchase == true) { 

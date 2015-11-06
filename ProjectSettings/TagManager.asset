@@ -31,6 +31,9 @@ TagManager:
   - damage-cost
   - damage-upgrade
   - potion-number
+  - CurrentStats-Damage
+  - CurrentStats-Speed
+  - CurrentStats-Range
   layers:
   - Default
   - TransparentFX
