@@ -108,7 +108,11 @@ Material:
       data:
         first:
           name: _Tint
+<<<<<<< HEAD
+        second: {r: .532068312, g: .551113784, b: .590044796, a: 0}
+=======
         second: {r: .441746265, g: .478648126, b: .546454012, a: 0}
+>>>>>>> 1a7e9795f36ca609e5d538e09df2136fb7f79b22
 --- !u!1002 &2100001
 EditorExtensionImpl:
   serializedVersion: 6
