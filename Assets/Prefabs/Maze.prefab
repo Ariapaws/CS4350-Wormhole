@@ -61,12 +61,26 @@ MonoBehaviour:
   wallPrefabs:
   - {fileID: 11400000, guid: 2970089c471ef4c599835c1992954af5, type: 2}
   roomSettings:
-  - wallMaterial: {fileID: 2100000, guid: 52b41f045d3d98344bff10ccf483ea8d, type: 2}
-    floorMaterial: {fileID: 2100000, guid: 52b41f045d3d98344bff10ccf483ea8d, type: 2}
-  - wallMaterial: {fileID: 2100000, guid: 060a056fe84af6e47be704ddc08b1294, type: 2}
-    floorMaterial: {fileID: 2100000, guid: 060a056fe84af6e47be704ddc08b1294, type: 2}
-  - wallMaterial: {fileID: 2100000, guid: 8e53f458c50238748a0e25fbe049b465, type: 2}
-    floorMaterial: {fileID: 2100000, guid: 8e53f458c50238748a0e25fbe049b465, type: 2}
+  - wallMaterial: {fileID: 2100000, guid: c64296decc0477d4db676c1d3f269c19, type: 2}
+    floorMaterial: {fileID: 2100000, guid: c64296decc0477d4db676c1d3f269c19, type: 2}
+  - wallMaterial: {fileID: 2100000, guid: 5ee4782c0f5242b4eb69d1eb07854561, type: 2}
+    floorMaterial: {fileID: 2100000, guid: 5ee4782c0f5242b4eb69d1eb07854561, type: 2}
+  - wallMaterial: {fileID: 2100000, guid: d70066d87f4adc043b3a1dd7d15b2512, type: 2}
+    floorMaterial: {fileID: 2100000, guid: d70066d87f4adc043b3a1dd7d15b2512, type: 2}
+  - wallMaterial: {fileID: 2100000, guid: 04245aea50a844c42af345a10aec0682, type: 2}
+    floorMaterial: {fileID: 2100000, guid: 04245aea50a844c42af345a10aec0682, type: 2}
+  - wallMaterial: {fileID: 2100000, guid: 36759d143d1780e44b4c75fe543e9799, type: 2}
+    floorMaterial: {fileID: 2100000, guid: 36759d143d1780e44b4c75fe543e9799, type: 2}
+  - wallMaterial: {fileID: 2100000, guid: 8d09484e42e7b534fa3101066d80ed52, type: 2}
+    floorMaterial: {fileID: 2100000, guid: 8d09484e42e7b534fa3101066d80ed52, type: 2}
+  - wallMaterial: {fileID: 2100000, guid: 4b3c4ce0738546f4e8769b2a4b514ed5, type: 2}
+    floorMaterial: {fileID: 2100000, guid: 4b3c4ce0738546f4e8769b2a4b514ed5, type: 2}
+  - wallMaterial: {fileID: 2100000, guid: aa7e4ee259c64054e93106d09a1ebd7e, type: 2}
+    floorMaterial: {fileID: 2100000, guid: aa7e4ee259c64054e93106d09a1ebd7e, type: 2}
+  - wallMaterial: {fileID: 2100000, guid: 7cf06ae8a7847424eb25d5e5e41888cb, type: 2}
+    floorMaterial: {fileID: 2100000, guid: 7cf06ae8a7847424eb25d5e5e41888cb, type: 2}
+  - wallMaterial: {fileID: 2100000, guid: 1d07db5e93ecebb4f9b89bf31e776227, type: 2}
+    floorMaterial: {fileID: 2100000, guid: 1d07db5e93ecebb4f9b89bf31e776227, type: 2}
   doorPrefab: {fileID: 11400000, guid: 83d7e9d87aca423429af81d2d0a9702d, type: 2}
   doorProbability: .100000001
   zombieAmount: 5
@@ -99,7 +113,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: roomSettings.Array.size
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: wallPrefabs.Array.data[0]
@@ -127,23 +141,23 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: roomSettings.Array.data[0].wallMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: 52b41f045d3d98344bff10ccf483ea8d, type: 2}
+      objectReference: {fileID: 2100000, guid: c64296decc0477d4db676c1d3f269c19, type: 2}
     - target: {fileID: 0}
       propertyPath: roomSettings.Array.data[1].wallMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: 060a056fe84af6e47be704ddc08b1294, type: 2}
+      objectReference: {fileID: 2100000, guid: 5ee4782c0f5242b4eb69d1eb07854561, type: 2}
     - target: {fileID: 0}
       propertyPath: roomSettings.Array.data[2].wallMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: 8e53f458c50238748a0e25fbe049b465, type: 2}
+      objectReference: {fileID: 2100000, guid: d70066d87f4adc043b3a1dd7d15b2512, type: 2}
     - target: {fileID: 0}
       propertyPath: roomSettings.Array.data[3].wallMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: 8e53f458c50238748a0e25fbe049b465, type: 2}
+      objectReference: {fileID: 2100000, guid: 04245aea50a844c42af345a10aec0682, type: 2}
     - target: {fileID: 0}
       propertyPath: roomSettings.Array.data[4].wallMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: 8e53f458c50238748a0e25fbe049b465, type: 2}
+      objectReference: {fileID: 2100000, guid: 36759d143d1780e44b4c75fe543e9799, type: 2}
     - target: {fileID: 0}
       propertyPath: monsterAmount
       value: 2
@@ -172,15 +186,15 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: roomSettings.Array.data[0].floorMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: 52b41f045d3d98344bff10ccf483ea8d, type: 2}
+      objectReference: {fileID: 2100000, guid: c64296decc0477d4db676c1d3f269c19, type: 2}
     - target: {fileID: 0}
       propertyPath: roomSettings.Array.data[1].floorMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: 060a056fe84af6e47be704ddc08b1294, type: 2}
+      objectReference: {fileID: 2100000, guid: 5ee4782c0f5242b4eb69d1eb07854561, type: 2}
     - target: {fileID: 0}
       propertyPath: roomSettings.Array.data[2].floorMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: 8e53f458c50238748a0e25fbe049b465, type: 2}
+      objectReference: {fileID: 2100000, guid: d70066d87f4adc043b3a1dd7d15b2512, type: 2}
     - target: {fileID: 0}
       propertyPath: size.x
       value: 40
@@ -189,6 +203,54 @@ Prefab:
       propertyPath: size.z
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: roomSettings.Array.data[3].floorMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 04245aea50a844c42af345a10aec0682, type: 2}
+    - target: {fileID: 0}
+      propertyPath: roomSettings.Array.data[4].floorMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 36759d143d1780e44b4c75fe543e9799, type: 2}
+    - target: {fileID: 0}
+      propertyPath: roomSettings.Array.data[5].wallMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 8d09484e42e7b534fa3101066d80ed52, type: 2}
+    - target: {fileID: 0}
+      propertyPath: roomSettings.Array.data[5].floorMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 8d09484e42e7b534fa3101066d80ed52, type: 2}
+    - target: {fileID: 0}
+      propertyPath: roomSettings.Array.data[6].wallMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 4b3c4ce0738546f4e8769b2a4b514ed5, type: 2}
+    - target: {fileID: 0}
+      propertyPath: roomSettings.Array.data[6].floorMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 4b3c4ce0738546f4e8769b2a4b514ed5, type: 2}
+    - target: {fileID: 0}
+      propertyPath: roomSettings.Array.data[7].wallMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: aa7e4ee259c64054e93106d09a1ebd7e, type: 2}
+    - target: {fileID: 0}
+      propertyPath: roomSettings.Array.data[7].floorMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: aa7e4ee259c64054e93106d09a1ebd7e, type: 2}
+    - target: {fileID: 0}
+      propertyPath: roomSettings.Array.data[8].wallMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 7cf06ae8a7847424eb25d5e5e41888cb, type: 2}
+    - target: {fileID: 0}
+      propertyPath: roomSettings.Array.data[8].floorMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 7cf06ae8a7847424eb25d5e5e41888cb, type: 2}
+    - target: {fileID: 0}
+      propertyPath: roomSettings.Array.data[9].wallMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 1d07db5e93ecebb4f9b89bf31e776227, type: 2}
+    - target: {fileID: 0}
+      propertyPath: roomSettings.Array.data[9].floorMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 1d07db5e93ecebb4f9b89bf31e776227, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 113446}
