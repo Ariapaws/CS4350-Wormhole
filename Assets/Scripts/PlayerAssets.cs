@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class PlayerAssets : MonoBehaviour {
+public class PlayerAssets : Photon.MonoBehaviour {
 
 	public int startingCash = 0;
 	public int currentCash;
@@ -67,7 +67,7 @@ public class PlayerAssets : MonoBehaviour {
 	public void tryToPlaceTorch(){
 		Vector3 torchPosition = transform.position + transform.forward * 2.0f;
 		if (numOfTorchesLeft > 0 && GetClosestTorchDistance(torchPosition) > 3.0f) {
-			Instantiate(torchInstance, torchPosition, Quaternion.identity);
+			PhotonNetwork.Instantiate("Torch", torchPosition, Quaternion.identity, 0);
 			numOfTorchesLeft--;
 		}
 		else {

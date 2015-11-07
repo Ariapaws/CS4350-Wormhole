@@ -34,11 +34,16 @@ public class PlayerNetworkMover : Photon.MonoBehaviour {
 			GetComponent<PlayerHealth>().damageImage = damageImage.GetComponent<UnityEngine.UI.Image>();
 
 			//ENABLE PLAYER ASSETS SCRIPT
-
+			GameObject cashUI = GameObject.FindGameObjectWithTag("CashUI");
+			GameObject baseTeleport = GameObject.FindGameObjectWithTag("BaseTeleport");
+			GameObject potionUI = GameObject.FindGameObjectWithTag("potion-number");
+			GetComponent<PlayerAssets>().enabled = true;
+			GetComponent<PlayerAssets>().cashAmountDisplay = cashUI.GetComponent<UnityEngine.UI.Text>();
+			GetComponent<PlayerAssets>().BaseTeleport = baseTeleport;
+			GetComponent<PlayerAssets>().potionUI = potionUI;
+			GetComponent<PlayerAssets>().feedback = feedback.GetComponent<UnityEngine.UI.Text>();
 
 			HUDCanvas.GetComponent<Canvas>().enabled = true;
-
-
 
 			GetComponent<CharacterController> ().enabled = true;
 			GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController> ().enabled = true;
