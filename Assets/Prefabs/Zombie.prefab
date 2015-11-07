@@ -1590,12 +1590,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 140358}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64239df8f13a886488140a5b42b7511f, type: 3}
+  m_Script: {fileID: 11500000, guid: 20b86ad4397b4be41a22532cf7a46bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Path: []
-  PathType: 0
-  JS: 0
   moveSpeed: 1
   rotateSpeed: 2
   vision: 10
@@ -1605,10 +1602,12 @@ MonoBehaviour:
   startingMoveSpeed: 1
   startingRotateSpeed: 2
   startingVision: 10
+  angleOfVision: 45
+  attentionTime: 5
+  attentionCountdown: 0
+  smell: 5
   playerContact: 0
   playerObserved: 0
-  start: {x: 0, y: 0, z: 0}
-  end: {x: 0, y: 0, z: 0}
 --- !u!114 &11448674
 MonoBehaviour:
   m_ObjectHideFlags: 1
