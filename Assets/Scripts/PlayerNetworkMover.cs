@@ -17,7 +17,7 @@ public class PlayerNetworkMover : Photon.MonoBehaviour {
 			GetComponentInChildren<macheteAnimatorControllerScript> ().enabled = true;
 			foreach (Camera cam in GetComponentsInChildren<Camera>()) {
 				cam.enabled = true;
-				cam.cullingMask = (1<<0 | 1<<10);
+//				cam.cullingMask = (1<<0 | 1<<10);
 			}
 		}  
 		else {
