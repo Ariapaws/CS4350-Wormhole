@@ -15,7 +15,7 @@ public class PlayerNetworkMover : Photon.MonoBehaviour {
 //		}
 
 		if (anim == null) {
-			Debug.LogError ("FUCK");
+			Debug.LogError ("no anim");
 		} else {
 			Debug.Log(anim.name);
 		}

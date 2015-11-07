@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 
 public class ChatScript : MonoBehaviour {
-
+	public PhotonView photonView;
 	// Use this for initialization
 	private bool isActive = false;
 	void Start () {
@@ -15,6 +15,7 @@ public class ChatScript : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.Return)) {
 			Debug.Log(GetComponent<UnityEngine.UI.InputField>().isFocused);
 			if (isActive == true) {
+				photonView.RPC("UpdateMessage", PhotonTargets.All, PhotonNetwork.playerName, GetComponent<UnityEngine.UI.InputField>().text);
 				GetComponent<UnityEngine.UI.Image>().enabled = false;
 				foreach (UnityEngine.UI.Text text in GetComponentsInChildren<UnityEngine.UI.Text>()) {
 					text.enabled = false;

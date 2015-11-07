@@ -10,6 +10,7 @@ public class PhotonNetworkManager : Photon.PunBehaviour {
 	private Vector2 scrollPosition;
 	//Declare String for room lobby names
 	private string roomName = "Room01";
+	private string playerName = "";
 	//Declare for room status.....
 	private string roomStatus = "";
 	
@@ -81,7 +82,10 @@ public class PhotonNetworkManager : Photon.PunBehaviour {
 			
 			GUILayout.Box("Game Lobby", lobbyLabelStyle);
 			GUI.color = Color.white;
-			
+
+			GUILayout.Label("Player Name:", secondaryStyle);
+			playerName = GUILayout.TextField(playerName);
+
 			// Ask for room name;
 			GUILayout.Label("Room Name:", secondaryStyle);
 			roomName = GUILayout.TextField(roomName);
@@ -148,6 +152,8 @@ public class PhotonNetworkManager : Photon.PunBehaviour {
 	}
 	
 	public override void OnJoinedRoom() {
+		PhotonNetwork.playerName = playerName;
+		Debug.Log ("PLAYER: " + PhotonNetwork.playerName + " has joined the game");
 		Debug.Log ("Random Seed:" + PhotonNetwork.room.customProperties ["randomSeed"]);
 
 		// Set Random Seed
