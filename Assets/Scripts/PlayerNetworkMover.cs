@@ -11,6 +11,12 @@ public class PlayerNetworkMover : Photon.MonoBehaviour {
 		anim = transform.GetComponentInChildren<Animator> ();
 		
 		if (photonView.isMine) {
+			GameObject.FindGameObjectWithTag("Samuzai").GetComponent<Shop>().enabled = true;
+			GameObject.FindGameObjectWithTag("Samuzai").GetComponent<Shop>().player = this.gameObject;
+
+			GameObject.FindGameObjectWithTag("NotDestroyed").GetComponent<Score>().enabled = true;
+			GameObject.FindGameObjectWithTag("NotDestroyed").GetComponent<Score>().assets = GetComponent<PlayerAssets>();
+
 			GameObject miniMapCamera = GameObject.FindGameObjectWithTag("MiniMapCamera");
 			miniMapCamera.GetComponent<Camera>().enabled = true;
 			miniMapCamera.GetComponent<CameraFollow>().enabled = true;

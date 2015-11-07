@@ -2,13 +2,13 @@
 using System.Collections;
 
 public class Score : MonoBehaviour {
-	PlayerAssets assets;
+	public PlayerAssets assets;
 	public int score = 0;
 
 	// Use this for initialization
 	void Start () {
-		GameObject player = GameObject.FindGameObjectWithTag ("Player");
-		assets = player.GetComponent <PlayerAssets> ();
+//		GameObject player = GameObject.FindGameObjectWithTag ("Player");
+//		assets = player.GetComponent <PlayerAssets> ();
 	}
 
 	void Awake() {
