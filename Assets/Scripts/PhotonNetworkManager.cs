@@ -16,7 +16,7 @@ public class PhotonNetworkManager : Photon.PunBehaviour {
 	//Variables for max amount of players 0-20 "you can change this inside gui"
 	private int maxPlayer =1;
 	private string maxPlayerString = "1";
-	
+
 	//	private List<string> options = new List<string> ();
 	//	static Rect position = new Rect(10, 10, 400, 100);
 	//
@@ -123,19 +123,8 @@ public class PhotonNetworkManager : Photon.PunBehaviour {
 				}
 			}
 			
-			//			Debug.Log(options.Count);
-			//
-			//			selected = GUI.SelectionGrid(position, selected, options.ToArray(), options.Count, GUI.skin.toggle);
-			//
-			//			if (GUILayout.Button("Join Room") ){
-			//				
-			//				PhotonNetwork.JoinRoom(options[selected-1]); // Next to each room there is a button to join the listed game.name in the current loop.
-			//			}
-			
 			GUILayout.EndScrollView();
 			GUILayout.EndArea();
-			
-			
 		}
 	}
 	
@@ -160,12 +149,16 @@ public class PhotonNetworkManager : Photon.PunBehaviour {
 	
 	public override void OnJoinedRoom() {
 		Debug.Log ("Random Seed:" + PhotonNetwork.room.customProperties ["randomSeed"]);
-		
+
 		// Set Random Seed
 		Random.seed = (int) PhotonNetwork.room.customProperties ["randomSeed"];
 		StartCoroutine(StartGame());
 		PhotonNetwork.Instantiate ("Player", new Vector3(-90f,2f,-70f), Quaternion.identity, 0);
 		GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<AudioListener> ().enabled = false;
+
+		if (PhotonNetwork.isMasterClient) {
+			PhotonNetwork.InstantiateSceneObject("TOD", new Vector3(897f, 70.05f, 372.357f), Quaternion.identity, 0, null);
+		}
 	}
 	
 	private IEnumerator StartGame() {
@@ -175,7 +168,6 @@ public class PhotonNetworkManager : Photon.PunBehaviour {
 	}
 	// Update is called once per frame
 	void Update () {
-		
 	}
 	
 	

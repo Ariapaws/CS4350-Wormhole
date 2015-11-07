@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
 	public Text feedback;
 	public bool isNight=false;
     private int checkNightCount = 0;
+	public TOD todScript;
 
 //	private IEnumerator Start () {
 //		//BeginGame();
@@ -27,54 +28,47 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	private void Update () {
-        if (checkNightCount == 5)
-        {
-            checkNightCount = 0;
-            GameObject timeOfDayObject = GameObject.FindGameObjectWithTag("TOD");
-            TOD todScript = (TOD)timeOfDayObject.GetComponent(typeof(TOD));
-            float hr = todScript.Hour;
-            //Debug.Log (hr + "isNight is " + isNight);
-            if (isNight)
-            {
-                if (hr > 6 && hr < 18)
-                {
-                    feedback.color = new Color(1, 1, 1, 2);
-                    feedback.text = "The sun has risen. Congrats for surviving another night.";
-                    isNight = false;
-                }
-            }
-            else
-            {
-                if (hr < 6 || hr > 18)
-                {
-                    feedback.color = new Color(1, 1, 1, 2);
-                    feedback.text = "Night has fallen. Zombies have become tougher.";
-                    isNight = true;
-                }
-            }
-        } else
-        {
-            checkNightCount++;
-        }
-		
-
-		/*
-		if (Input.GetKeyDown(KeyCode.Escape)) {
-			//check if game is already paused       
-			if(pauseEnabled == true){
-				//unpause the game
-				Time.timeScale = 1;
-				pauseEnabled = false;
+		if (todScript != null) {
+			if (checkNightCount == 5) {
+				checkNightCount = 0;
+				GameObject timeOfDayObject = GameObject.FindGameObjectWithTag ("TOD");
+				float hr = todScript.Hour;
+				//Debug.Log (hr + "isNight is " + isNight);
+				if (isNight) {
+					if (hr > 6 && hr < 18) {
+						feedback.color = new Color (1, 1, 1, 2);
+						feedback.text = "The sun has risen. Congrats for surviving another night.";
+						isNight = false;
+					}
+				} else {
+					if (hr < 6 || hr > 18) {
+						feedback.color = new Color (1, 1, 1, 2);
+						feedback.text = "Night has fallen. Zombies have become tougher.";
+						isNight = true;
+					}
+				}
+			} else {
+				checkNightCount++;
 			}
 			
-			//else if game isn't paused, then pause it
-			else if(pauseEnabled == false){
-				Time.timeScale = 0;
-				pauseEnabled = true;
-			}
-		}
-		*/
 
+			/*
+			if (Input.GetKeyDown(KeyCode.Escape)) {
+				//check if game is already paused       
+				if(pauseEnabled == true){
+					//unpause the game
+					Time.timeScale = 1;
+					pauseEnabled = false;
+				}
+				
+				//else if game isn't paused, then pause it
+				else if(pauseEnabled == false){
+					Time.timeScale = 0;
+					pauseEnabled = true;
+				}
+			}
+			*/
+		}
 
 	}
 
