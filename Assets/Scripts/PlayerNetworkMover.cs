@@ -12,11 +12,32 @@ public class PlayerNetworkMover : Photon.MonoBehaviour {
 		
 		if (photonView.isMine) {
 			GameObject miniMapCamera = GameObject.FindGameObjectWithTag("MiniMapCamera");
+			miniMapCamera.GetComponent<Camera>().enabled = true;
+			miniMapCamera.GetComponent<CameraFollow>().enabled = true;
 			miniMapCamera.GetComponent<CameraFollow>().target = this.gameObject;
 
 			GameObject miniMapReveal = GameObject.FindGameObjectWithTag("MiniMapReveal");
 			miniMapReveal.GetComponent<MinimapReveal>().player = this.gameObject;
-//			miniMapCamera.SetActive(true);
+
+
+			//ENABLE PLAYER HEALTH SCRIPT
+			GameObject HUDCanvas = GameObject.FindGameObjectWithTag("HUDCanvas");
+			GameObject healthSlider = GameObject.FindGameObjectWithTag("HealthSlider");
+			GameObject staminaSlider = GameObject.FindGameObjectWithTag("StaminaSlider");
+			GameObject feedback = GameObject.FindGameObjectWithTag("Feedback");
+			GameObject damageImage = GameObject.FindGameObjectWithTag("DamageImage");
+			GetComponent<PlayerHealth>().enabled = true;
+			GetComponent<PlayerHealth>().healthSlider = healthSlider.GetComponent<UnityEngine.UI.Slider>();
+			GetComponent<PlayerHealth>().staminaSlider = staminaSlider.GetComponent<UnityEngine.UI.Slider>();
+			GetComponent<PlayerHealth>().feedback = feedback.GetComponent<UnityEngine.UI.Text>();
+			GetComponent<PlayerHealth>().damageImage = damageImage.GetComponent<UnityEngine.UI.Image>();
+
+			//ENABLE PLAYER ASSETS SCRIPT
+
+
+			HUDCanvas.GetComponent<Canvas>().enabled = true;
+
+
 
 			GetComponent<CharacterController> ().enabled = true;
 			GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController> ().enabled = true;

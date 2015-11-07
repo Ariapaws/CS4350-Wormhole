@@ -33761,7 +33761,7 @@ GameObject:
   - 225: {fileID: 881142166}
   m_Layer: 0
   m_Name: HUDCanvas
-  m_TagString: Untagged
+  m_TagString: HUDCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33853,7 +33853,7 @@ Canvas:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 881142164}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -61317,7 +61317,7 @@ GameObject:
   - 114: {fileID: 1636138454}
   m_Layer: 12
   m_Name: MinimapReveal
-  m_TagString: Untagged
+  m_TagString: MiniMapReveal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61334,6 +61334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brushSize: 18
+  player: {fileID: 0}
 --- !u!23 &1636138455
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -71222,7 +71223,7 @@ GameObject:
   - 114: {fileID: 1974443402}
   m_Layer: 0
   m_Name: MiniMapCamera
-  m_TagString: Untagged
+  m_TagString: MiniMapCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71233,7 +71234,7 @@ Camera:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1974443399}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 3
   m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
@@ -71279,7 +71280,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1974443399}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa1768f56d2599c4d9add3bc7cabbcd8, type: 3}
   m_Name: 

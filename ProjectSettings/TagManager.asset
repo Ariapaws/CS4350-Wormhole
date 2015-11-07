@@ -35,6 +35,9 @@ TagManager:
   - CurrentStats-Speed
   - CurrentStats-Range
   - Maze
+  - MiniMapCamera
+  - MiniMapReveal
+  - HUDCanvas
   layers:
   - Default
   - TransparentFX
