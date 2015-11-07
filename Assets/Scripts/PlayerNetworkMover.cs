@@ -17,6 +17,7 @@ public class PlayerNetworkMover : Photon.MonoBehaviour {
 			miniMapCamera.GetComponent<CameraFollow>().target = this.gameObject;
 
 			GameObject miniMapReveal = GameObject.FindGameObjectWithTag("MiniMapReveal");
+			miniMapReveal.GetComponent<MinimapReveal>().enabled = true;
 			miniMapReveal.GetComponent<MinimapReveal>().player = this.gameObject;
 
 

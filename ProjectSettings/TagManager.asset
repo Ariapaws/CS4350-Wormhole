@@ -38,6 +38,10 @@ TagManager:
   - MiniMapCamera
   - MiniMapReveal
   - HUDCanvas
+  - HealthSlider
+  - StaminaSlider
+  - DamageImage
+  - CashUI
   layers:
   - Default
   - TransparentFX

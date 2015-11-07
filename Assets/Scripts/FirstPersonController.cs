@@ -60,7 +60,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			m_Animator = transform.GetComponentInChildren<Animator> ();
 			m_Rigidbody = transform.GetComponent<Rigidbody> ();
 			m_CharacterController = GetComponent<CharacterController>();
-			m_Camera = Camera.main;
+			m_Camera = GetComponentInChildren<Camera> ();
 			m_OriginalCameraPosition = m_Camera.transform.localPosition;
 			m_FovKick.Setup(m_Camera);
 			m_HeadBob.Setup(m_Camera, m_StepInterval);
