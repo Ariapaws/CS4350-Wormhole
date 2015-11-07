@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class ChatScript : MonoBehaviour {
 	public PhotonView photonView;
 	// Use this for initialization
-	private bool isActive = false;
+	public bool isActive = false;
 	void Start () {
 	}
 	

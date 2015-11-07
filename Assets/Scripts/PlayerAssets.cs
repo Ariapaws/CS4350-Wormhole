@@ -18,6 +18,7 @@ public class PlayerAssets : Photon.MonoBehaviour {
 	public AudioClip errorClip;
 	AudioSource playerAudio;
 	public GameObject BaseTeleport;
+	private ChatScript chatscript;
 
     public Text feedback;
     GameObject player;
@@ -26,6 +27,7 @@ public class PlayerAssets : Photon.MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
+		chatscript = GameObject.FindGameObjectWithTag ("ChatBox").GetComponent<ChatScript> ();
 		currentCash = startingCash;
         numOfPotions = 0;
 		playerAudio = GetComponent <AudioSource> ();
@@ -39,17 +41,18 @@ public class PlayerAssets : Photon.MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.F)) {
-			tryToPlaceTorch();
+		if (!chatscript.isActive) {
+			if (Input.GetKeyDown (KeyCode.F)) {
+				tryToPlaceTorch ();
+			}
+			if (Input.GetKeyDown (KeyCode.E)) {
+				placeTeleport ();
+			}
+			if (Input.GetKeyUp (KeyCode.R)) {
+				UsePotion (numOfPotions);
+			}
+			potionUI.GetComponent<Text> ().text = "" + numOfPotions;
 		}
-		if (Input.GetKeyDown(KeyCode.E)){
-			placeTeleport();
-		}
-        if (Input.GetKeyUp(KeyCode.R))
-        {
-            UsePotion(numOfPotions);
-        }
-        potionUI.GetComponent<Text>().text = "" + numOfPotions;
 	}
 
 	public void AddCash (int amount)

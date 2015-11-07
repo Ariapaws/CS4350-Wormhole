@@ -53,10 +53,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		private float m_NextStep;
 		private bool m_Jumping;
 		private AudioSource m_AudioSource;
-		
+		private ChatScript chatscript;
 		// Use this for initialization
 		private void Start()
 		{
+			chatscript = GameObject.FindGameObjectWithTag ("ChatBox").GetComponent<ChatScript> ();
 			m_Animator = transform.GetComponentInChildren<Animator> ();
 			m_Rigidbody = transform.GetComponent<Rigidbody> ();
 			m_CharacterController = GetComponent<CharacterController>();
@@ -77,10 +78,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		private void Update()
 		{
 			RotateView();
+
+			if (!chatscript.isActive) {
 			// the jump state needs to read here to make sure it is not missed
-			if (!m_Jump)
-			{
-				m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+				if (!m_Jump)
+				{
+					m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+				}
 			}
 			
 			if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
@@ -294,46 +298,48 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		
 		private void GetInput(out float speed)
 		{
+
 			// Read input
-			float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
-			float vertical = CrossPlatformInputManager.GetAxis("Vertical");
+			if (!chatscript.isActive) {
+				float horizontal = CrossPlatformInputManager.GetAxis ("Horizontal");
+				float vertical = CrossPlatformInputManager.GetAxis ("Vertical");
 			
-			bool waswalking = m_IsWalking;
+				bool waswalking = m_IsWalking;
 
-			// walking or running
-			if (Input.GetKey (KeyCode.LeftShift)) {
-				Debug.Log ("Left");
-				// have stamina
-				// can run
-				playerHealth.ReduceStamina (staminaReduction*Time.deltaTime);
-				m_IsWalking = !playerHealth.HasStamina();
+				// walking or running
+				if (Input.GetKey (KeyCode.LeftShift)) {
+					Debug.Log ("Left");
+					// have stamina
+					// can run
+					playerHealth.ReduceStamina (staminaReduction * Time.deltaTime);
+					m_IsWalking = !playerHealth.HasStamina ();
 				
-			}
-			else {
-				m_IsWalking = true;
-			}
+				} else {
+					m_IsWalking = true;
+				}
 
-			#if !MOBILE_INPUT
-			// On standalone builds, walk/run speed is modified by a key press.
-			// keep track of whether or not the character is walking or running
-			//m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
-			#endif
-			// set the desired speed to be walking or running
-			speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
-			m_Input = new Vector2(horizontal, vertical);
+				#if !MOBILE_INPUT
+				// On standalone builds, walk/run speed is modified by a key press.
+				// keep track of whether or not the character is walking or running
+				//m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
+				#endif
+				// set the desired speed to be walking or running
+				speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
+				m_Input = new Vector2 (horizontal, vertical);
 			
-			// normalize input if it exceeds 1 in combined length:
-			if (m_Input.sqrMagnitude > 1)
-			{
-				m_Input.Normalize();
-			}
+				// normalize input if it exceeds 1 in combined length:
+				if (m_Input.sqrMagnitude > 1) {
+					m_Input.Normalize ();
+				}
 			
-			// handle speed change to give an fov kick
-			// only if the player is going to a run, is running and the fovkick is to be used
-			if (m_IsWalking != waswalking && m_UseFovKick && m_CharacterController.velocity.sqrMagnitude > 0)
-			{
-				StopAllCoroutines();
-				StartCoroutine(!m_IsWalking ? m_FovKick.FOVKickUp() : m_FovKick.FOVKickDown());
+				// handle speed change to give an fov kick
+				// only if the player is going to a run, is running and the fovkick is to be used
+				if (m_IsWalking != waswalking && m_UseFovKick && m_CharacterController.velocity.sqrMagnitude > 0) {
+					StopAllCoroutines ();
+					StartCoroutine (!m_IsWalking ? m_FovKick.FOVKickUp () : m_FovKick.FOVKickDown ());
+				}
+			} else {
+				speed = 0;
 			}
 		}
 		
