@@ -11,6 +11,13 @@ public class PlayerNetworkMover : Photon.MonoBehaviour {
 		anim = transform.GetComponentInChildren<Animator> ();
 		
 		if (photonView.isMine) {
+			GameObject miniMapCamera = GameObject.FindGameObjectWithTag("MiniMapCamera");
+			miniMapCamera.GetComponent<CameraFollow>().target = this.gameObject;
+
+			GameObject miniMapReveal = GameObject.FindGameObjectWithTag("MiniMapReveal");
+			miniMapReveal.GetComponent<MinimapReveal>().player = this.gameObject;
+//			miniMapCamera.SetActive(true);
+
 			GetComponent<CharacterController> ().enabled = true;
 			GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController> ().enabled = true;
 			GetComponent<PlayerAttack> ().enabled = true;
@@ -19,6 +26,7 @@ public class PlayerNetworkMover : Photon.MonoBehaviour {
 				cam.enabled = true;
 //				cam.cullingMask = (1<<0 | 1<<10);
 			}
+			GetComponentInChildren<AudioListener>().enabled = true;
 		}  
 		else {
 			foreach (Transform child in transform) {

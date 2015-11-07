@@ -18,7 +18,7 @@ public class MinimapReveal : MonoBehaviour {
     private float widthCorrection;
     private float heightCorrection;
 
-    GameObject player;
+    public GameObject player;
 
     void Start()
     {
@@ -32,7 +32,7 @@ public class MinimapReveal : MonoBehaviour {
         heightCorrection = 21.5f * (POS_TO_TEXTURE_RATIO - 1.0f) + 21.5f + height / 2; //21.5 is starting z pos of player
         GetComponent<Renderer>().material.mainTexture = tex;
         //renderer.material.mainTexture = tex; 
-        player = GameObject.FindGameObjectWithTag("Player");
+//        player = GameObject.FindGameObjectWithTag("Player");
         count = 0;
     }
 
