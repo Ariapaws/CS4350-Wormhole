@@ -89,7 +89,6 @@ public class PlayerAttack : MonoBehaviour
       // if attacking without blocking
         else if (Input.GetAxis("Fire1") > 0 && !Input.GetMouseButtonDown(1))
         {
-
             // attack animation enabled
             shootRay.origin = transform.position;
             shootRay.direction = transform.forward;
@@ -156,7 +155,7 @@ public class PlayerAttack : MonoBehaviour
         else
         {
 
-
+			GetComponent<PhotonView>().RPC("SetTrigger", PhotonTargets.All, currentAttack);
             animator.SetTrigger(currentAttack);
 
             attackPerforming = true;

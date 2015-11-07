@@ -30,4 +30,5 @@ MonoBehaviour:
   - PunPickupSimple
   - PunRespawn
   - RequestForPickupTimes
+  - setTrigger
   DisableAutoOpenWizard: 1

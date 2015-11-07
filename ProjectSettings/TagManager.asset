@@ -42,6 +42,8 @@ TagManager:
   - StaminaSlider
   - DamageImage
   - CashUI
+  - BaseTeleport
+  - Samuzai
   layers:
   - Default
   - TransparentFX

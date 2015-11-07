@@ -4,12 +4,22 @@ using System.Collections;
 public class PlayerNetworkMover : Photon.MonoBehaviour {
 	private Vector3 correctPlayerPosition;
 	private Quaternion correctPlayerRotation;
-	private Animator anim;
+	public Animator anim;
 	// Use this for initialization
 	
 	void Start () {
-		anim = transform.GetComponentInChildren<Animator> ();
-		
+//		foreach (Transform child in transform) {
+//			if (child.gameObject.name=="Vanille") {
+//				anim = child.gameObject.GetComponent<Animator>();
+//			}
+//		}
+
+		if (anim == null) {
+			Debug.LogError ("FUCK");
+		} else {
+			Debug.Log(anim.name);
+		}
+
 		if (photonView.isMine) {
 			GameObject.FindGameObjectWithTag("Samuzai").GetComponent<Shop>().enabled = true;
 			GameObject.FindGameObjectWithTag("Samuzai").GetComponent<Shop>().player = this.gameObject;
@@ -104,17 +114,23 @@ public class PlayerNetworkMover : Photon.MonoBehaviour {
 		if (stream.isWriting) {
 			stream.SendNext(transform.position);	
 			stream.SendNext(transform.rotation);
-			//			stream.SendNext(anim.GetFloat("Forward"));
-			//			stream.SendNext(anim.GetFloat("Turn"));
-			//			stream.SendNext(anim.GetBool("OnGround"));
-			//			stream.SendNext(anim.GetFloat("Jump"));
+			stream.SendNext(anim.GetFloat("Forward"));
+			stream.SendNext(anim.GetFloat("Turn"));
+			stream.SendNext(anim.GetBool("OnGround"));
+			stream.SendNext(anim.GetFloat("Jump"));
+			stream.SendNext(anim.GetFloat("JumpLeg"));
+			stream.SendNext(anim.GetBool("Guard"));
+			stream.SendNext(anim.GetFloat("Block"));
 		}  else {
 			this.correctPlayerPosition = (Vector3) stream.ReceiveNext();
 			this.correctPlayerRotation =  (Quaternion) stream.ReceiveNext();
-//			anim.SetFloat("Forward", (float) stream.ReceiveNext());
-//			anim.SetFloat("Turn", (float) stream.ReceiveNext());
-//			anim.SetBool("OnGround", (bool) stream.ReceiveNext());
-//			anim.SetFloat("Jump", (float) stream.ReceiveNext());
+			this.anim.SetFloat("Forward", (float) stream.ReceiveNext());
+			this.anim.SetFloat("Turn", (float) stream.ReceiveNext());
+			this.anim.SetBool("OnGround", (bool) stream.ReceiveNext());
+			this.anim.SetFloat("Jump", (float) stream.ReceiveNext());
+			this.anim.SetFloat("JumpLeg", (float) stream.ReceiveNext());
+			this.anim.SetBool("Guard", (bool) stream.ReceiveNext());
+			this.anim.SetFloat("Block", (float) stream.ReceiveNext());
 		}
 	}
 
@@ -126,6 +142,11 @@ public class PlayerNetworkMover : Photon.MonoBehaviour {
 			ChangeLayersRecursively(child, name);
 		}
 	}
-	
+
+	[PunRPC]
+	void SetTrigger(string triggerName) {
+		Debug.Log ("TRIGGERED " + triggerName); 
+		anim.SetTrigger (triggerName);
+	}
 }
 
