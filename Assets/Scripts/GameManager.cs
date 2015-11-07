@@ -13,12 +13,12 @@ public class GameManager : MonoBehaviour {
 	public bool isNight=false;
     private int checkNightCount = 0;
 
-	private IEnumerator Start () {
-		//BeginGame();
-		mazeInstance = Instantiate(mazePrefab) as Maze;
-		yield return StartCoroutine(mazeInstance.Generate());
-
-	}
+//	private IEnumerator Start () {
+//		//BeginGame();
+//		mazeInstance = Instantiate(mazePrefab) as Maze;
+//		yield return StartCoroutine(mazeInstance.Generate());
+//
+//	}
 	
 	// Use this for initialization
 	void Awake () {

@@ -11,11 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f3758f8f58fdef43803eb9be1df0608, type: 3}
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
-  HostType: 0
+  HostType: 1
   Protocol: 0
   ServerAddress: 
   ServerPort: 5055
-  AppID: 
+  AppID: 8834a9cb-125b-4871-b3cf-9f7e1bc6e063
   PreferredRegion: 0
   EnabledRegions: -1
   JoinLobby: 0
