@@ -1,10 +1,21 @@
 fileFormatVersion: 2
 guid: 1f4ec5e40b816124f91da0a659b951c5
-timeCreated: 1442471949
+timeCreated: 1447004990
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - feedback: {instanceID: 0}
+  - player: {instanceID: 0}
+  - DamageUpgrade: {instanceID: 0}
+  - DamageCost: {instanceID: 0}
+  - SpeedUpgrade: {instanceID: 0}
+  - SpeedCost: {instanceID: 0}
+  - RangeUpgrade: {instanceID: 0}
+  - RangeCost: {instanceID: 0}
+  - ArmorUpgrade: {instanceID: 0}
+  - ArmorCost: {instanceID: 0}
+  - purchaseClip: {fileID: 8300000, guid: 16244e2a0c2e1a54c8eb2301378ec18c, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
