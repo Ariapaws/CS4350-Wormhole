@@ -39,8 +39,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7, y: 10, z: 7}
-  m_Center: {x: -5.5, y: 5, z: -5.5}
+  m_Size: {x: 7, y: 25, z: 7}
+  m_Center: {x: -23.5, y: 4, z: -18.7000008}
 --- !u!114 &11460448
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -254,6 +254,30 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: Maze
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Center.x
+      value: -23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Center.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Center.z
+      value: -18.7000008
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.z
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -90,6 +90,9 @@ public class PlayerNetworkMover : Photon.MonoBehaviour {
                     zombies[i].GetComponent<ZombieAttack>().feedback = feedbackObject.GetComponent<UnityEngine.UI.Text>();
                 }
             }
+
+            GameObject gm = GameObject.FindGameObjectWithTag("GameManager");
+            gm.GetComponent<GameCountDown>().player = this.gameObject;
         }  
 		else {
 			foreach (Transform child in transform) {

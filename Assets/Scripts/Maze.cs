@@ -58,8 +58,8 @@ public class Maze : MonoBehaviour {
 	}
 
 	void OnTriggerExit (Collider other)
-	{	
-		if(other.gameObject == player)
+	{
+		if(other.gameObject.tag == "Player")
 		{
 			countDown.startCounting();
 		}
@@ -68,7 +68,7 @@ public class Maze : MonoBehaviour {
 	
 	void OnTriggerStay (Collider other)
 	{
-		if(other.gameObject == player)
+		if(other.gameObject.tag == "Player")
 		{
 			countDown.endCounting();
 		}

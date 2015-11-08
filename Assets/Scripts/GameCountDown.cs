@@ -45,6 +45,8 @@ public class GameCountDown : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(isCounting){
+            countDownDisplay.text = "Exploring maze";
+            /*
 			gameTime -= Time.deltaTime;
 			if(gameTime > 30f){
 				countDownDisplay.text = "Time Left: " + gameTime.ToString ("0");
@@ -61,8 +63,9 @@ public class GameCountDown : MonoBehaviour {
 				playerAudio.Play();
 				endCounting();
 			}
+            */
 
-			if (player.transform.position.x>= 42f){
+            if (player.transform.position.x>= 79f){
 				GameObject notDes = GameObject.FindGameObjectWithTag ("NotDestroyed");
 				Score holder = notDes.GetComponent<Score>();
 				holder.UpdateScore();
