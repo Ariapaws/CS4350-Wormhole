@@ -39,12 +39,14 @@ public class PlayerAttack : MonoBehaviour
     public string currentAttack;
     public Animation animation;
 
+    /*
     // For spherecast (torch)
     float sphereThickness = 0.4f;
     float sphereRange = 2.3f;
     Vector3 sphereOrigin;
     Vector3 sphereDirection;
     RaycastHit sphereHit;
+    */
 
     // Use this for initialization
     void Start()
@@ -93,16 +95,19 @@ public class PlayerAttack : MonoBehaviour
             shootRay.origin = transform.position;
             shootRay.direction = transform.forward;
 
+            /*
             // For spherecast (torch)
             sphereOrigin = transform.position;
             sphereDirection = transform.TransformDirection(Vector3.forward);
+            */
+
             StartCoroutine(attack());
 
             //block animation disabled
             //animator.SetBool("Guard", false);
             animator.SetInteger("Block", 0);
-            block = false;
-            GetComponent<PlayerHealth>().armor -= defense;
+            //block = false;
+            //GetComponent<PlayerHealth>().armor -= defense;
 
         }
 
@@ -159,7 +164,7 @@ public class PlayerAttack : MonoBehaviour
             animator.SetTrigger(currentAttack);
 
             attackPerforming = true;
-            bool isSphereCastHit = Physics.SphereCast(sphereOrigin, sphereThickness, sphereDirection, out sphereHit, sphereRange);
+            //bool isSphereCastHit = Physics.SphereCast(sphereOrigin, sphereThickness, sphereDirection, out sphereHit, sphereRange);
             if (Physics.Raycast(shootRay, out shootHit, range))
             {
                 Debug.DrawLine(shootRay.origin, shootHit.point);
@@ -170,23 +175,24 @@ public class PlayerAttack : MonoBehaviour
                     playerAudio.clip = hitClip;
                     playerAudio.Play();
                 }
+                /*
                 else if (isSphereCastHit)
                 {
-					Debug.Log("DESTROY");
                     tryToHitTorch(sphereHit);
                 }
+                */
                 else
                 {
                     playerAudio.clip = swingClip;
                     playerAudio.Play();
                 }
             }
+            /*
             else if (isSphereCastHit)
             {
-				Debug.Log("DESTROY1");
-
                 tryToHitTorch(sphereHit);
             }
+                */
             else
             {
 
@@ -198,6 +204,7 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    /*
     void tryToHitTorch(RaycastHit sphereHit)
     {
 
@@ -221,4 +228,5 @@ public class PlayerAttack : MonoBehaviour
             playerAudio.Play();
         }
     }
+    */
 }
