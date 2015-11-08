@@ -59,6 +59,11 @@ public class PlayerNetworkMover : Photon.MonoBehaviour {
 			GetComponent<PlayerAssets>().potionUI = potionUI;
 			GetComponent<PlayerAssets>().feedback = feedback.GetComponent<UnityEngine.UI.Text>();
 
+			GameObject shopUI = GameObject.FindGameObjectWithTag("Shop");
+			GetComponent<PlayerPurchaseUI>().enabled = true;
+			GetComponent<PlayerPurchaseUI>().canvas = shopUI;
+			GetComponent<PlayerPurchaseUI>().feedback = feedback.GetComponent<UnityEngine.UI.Text>();
+
 			HUDCanvas.GetComponent<Canvas>().enabled = true;
 
 			GetComponent<CharacterController> ().enabled = true;
