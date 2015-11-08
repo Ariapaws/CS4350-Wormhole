@@ -21,6 +21,7 @@ public class Torch : MonoBehaviour {
 
 		Player = GameObject.FindGameObjectWithTag ("Player");
 		Physics.IgnoreCollision (Player.GetComponent<Collider> (), GetComponent<BoxCollider> ());
+		Physics.IgnoreCollision (Player.GetComponent<Collider> (), GameObject.FindGameObjectWithTag("Cube").GetComponent<BoxCollider> ());
 	}
 	
 	

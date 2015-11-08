@@ -172,6 +172,7 @@ public class PlayerAttack : MonoBehaviour
                 }
                 else if (isSphereCastHit)
                 {
+					Debug.Log("DESTROY");
                     tryToHitTorch(sphereHit);
                 }
                 else
@@ -182,10 +183,13 @@ public class PlayerAttack : MonoBehaviour
             }
             else if (isSphereCastHit)
             {
+				Debug.Log("DESTROY1");
+
                 tryToHitTorch(sphereHit);
             }
             else
             {
+
                 playerAudio.clip = swingClip;
                 playerAudio.Play();
             }
@@ -196,6 +200,7 @@ public class PlayerAttack : MonoBehaviour
 
     void tryToHitTorch(RaycastHit sphereHit)
     {
+
         GameObject torchObject = null;
         Torch torchScript = sphereHit.collider.GetComponent<Torch>();
         if (torchScript != null)
@@ -206,7 +211,7 @@ public class PlayerAttack : MonoBehaviour
         {
             playerAudio.clip = hitClip;
             playerAudio.Play();
-            Destroy(torchObject);
+            PhotonNetwork.Destroy(torchObject);
             PlayerAssets playerAssetsScript = GetComponent<PlayerAssets>();
             playerAssetsScript.numOfTorchesLeft++;
         }
