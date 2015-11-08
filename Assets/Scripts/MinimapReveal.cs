@@ -14,9 +14,11 @@ public class MinimapReveal : MonoBehaviour {
     private Ray shootRay;
 
     private int count;
-    private float POS_TO_TEXTURE_RATIO = 2.4f;
+    private float POS_TO_TEXTURE_RATIO = 2.05f;
     private float widthCorrection;
     private float heightCorrection;
+    private float starting_x = 17f;
+    private float starting_y = 23f;
 
     public GameObject player;
 
@@ -28,8 +30,8 @@ public class MinimapReveal : MonoBehaviour {
         texPixels = tex.GetPixels32();
         width = tex.width;
         height = tex.height;
-        widthCorrection = 14.6f * (POS_TO_TEXTURE_RATIO - 1.0f) + 14.6f + width / 2; //14.6f is starting x pos of player
-        heightCorrection = 21.5f * (POS_TO_TEXTURE_RATIO - 1.0f) + 21.5f + height / 2; //21.5 is starting z pos of player
+        widthCorrection = starting_x * (POS_TO_TEXTURE_RATIO - 1.0f) + starting_x + width / 2;
+        heightCorrection = starting_y * (POS_TO_TEXTURE_RATIO - 1.0f) + starting_y + height / 2;
         GetComponent<Renderer>().material.mainTexture = tex;
         //renderer.material.mainTexture = tex; 
 //        player = GameObject.FindGameObjectWithTag("Player");
