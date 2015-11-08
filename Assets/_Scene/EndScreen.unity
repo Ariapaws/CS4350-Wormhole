@@ -6887,7 +6887,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: REPLAY
+  m_Text: EXIT
 --- !u!222 &795310901
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15812,7 +15812,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1804350458
 RectTransform:
   m_ObjectHideFlags: 0

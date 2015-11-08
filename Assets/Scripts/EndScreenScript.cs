@@ -19,6 +19,7 @@ public class EndScreenScript : MonoBehaviour {
 	}
 	
 	public void OnClickPlay(){
-		Application.LoadLevel("MainGame");
+        //Application.LoadLevel("MainGame");
+        Application.Quit();
 	}
 }
