@@ -14,11 +14,11 @@ public class ZombieAttack : MonoBehaviour {
 	public AudioClip attackClip;
 
 
-	Animator anim;
-	GameObject player;
-	PlayerHealth playerHealth;
-	AudioSource zombieAudio;
-	ZombieHealth zombieHealth;
+	public Animator anim;
+	public GameObject player;
+	public PlayerHealth playerHealth;
+	public AudioSource zombieAudio;
+	public ZombieHealth zombieHealth;
 	public bool playerInRange;
 	public float cooldownTimer;
     private bool isCooldownTimerOn = true;
@@ -31,9 +31,7 @@ public class ZombieAttack : MonoBehaviour {
 	
 	void Awake ()
 	{
-        // Note if need to find which player to get aggro
-        // http://answers.unity3d.com/questions/598323/how-to-find-closest-object-with-tag-one-object.html
-        player = GameObject.FindGameObjectWithTag ("Player");
+       // player = GameObject.FindGameObjectWithTag ("Player");
 		playerHealth = player.GetComponent <PlayerHealth> ();
 		zombieAudio = GetComponent <AudioSource> ();
 		zombieHealth = GetComponent<ZombieHealth>();
@@ -69,7 +67,7 @@ public class ZombieAttack : MonoBehaviour {
 	
 	void Update ()
 	{
-		GameObject gameManagerObject = GameObject.FindGameObjectWithTag ("GameManager");
+        GameObject gameManagerObject = GameObject.FindGameObjectWithTag ("GameManager");
 		GameManager gameManagerScript = (GameManager)gameManagerObject.GetComponent(typeof(GameManager));
 		bool isNight = gameManagerScript.isNight;
 

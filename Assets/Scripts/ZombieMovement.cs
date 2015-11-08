@@ -107,6 +107,10 @@ public class ZombieMovement : MonoBehaviour
                 {
                     player = sphereHit.transform.gameObject;
                     target = player.transform;
+                    GetComponent<ZombieAttack>().player = player;
+                    GetComponent<ZombieAttack>().playerHealth = player.GetComponent<PlayerHealth>();
+                    GetComponent<ZombieHealth>().player = player;
+                    GetComponent<ZombieHealth>().PlayerAssets = player.GetComponent<PlayerAssets>();
                     playerObserved = true;
                     attentionCountdown = attentionTime;
                     playAnimationAndAudio(distanceFromTarget);
@@ -137,6 +141,10 @@ public class ZombieMovement : MonoBehaviour
                         {
                             player = sphereHit.transform.gameObject;
                             target = player.transform;
+                            GetComponent<ZombieAttack>().player = player;
+                            GetComponent<ZombieAttack>().playerHealth = player.GetComponent<PlayerHealth>();
+                            GetComponent<ZombieHealth>().player = player;
+                            GetComponent<ZombieHealth>().PlayerAssets = player.GetComponent<PlayerAssets>();
                             playerObserved = true;
                             attentionCountdown = attentionTime;
                             playAnimationAndAudio(distanceFromTarget);
@@ -222,7 +230,7 @@ public class ZombieMovement : MonoBehaviour
                 */
                 if (!isSphereCastHit || (isSphereCastHit && sphereHit.transform.gameObject.name != "Wall"))
                 {
-                    Debug.Log("Moving, playerTracks.Count: "+playerTracks.Count.ToString());
+                    //Debug.Log("Moving, playerTracks.Count: "+playerTracks.Count.ToString());
                     // remove older tracks and move towards point
                     if (playerTracks.Count > 10 && i < playerTracks.Count - 2)
                     {
@@ -242,7 +250,7 @@ public class ZombieMovement : MonoBehaviour
         }
         if (!hasMoved)
         {
-            Debug.Log("No player tracks to follow, stop animation.");
+            //Debug.Log("No player tracks to follow, stop animation.");
             anim.SetBool("ObservedPlayer", false);
         }
     }
@@ -288,7 +296,7 @@ public class ZombieMovement : MonoBehaviour
                     {
                         tracksString += playerTracks[i].ToString()+",";
                     }
-                    Debug.Log("Added to playerTracks: " + tracksString);
+                    //Debug.Log("Added to playerTracks: " + tracksString);
                 }
             }
 

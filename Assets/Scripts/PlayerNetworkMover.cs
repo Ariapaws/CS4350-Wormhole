@@ -70,7 +70,22 @@ public class PlayerNetworkMover : Photon.MonoBehaviour {
 //				cam.cullingMask = (1<<0 | 1<<10);
 			}
 			GetComponentInChildren<AudioListener>().enabled = true;
-		}  
+
+            GameObject[] zombies = GameObject.FindGameObjectsWithTag("Enemy");
+            for (int i=0; i<zombies.Length; i++)
+            {
+                zombies[i].GetComponent<ZombieHealth>().enabled = true;
+                zombies[i].GetComponent<ZombieAttack>().player = this.gameObject;
+                zombies[i].GetComponent<ZombieAttack>().enabled = true;
+                zombies[i].GetComponent<ZombieAttack>().zombieHealth = zombies[i].GetComponent<ZombieHealth>();
+                zombies[i].GetComponent<ZombieAttack>().anim = zombies[i].GetComponent<Animator>();
+                zombies[i].GetComponent<ZombieAttack>().zombieAudio = zombies[i].GetComponent<AudioSource>();
+                if (zombies[i].GetComponent<ZombieAttack>().feedback == null) {
+                    GameObject feedbackObject = GameObject.FindGameObjectWithTag("Feedback");
+                    zombies[i].GetComponent<ZombieAttack>().feedback = feedbackObject.GetComponent<UnityEngine.UI.Text>();
+                }
+            }
+        }  
 		else {
 			foreach (Transform child in transform) {
 				if (child.gameObject.name=="Vanille") {

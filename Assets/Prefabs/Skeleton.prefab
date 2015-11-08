@@ -379,7 +379,7 @@ GameObject:
   - 135: {fileID: 13521522}
   m_Layer: 0
   m_Name: Skeleton
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2067,7 +2067,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ea49d18cc300a45a78f6f41ced5a8142, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8ae9a743beddb804fb8d226431667de4, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2185,12 +2185,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 124964}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64239df8f13a886488140a5b42b7511f, type: 3}
+  m_Script: {fileID: 11500000, guid: 20b86ad4397b4be41a22532cf7a46bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Path: []
-  PathType: 0
-  JS: 0
   moveSpeed: .5
   rotateSpeed: 2
   vision: 10
@@ -2200,10 +2197,12 @@ MonoBehaviour:
   startingMoveSpeed: .5
   startingRotateSpeed: 2
   startingVision: 10
+  angleOfVision: 45
+  attentionTime: 5
+  attentionCountdown: 0
+  smell: 5
   playerContact: 0
   playerObserved: 0
-  start: {x: 0, y: 0, z: 0}
-  end: {x: 0, y: 0, z: 0}
 --- !u!114 &11455270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2222,7 +2221,12 @@ MonoBehaviour:
   attackDamage: 10
   startingDamage: 10
   nightDamage: 20
-  attackClip: {fileID: 8300000, guid: 3a190de1ad3e245be9add576d283dfd0, type: 3}
+  attackClip: {fileID: 8300000, guid: 6026f8428c999d84ba5c7d2ef16280bf, type: 3}
+  anim: {fileID: 0}
+  player: {fileID: 0}
+  playerHealth: {fileID: 0}
+  zombieAudio: {fileID: 0}
+  zombieHealth: {fileID: 0}
   playerInRange: 0
   cooldownTimer: 0
   damageTimer: 0
@@ -2244,12 +2248,14 @@ MonoBehaviour:
   cashAmount: 20
   sinkSpeed: 2.5
   scoreValue: 10
-  deathClip: {fileID: 8300000, guid: a187406246314498e81b444a4208cedb, type: 3}
+  deathClip: {fileID: 8300000, guid: f553bb050bb3d5b4488bf36741b4926e, type: 3}
   rb: {fileID: 0}
   isDead: 0
   crateInstance: {fileID: 155610, guid: 2bfead458efc86d4584d5749a29330d1, type: 2}
   potionInstance: {fileID: 127092, guid: d2b0d8fe57c72cb41b3f87b43cf2ebb1, type: 2}
   clockInstance: {fileID: 128138, guid: 6bb63662e0281ac459e09b9e44ef5e3c, type: 2}
+  player: {fileID: 0}
+  PlayerAssets: {fileID: 0}
 --- !u!135 &13521522
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -2387,15 +2393,43 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: ea49d18cc300a45a78f6f41ced5a8142, type: 3}
+      objectReference: {fileID: 8300000, guid: 8ae9a743beddb804fb8d226431667de4, type: 3}
     - target: {fileID: 0}
       propertyPath: attackClip
       value: 
-      objectReference: {fileID: 8300000, guid: 3a190de1ad3e245be9add576d283dfd0, type: 3}
+      objectReference: {fileID: 8300000, guid: 6026f8428c999d84ba5c7d2ef16280bf, type: 3}
     - target: {fileID: 0}
       propertyPath: deathClip
       value: 
-      objectReference: {fileID: 8300000, guid: a187406246314498e81b444a4208cedb, type: 3}
+      objectReference: {fileID: 8300000, guid: f553bb050bb3d5b4488bf36741b4926e, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: moveSpeed
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: vision
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: nightMoveSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: nightRotateSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: startingMoveSpeed
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: startingVision
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 124964}

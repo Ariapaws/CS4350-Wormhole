@@ -21,10 +21,10 @@ public class ZombieHealth : MonoBehaviour {
 	public GameObject crateInstance;
 	public GameObject potionInstance;
 	public GameObject clockInstance;
-	GameObject player;
-	PlayerAssets PlayerAssets;
+	public GameObject player;
+	public PlayerAssets PlayerAssets;
 	
-	void Awake ()
+	void Start ()
 	{
 		rb = GetComponent<Rigidbody>();
 		anim = GetComponent <Animator> ();
