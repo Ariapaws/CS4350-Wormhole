@@ -33,4 +33,5 @@ MonoBehaviour:
   - setTrigger
   - SetTrigger
   - UpdateMessage
+  - newPlayerNameBroadcast
   DisableAutoOpenWizard: 1

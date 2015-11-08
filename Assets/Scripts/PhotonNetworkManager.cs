@@ -26,6 +26,7 @@ public class PhotonNetworkManager : Photon.PunBehaviour {
 	//	private bool test = false;
 	
 	public Font leagueGothicFont;
+	public PhotonView photonView;
 	
 	void Start () {
 		PhotonNetwork.ConnectUsingSettings ("0.1");
@@ -153,8 +154,9 @@ public class PhotonNetworkManager : Photon.PunBehaviour {
 	
 	public override void OnJoinedRoom() {
 		PhotonNetwork.playerName = playerName;
-		Debug.Log ("PLAYER: " + PhotonNetwork.playerName + " has joined the game");
-		Debug.Log ("Random Seed:" + PhotonNetwork.room.customProperties ["randomSeed"]);
+		photonView.RPC("newPlayerNameBroadcast", PhotonTargets.All, PhotonNetwork.playerName);
+//		Debug.Log ("PLAYER: " + PhotonNetwork.playerName + " has joined the game");
+//		Debug.Log ("Random Seed:" + PhotonNetwork.room.customProperties ["randomSeed"]);
 
 		// Set Random Seed
 		Random.seed = (int) PhotonNetwork.room.customProperties ["randomSeed"];

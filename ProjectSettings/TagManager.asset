@@ -45,6 +45,7 @@ TagManager:
   - BaseTeleport
   - Samuzai
   - ChatBox
+  - Cube
   layers:
   - Default
   - TransparentFX

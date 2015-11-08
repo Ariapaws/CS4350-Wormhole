@@ -35698,6 +35698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   photonView: {fileID: 942963975}
+  isActive: 0
 --- !u!114 &942963972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59098,7 +59099,7 @@ Transform:
   - {fileID: 54100907}
   - {fileID: 1084559150}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
 --- !u!1 &1549818726
 GameObject:
   m_ObjectHideFlags: 0
@@ -70236,6 +70237,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 1922951312}
   - 114: {fileID: 1922951311}
+  - 114: {fileID: 1922951313}
+  - 114: {fileID: 1922951314}
   m_Layer: 0
   m_Name: PhotonNetwork
   m_TagString: Untagged
@@ -70268,6 +70271,43 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
+--- !u!114 &1922951313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1922951310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3bb05b3aa703440fba2a669e1c19dfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textUI: {fileID: 1988382010}
+--- !u!114 &1922951314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1922951310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  prefixBackup: -1
+  observed: {fileID: 0}
+  synchronization: 3
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 1922951311}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 1
+  instantiationId: 1
+  isRuntimeInstantiated: 0
 --- !u!1 &1927039756
 GameObject:
   m_ObjectHideFlags: 0
