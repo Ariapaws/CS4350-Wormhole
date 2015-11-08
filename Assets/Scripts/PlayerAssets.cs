@@ -7,6 +7,7 @@ public class PlayerAssets : Photon.MonoBehaviour {
 	public int startingCash = 0;
 	public int currentCash;
 	public int numOfTorchesLeft = 10;
+    public ArrayList torchPositions= new ArrayList(10);
     public int numOfPotions;
 	public Text cashAmountDisplay;
 	public GameObject torchInstance;
@@ -72,8 +73,26 @@ public class PlayerAssets : Photon.MonoBehaviour {
 		if (numOfTorchesLeft > 0 && GetClosestTorchDistance(torchPosition) > 3.0f) {
 			PhotonNetwork.Instantiate("Torch", torchPosition, Quaternion.identity, 0);
 			numOfTorchesLeft--;
+            torchPositions.Add(torchPosition);
 		}
-		else {
+        else if (numOfTorchesLeft <= 0 && GetClosestTorchDistance(torchPosition) > 3.0f)
+        {
+            GameObject[] torches = GameObject.FindGameObjectsWithTag("Torch");
+            for (int i=0; i<torches.Length; i++)
+            {
+                if (torches[i].transform.position.x == ((Vector3)torchPositions[0]).x &&
+                    torches[i].transform.position.z == ((Vector3)torchPositions[0]).z)
+                {
+                    PhotonNetwork.Destroy(torches[i].gameObject);
+                    torchPositions.RemoveAt(0);
+                    PhotonNetwork.Instantiate("Torch", torchPosition, Quaternion.identity, 0);
+                    torchPositions.Add(torchPosition);
+                    break;
+                }
+            }
+
+        }
+		else{
 			// NEED TO SAVE THE CLIP THAT WAS IN playerAudio before that anot? :(
 			//AudioClip temp = playerAudio.clip;
 			playerAudio.clip = errorClip;
