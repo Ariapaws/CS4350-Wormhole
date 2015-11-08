@@ -191,17 +191,29 @@ public class Shop : MonoBehaviour {
 		//items type 1 (upgrades)
         // button type, upgrade name, weapon level--still upgradable?, cost, upgrade amount 
         //ALPHA 1
-        WeaponDamage.Add(new Upgrades(1, "Weapon Damage", 1, 0, 5));
-        WeaponDamage.Add(new Upgrades(1, "Weapon Damage", 2, 0, 5));
+        WeaponDamage.Add(new Upgrades(1, "Weapon Damage", 1, 100, 3));
+        WeaponDamage.Add(new Upgrades(1, "Weapon Damage", 2, 120, 3));
+        WeaponDamage.Add(new Upgrades(1, "Weapon Damage", 3, 140, 3));
+        WeaponDamage.Add(new Upgrades(1, "Weapon Damage", 4, 180, 5));
+        WeaponDamage.Add(new Upgrades(1, "Weapon Damage", 5, 220, 5));
+        WeaponDamage.Add(new Upgrades(1, "Weapon Damage", 6, 300, 10));
         //ALPHA 2
-        WeaponRange.Add(new Upgrades(2, "Weapon Range", 1, 0, 0.5f));
-        WeaponRange.Add(new Upgrades(2, "Weapon Range", 2, 0, 0.5f));
+        WeaponRange.Add(new Upgrades(2, "Weapon Range", 1, 200, 0.2f));
+        WeaponRange.Add(new Upgrades(2, "Weapon Range", 2, 200, 0.2f));
+        WeaponRange.Add(new Upgrades(2, "Weapon Range", 3, 300, 0.4f));
+        WeaponRange.Add(new Upgrades(2, "Weapon Range", 4, 450, 0.5f));
         //ALPHA 3
-        WeaponSpeed.Add(new Upgrades(2, "Weapon Speed", 1, 0, 0.2f));
-        WeaponSpeed.Add(new Upgrades(2, "Weapon Speed", 2, 0, 0.1f));
+        WeaponSpeed.Add(new Upgrades(2, "Weapon Speed", 1, 200, 0.1f));
+        WeaponSpeed.Add(new Upgrades(2, "Weapon Speed", 2, 200, 0.1f));
+        WeaponSpeed.Add(new Upgrades(2, "Weapon Speed", 3, 300, 0.2f));
+        WeaponSpeed.Add(new Upgrades(2, "Weapon Speed", 4, 450, 0.2f));
         //ALPHA 4
-        Armour.Add(new Upgrades(3, "Armor", 1, 0, 50));
-        Armour.Add(new Upgrades(3, "Armor", 2, 0, 50));
+        Armour.Add(new Upgrades(3, "Armor", 1, 50, 20));
+        Armour.Add(new Upgrades(3, "Armor", 2, 100, 20));
+        Armour.Add(new Upgrades(3, "Armor", 3, 150, 30));
+        Armour.Add(new Upgrades(3, "Armor", 4, 200, 30));
+        Armour.Add(new Upgrades(3, "Armor", 5, 250, 50));
+        Armour.Add(new Upgrades(3, "Armor", 6, 500, 70));
                
         //items type 2 (consumables)
         //ALPHA 5
