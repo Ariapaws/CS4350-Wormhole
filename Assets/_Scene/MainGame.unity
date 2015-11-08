@@ -70259,6 +70259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mazePrefab: {fileID: 11460448, guid: 016981722fe0c6748b97c3f53e2f6284, type: 2}
   leagueGothicFont: {fileID: 12800000, guid: 9b26515627c0d49f6976cf41059fa8ec, type: 3}
+  photonView: {fileID: 1922951314}
 --- !u!4 &1922951312
 Transform:
   m_ObjectHideFlags: 0
