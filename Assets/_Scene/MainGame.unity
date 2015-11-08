@@ -8414,6 +8414,7 @@ MonoBehaviour:
   RangeCost: {fileID: 2044279120}
   ArmorUpgrade: {fileID: 2111647547}
   ArmorCost: {fileID: 1092582478}
+  purchaseClip: {fileID: 0}
 --- !u!4 &239810709 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400132, guid: e156495aa9aa3424d85dac51d5fdbd21, type: 3}
@@ -10947,7 +10948,7 @@ RectTransform:
   m_GameObject: {fileID: 302046722}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: .181934431}
-  m_LocalScale: {x: .621711493, y: 1.15317857, z: 5.06835413}
+  m_LocalScale: {x: .899142444, y: 1.66776943, z: 7.33004141}
   m_Children:
   - {fileID: 1627598841}
   - {fileID: 55081452}
@@ -25949,7 +25950,7 @@ RectTransform:
   m_GameObject: {fileID: 666078504}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: .181934431}
-  m_LocalScale: {x: .61998564, y: 1.14997816, z: 5.05428743}
+  m_LocalScale: {x: .89664644, y: 1.66314089, z: 7.30969763}
   m_Children:
   - {fileID: 1958610761}
   - {fileID: 186210049}
@@ -33601,7 +33602,7 @@ RectTransform:
   m_GameObject: {fileID: 869770654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: .181934431}
-  m_LocalScale: {x: .621711493, y: 1.15317857, z: 5.06835413}
+  m_LocalScale: {x: .899142444, y: 1.66776943, z: 7.33004141}
   m_Children:
   - {fileID: 801533710}
   - {fileID: 484811920}
@@ -33883,7 +33884,7 @@ Canvas:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 881142164}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -41563,7 +41564,7 @@ RectTransform:
   m_GameObject: {fileID: 1091374166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: .181934431}
-  m_LocalScale: {x: .621711493, y: 1.15317857, z: 5.06835413}
+  m_LocalScale: {x: .899142444, y: 1.66776943, z: 7.33004141}
   m_Children:
   - {fileID: 1139397970}
   - {fileID: 1009683582}
@@ -59015,7 +59016,7 @@ RectTransform:
   m_GameObject: {fileID: 1539731007}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: .181934431}
-  m_LocalScale: {x: .621711493, y: 1.15317857, z: 5.06835413}
+  m_LocalScale: {x: .899142444, y: 1.66776943, z: 7.33004141}
   m_Children:
   - {fileID: 716242302}
   - {fileID: 736720929}
