@@ -48,7 +48,19 @@ public class Maze : MonoBehaviour {
 	Vector2 baseI; //x: minI, y:maxI
 	Vector2 baseJ; //x: minJ, y:minJ
 
-    
+    public List<MazeEdge> edgeList = new List<MazeEdge>();
+
+    public class MazeEdge {
+        public int edgeType; // 0: passage, 1: wall, 2: door
+        public MazeCell cellFrom, cellTo;
+
+        public MazeEdge(MazeCell one, MazeCell two, int type)
+        {
+            cellFrom = one;
+            cellTo = two;
+            edgeType = type;
+        }
+    }
 
 
 	void Awake(){
