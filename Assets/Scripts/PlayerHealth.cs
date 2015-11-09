@@ -145,7 +145,7 @@ public class PlayerHealth : MonoBehaviour {
 		//playerMovement.enabled = false;
 		//playerShooting.enabled = false;
 
-		Vector3 temp = new Vector3(-14.6f, 1.8f, -21.5f);
+		Vector3 temp = new Vector3(-90.0f, 2.1f, -70.0f);
 		playerAudio.clip = teleportClip;
 		playerAudio.Play();
 		transform.position = temp;

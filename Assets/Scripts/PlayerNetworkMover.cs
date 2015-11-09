@@ -93,6 +93,8 @@ public class PlayerNetworkMover : Photon.MonoBehaviour {
 
             GameObject gm = GameObject.FindGameObjectWithTag("GameManager");
             gm.GetComponent<GameCountDown>().player = this.gameObject;
+
+            Cursor.visible = false;
         }  
 		else {
 			foreach (Transform child in transform) {
