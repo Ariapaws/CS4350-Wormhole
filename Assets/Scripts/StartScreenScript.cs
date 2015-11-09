@@ -4,7 +4,8 @@ using System.Collections;
 public class StartScreenScript : MonoBehaviour {
 	
 	public void OnClickPlay(){
-		Application.LoadLevel("MainGame");
-	}
+        //Application.LoadLevel("MainGame");
+        Application.LoadLevel("Instructions");
+    }
 
 }

@@ -23,6 +23,7 @@ public class PlayerNetworkMover : Photon.MonoBehaviour {
 		if (photonView.isMine) {
             GameObject gm = GameObject.FindGameObjectWithTag("GameManager");
             gm.GetComponent<GameCountDown>().player = this.gameObject;
+            gm.GetComponent<GameCountDown>().enabled = true;
 
             GameObject.FindGameObjectWithTag("Samuzai").GetComponent<Shop>().enabled = true;
 			GameObject.FindGameObjectWithTag("Samuzai").GetComponent<Shop>().player = this.gameObject;
