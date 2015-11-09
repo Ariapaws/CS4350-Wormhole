@@ -9,6 +9,7 @@ public class Shop : MonoBehaviour {
 	public bool canPurchase;
 	public float distance;
     public Text feedback;
+    public GameCountDown feedbackScript;
     public GameObject player;
 
 
@@ -59,8 +60,9 @@ public class Shop : MonoBehaviour {
 		canPurchase = false;
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        GameObject feedbackObject = GameObject.FindGameObjectWithTag("Feedback");
-        feedback = feedbackObject.GetComponent<Text>();
+        //GameObject feedbackObject = GameObject.FindGameObjectWithTag("Feedback");
+        //feedback = feedbackObject.GetComponent<Text>();
+        feedback = feedbackScript.getText();
 
         currentWeaponDamageLevel = 0;
         currentWeaponRangeLevel = 0;
@@ -74,16 +76,29 @@ public class Shop : MonoBehaviour {
 	void Update () {
         // if near shop, can purchase
 		if (Vector3.Distance (this.gameObject.transform.position, player.transform.position) < distance) {
+
             feedback.color = new Color(0, 1, 0, 2);
-            feedback.text = "You are near the shop. Press P to purchase.";
+            
 			if (player.GetComponent<PlayerPurchaseUI>().showPurchaseUI == true) {
-				canPurchase = true;
+                feedback.text = "Press buttons 1-5 to purchase upgrades/items.";
+                canPurchase = true;
 			}
             else if (player.GetComponent<PlayerPurchaseUI>().showPurchaseUI == false) {
+                feedback.text = "You are near the shop. Press P to purchase.";
                 canPurchase = false;
             }
-		} else 
-			canPurchase = false;
+		} else {
+            feedback.color = new Color(0, 255, 255, 2);
+            if (player.GetComponent<PlayerPurchaseUI>().showPurchaseUI == true)
+            {
+                feedback.text = "Go back to the shop in base to purchase items";
+            }
+            else if (player.GetComponent<PlayerPurchaseUI>().showPurchaseUI == false)
+            {
+                feedback.text = "Press P to view upgrades/items.";
+            }
+            canPurchase = false;
+        }
 
         //updating purchase UI
         DamageUpgrade.GetComponent<Text>().text = "+" + WeaponDamage[currentWeaponDamageLevel + 1].upgradeAmount + " Damage";

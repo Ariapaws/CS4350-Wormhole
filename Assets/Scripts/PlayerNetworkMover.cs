@@ -21,10 +21,14 @@ public class PlayerNetworkMover : Photon.MonoBehaviour {
 		}
 
 		if (photonView.isMine) {
-			GameObject.FindGameObjectWithTag("Samuzai").GetComponent<Shop>().enabled = true;
-			GameObject.FindGameObjectWithTag("Samuzai").GetComponent<Shop>().player = this.gameObject;
+            GameObject gm = GameObject.FindGameObjectWithTag("GameManager");
+            gm.GetComponent<GameCountDown>().player = this.gameObject;
 
-			GameObject.FindGameObjectWithTag("NotDestroyed").GetComponent<Score>().enabled = true;
+            GameObject.FindGameObjectWithTag("Samuzai").GetComponent<Shop>().enabled = true;
+			GameObject.FindGameObjectWithTag("Samuzai").GetComponent<Shop>().player = this.gameObject;
+            GameObject.FindGameObjectWithTag("Samuzai").GetComponent<Shop>().feedbackScript = gm.GetComponent<GameCountDown>();
+
+            GameObject.FindGameObjectWithTag("NotDestroyed").GetComponent<Score>().enabled = true;
 			GameObject.FindGameObjectWithTag("NotDestroyed").GetComponent<Score>().assets = GetComponent<PlayerAssets>();
 
 			GameObject miniMapCamera = GameObject.FindGameObjectWithTag("MiniMapCamera");
@@ -62,7 +66,6 @@ public class PlayerNetworkMover : Photon.MonoBehaviour {
 			GameObject shopUI = GameObject.FindGameObjectWithTag("Shop");
 			GetComponent<PlayerPurchaseUI>().enabled = true;
 			GetComponent<PlayerPurchaseUI>().canvas = shopUI;
-			GetComponent<PlayerPurchaseUI>().feedback = feedback.GetComponent<UnityEngine.UI.Text>();
 
 			HUDCanvas.GetComponent<Canvas>().enabled = true;
 
@@ -90,9 +93,6 @@ public class PlayerNetworkMover : Photon.MonoBehaviour {
                     zombies[i].GetComponent<ZombieAttack>().feedback = feedbackObject.GetComponent<UnityEngine.UI.Text>();
                 }
             }
-
-            GameObject gm = GameObject.FindGameObjectWithTag("GameManager");
-            gm.GetComponent<GameCountDown>().player = this.gameObject;
 
             Cursor.visible = false;
         }  
