@@ -36,7 +36,7 @@ public class Maze : MonoBehaviour {
 	public GameObject potionInstance;
 	public GameObject crateInstance;
 	private BoxCollider mazeRangeCollider;
-	public GameCountDown countDown;
+	public Feedback feedback;
 	private ArrayList teleporterList ;
 	public int skeletonAmount = 5;
 	public GameObject skeletonInstance;
@@ -65,7 +65,7 @@ public class Maze : MonoBehaviour {
 
 	void Awake(){
 		gameManager = GameObject.FindGameObjectWithTag ("GameManager");
-		countDown = gameManager.GetComponent <GameCountDown> ();
+        feedback = GameObject.FindGameObjectWithTag("Feedback").GetComponent<Feedback>();
 		teleporterList = new ArrayList();
 	}
 
@@ -73,18 +73,19 @@ public class Maze : MonoBehaviour {
 	{
 		if(other.gameObject.tag == "Player")
 		{
-			countDown.startCounting();
+			feedback.enterMaze();
 		}
 	}
 	
-	
+	/*
 	void OnTriggerStay (Collider other)
 	{
 		if(other.gameObject.tag == "Player")
 		{
-			countDown.endCounting();
+			//??? do nothing in base
 		}
 	}
+    */
 
 	public IntVector2 RandomCoordinates {
 		get {

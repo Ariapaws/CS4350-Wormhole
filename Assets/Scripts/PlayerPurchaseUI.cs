@@ -2,18 +2,13 @@
 using System.Collections;
 using UnityEngine.UI;
 
-using System.Collections;
-
 public class PlayerPurchaseUI : MonoBehaviour {
 
 	public bool showPurchaseUI;
 	public bool toggle;
 
 	public GameObject canvas;
-    public Text feedback;
 	private ChatScript chatscript;
-
-
 	
 	// Use this for initialization
 	void Start () {

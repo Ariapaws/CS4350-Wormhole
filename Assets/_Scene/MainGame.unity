@@ -8400,7 +8400,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canPurchase: 0
   distance: 0
-  feedback: {fileID: 440573739}
+  feedback: {fileID: 402173733}
+  feedbackScript: {fileID: 0}
   player: {fileID: 0}
   currentWeaponDamageLevel: 0
   currentWeaponRangeLevel: 0
@@ -14587,7 +14588,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: 1}
   m_AnchorMax: {x: .5, y: 1}
   m_AnchoredPosition: {x: 0, y: -20}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 200, y: 60}
   m_Pivot: {x: .5, y: 1}
 --- !u!114 &402173733
 MonoBehaviour:
@@ -55728,18 +55729,15 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1953288469}
   m_GameObject: {fileID: 1464554641}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1d07732f7661d244972efc2b117a501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   initGameTime: 180
-  countDownDisplay: {fileID: 402173733}
+  textDisplay: {fileID: 402173733}
   player: {fileID: 0}
-  freezeTime: 5
-  isCounting: 0
-  teleportClip: {fileID: 8300000, guid: 865d0ee0c596ad247824703f6605b1e6, type: 3}
-  timeClip: {fileID: 8300000, guid: 09fcb499e144ee64d829bc6049c13e25, type: 3}
+  isShopOpen: 0
 --- !u!1 &1465232489
 GameObject:
   m_ObjectHideFlags: 0
@@ -71085,6 +71083,14 @@ Prefab:
     - target: {fileID: 11425026, guid: 3245d724da48cf24ab00705d07a4993d, type: 2}
       propertyPath: initGameTime
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 11425026, guid: 3245d724da48cf24ab00705d07a4993d, type: 2}
+      propertyPath: textDisplay
+      value: 
+      objectReference: {fileID: 402173733}
+    - target: {fileID: 11425026, guid: 3245d724da48cf24ab00705d07a4993d, type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3245d724da48cf24ab00705d07a4993d, type: 2}

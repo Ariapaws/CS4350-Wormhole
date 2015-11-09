@@ -8,9 +8,15 @@ public class Feedback : MonoBehaviour {
 	void Start () {
 		feedback = GetComponent<Text>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    public void enterMaze()
+    {
+        feedback.color = new Color(1, 1, 1, 1);
+        feedback.text = "You have entered the maze. Find the exit!";
+    }
+
+    // Update is called once per frame
+    void Update () {
 		float fadeSpeed = 1f;
 		if (feedback.color.a > 0){
 			float alpha = feedback.color.a - fadeSpeed*Time.deltaTime;
