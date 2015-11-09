@@ -2582,7 +2582,7 @@ Transform:
   m_GameObject: {fileID: 177682}
   m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
   m_LocalPosition: {x: -11.7424688, y: 4.05940008, z: -26.8423843}
-  m_LocalScale: {x: 1.36757362, y: 1.36757362, z: 1.36757362}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 421388}
   - {fileID: 499416}
@@ -5428,6 +5428,18 @@ Prefab:
       propertyPath: torchInstance
       value: 
       objectReference: {fileID: 131330, guid: 195476654c7cb7342bc81f40bedbbf85, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 177682}
