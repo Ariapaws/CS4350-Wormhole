@@ -37,6 +37,7 @@ public class Maze : MonoBehaviour {
 	public GameObject crateInstance;
 	private BoxCollider mazeRangeCollider;
 	public Feedback feedback;
+	//public ZombieSpawner spawner;
 	private ArrayList teleporterList ;
 	public int skeletonAmount = 5;
 	public GameObject skeletonInstance;
@@ -66,6 +67,7 @@ public class Maze : MonoBehaviour {
 	void Awake(){
 		gameManager = GameObject.FindGameObjectWithTag ("GameManager");
         feedback = GameObject.FindGameObjectWithTag("Feedback").GetComponent<Feedback>();
+		//spawner = GameObject.FindGameObjectWithTag ("GameManager").GetComponent<ZombieSpawner> ();
 		teleporterList = new ArrayList();
 	}
 
@@ -74,6 +76,14 @@ public class Maze : MonoBehaviour {
 		if(other.gameObject.tag == "Player")
 		{
 			feedback.enterMaze();
+			//spawner.playerEntersMaze();
+		}
+	}
+
+	void OnTriggerEnter (Collider other){
+		if(other.gameObject.tag == "Player")
+		{
+			//spawner.playerExitsMaze();
 		}
 	}
 	
