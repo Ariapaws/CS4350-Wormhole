@@ -54,6 +54,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		private bool m_Jumping;
 		private AudioSource m_AudioSource;
 		private ChatScript chatscript;
+
+        public PhotonView name;
+
 		// Use this for initialization
 		private void Start()
 		{
@@ -71,6 +74,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
 			playerHealth = GetComponent<PlayerHealth>();
+            name.RPC("updateName", PhotonTargets.AllBuffered, PhotonNetwork.playerName);
 		}
 		
 		
@@ -116,18 +120,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		private void AnimationUpdate()
 		{
 			// m_input has been updated by GetInput to the current input state.
-			Animator anim = transform.GetComponentInChildren<Animator> ();
 			// update the animator parameters
 
 			m_Animator.SetFloat("Forward", m_Input.y, 0.1f, Time.deltaTime);
 			m_Animator.SetFloat("Turn", m_TurnAmount, 0.1f, Time.deltaTime);
 			
 			
-			anim.SetBool ("OnGround", !m_Jumping);
+			m_Animator.SetBool ("OnGround", !m_Jumping);
 			
 			
 			if (m_Jumping) {
-				anim.SetFloat ("Jump", m_Rigidbody.velocity.y);
+                m_Animator.SetFloat("Jump", m_Rigidbody.velocity.y);
 			}
 			// calculate which leg is behind, so as to leave that leg trailing in the jump animation
 			// (This code is reliant on the specific run cycle offset in our animations,
