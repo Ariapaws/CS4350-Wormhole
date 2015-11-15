@@ -63,6 +63,44 @@ public class Maze : MonoBehaviour {
         }
     }
 
+    public List<MazeRoom> getAdjacentRooms(MazeCell myCell) {
+        //List<MazeEdge> suspectEdges = new List<MazeEdge>();
+        List<MazeRoom> neighborRooms = new List<MazeRoom>();
+        MazeRoom myRoom = myCell.room;
+        List<MazeCell> myCells = myRoom.cells;
+        for (int i=0; i<myCells.Count; i++) {
+            MazeCell currentCell = myCells[i];
+            MazeCellEdge[] currentEdges = currentCell.edges;
+            for (int j=0; j<currentEdges.Length; j++) {
+                MazeCell neighborCell = currentEdges[j].otherCell;
+                MazeRoom neighborRoom = neighborCell.room;
+                if (neighborRoom.settingsIndex != myRoom.settingsIndex){
+                    //MazeEdge suspectEdge = new MazeEdge(currentCell, neighborCell, 0);
+                    //suspectEdges.Add(suspectEdge);
+                    if (neighborRooms.Contains(neighborRoom)) {
+                        // no duplicates
+                    } else {
+                        neighborRooms.Add(neighborRoom);
+                    }
+                }
+            }
+        }
+        return neighborRooms;
+        /*
+        for (int i=0; i<suspectEdges.Count; i++) {
+            MazeEdge currentSuspect = suspectEdges[i];
+            for (int j=0; j<edgeList.Count; j++) {
+                MazeEdge currentEdge = edgeList[j];
+                if ((currentSuspect.cellFrom == currentEdge.cellFrom && currentSuspect.cellTo == currentEdge.cellTo) ||
+                    (currentSuspect.cellFrom == currentEdge.cellTo && currentSuspect.cellTo == currentEdge.cellFrom)) {
+                    MazeEdge confirmedEdge = currentEdge;
+                    if (confirmedEdge.edgeType)
+                }
+            }
+        }
+        */
+    }
+
 
 	void Awake(){
 		gameManager = GameObject.FindGameObjectWithTag ("GameManager");
@@ -394,14 +432,18 @@ public class Maze : MonoBehaviour {
             else if (currentCell.room == neighbor.room)
             {
                 CreatePassageInSameRoom(currentCell, neighbor, direction);
+                MazeEdge newEdge = new MazeEdge(currentCell, neighbor, 0);
+                edgeList.Add(newEdge);
             }
             else {
 				CreateWall(currentCell, neighbor, direction);
-			}
+                MazeEdge newEdge = new MazeEdge(currentCell, neighbor, 1);
+                edgeList.Add(newEdge);
+            }
 		}
 		else {
 			CreateWall(currentCell, null, direction);
-		}
+        }
 	}
 
 	private MazeCell CreateCell (IntVector2 coordinates) {
@@ -422,10 +464,14 @@ public class Maze : MonoBehaviour {
         if (passage is MazeDoor)
         {
             otherCell.Initialize(CreateRoom(cell.room.settingsIndex));
+            MazeEdge newEdge = new MazeEdge(cell, otherCell, 2);
+            edgeList.Add(newEdge);
         }
         else
         {
             otherCell.Initialize(cell.room);
+            MazeEdge newEdge = new MazeEdge(cell, otherCell, 0);
+            edgeList.Add(newEdge);
         }
         passage.Initialize(otherCell, cell, direction.GetOpposite());
 	}

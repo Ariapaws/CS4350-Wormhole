@@ -4,7 +4,7 @@ public class MazeCell : MonoBehaviour {
 
 	public IntVector2 coordinates;
 
-	private MazeCellEdge[] edges = new MazeCellEdge[MazeDirections.Count];
+	public MazeCellEdge[] edges = new MazeCellEdge[MazeDirections.Count];
 
     public MazeRoom room;
 
