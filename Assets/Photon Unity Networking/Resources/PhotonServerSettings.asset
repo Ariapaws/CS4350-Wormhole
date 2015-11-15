@@ -16,7 +16,7 @@ MonoBehaviour:
   ServerAddress: 
   ServerPort: 5055
   AppID: 8834a9cb-125b-4871-b3cf-9f7e1bc6e063
-  PreferredRegion: 0
+  PreferredRegion: 2
   EnabledRegions: -1
   JoinLobby: 0
   EnableLobbyStatistics: 0
@@ -24,15 +24,14 @@ MonoBehaviour:
   - Chat
   - DestroyRpc
   - InstantiateRpc
+  - newPlayerNameBroadcast
   - OnAwakeRPC
   - PickupItemInit
   - PunPickup
   - PunPickupSimple
   - PunRespawn
   - RequestForPickupTimes
-  - setTrigger
   - SetTrigger
   - UpdateMessage
-  - newPlayerNameBroadcast
   - updateName
   DisableAutoOpenWizard: 1

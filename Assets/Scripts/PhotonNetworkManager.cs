@@ -141,6 +141,8 @@ public class PhotonNetworkManager : Photon.PunBehaviour {
 	
 	public override void OnJoinedLobby ()
 	{
+		PhotonNetwork.autoCleanUpPlayerObjects = true;
+
 		//		//		RoomOptions roomOptions = new RoomOptions () {isVisible = true, maxPlayers = 10};
 		//		string[] roomPropsInLobby = {"randomSeed"};
 		//		ExitGames.Client.Photon.Hashtable customRoomProperties = new ExitGames.Client.Photon.Hashtable () {{"randomSeed", Random.Range(1,9999999)}};
@@ -167,6 +169,12 @@ public class PhotonNetworkManager : Photon.PunBehaviour {
 		if (PhotonNetwork.isMasterClient) {
 			PhotonNetwork.InstantiateSceneObject("TOD", new Vector3(897f, 70.05f, 372.357f), Quaternion.identity, 0, null);
 		}
+	}
+
+	public void OnPhotonPlayerDisconnected(PhotonPlayer player)
+	{    
+		Debug.Log ("Player Disconnected "+ player.name);
+
 	}
 	
 	private IEnumerator StartGame() {
