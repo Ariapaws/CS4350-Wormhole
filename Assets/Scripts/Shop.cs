@@ -70,6 +70,14 @@ public class Shop : MonoBehaviour {
         currentArmourLevel = 0;
 
 		InstantiateShop ();
+        DamageUpgrade.GetComponent<Text>().text = "+" + WeaponDamage[currentWeaponDamageLevel + 1].upgradeAmount + " Damage";
+        DamageCost.GetComponent<Text>().text = WeaponDamage[currentWeaponDamageLevel + 1].cost + " G";
+        SpeedUpgrade.GetComponent<Text>().text = "+" + WeaponSpeed[currentWeaponSpeedLevel + 1].upgradeAmount + " Speed";
+        SpeedCost.GetComponent<Text>().text = WeaponSpeed[currentWeaponSpeedLevel + 1].cost + " G";
+        RangeUpgrade.GetComponent<Text>().text = "+" + WeaponRange[currentWeaponRangeLevel + 1].upgradeAmount + " Range";
+        RangeCost.GetComponent<Text>().text = WeaponRange[currentWeaponRangeLevel + 1].cost + " G";
+        ArmorUpgrade.GetComponent<Text>().text = "+" + Armour[currentArmourLevel + 1].upgradeAmount + " Health";
+        ArmorCost.GetComponent<Text>().text = Armour[currentArmourLevel + 1].cost + " G";
 	}
 	
 	// Update is called once per frame
@@ -101,6 +109,7 @@ public class Shop : MonoBehaviour {
         }
 
         //updating purchase UI
+        /* 
         DamageUpgrade.GetComponent<Text>().text = "+" + WeaponDamage[currentWeaponDamageLevel + 1].upgradeAmount + " Damage";
         DamageCost.GetComponent<Text>().text = WeaponDamage[currentWeaponDamageLevel+1].cost + " G";
         SpeedUpgrade.GetComponent<Text>().text = "+" + WeaponSpeed[currentWeaponSpeedLevel + 1].upgradeAmount + " Speed";
@@ -109,6 +118,7 @@ public class Shop : MonoBehaviour {
         RangeCost.GetComponent<Text>().text = WeaponRange[currentWeaponRangeLevel + 1].cost + " G";
         ArmorUpgrade.GetComponent<Text>().text = "+" + Armour[currentArmourLevel + 1].upgradeAmount + " Health";
         ArmorCost.GetComponent<Text>().text = Armour[currentArmourLevel + 1].cost + " G";
+         */
 
         //update display UI
         currDisplayDamage.GetComponent<Text>().text = "" + player.GetComponent<PlayerAttack>().damagePerHit;
@@ -120,9 +130,9 @@ public class Shop : MonoBehaviour {
             // Press 1 (upgrade WEAPON ATTACK) --------------------------------------
             if (Input.GetKeyUp(KeyCode.Alpha1)) {
                 for (int i = 0; i < WeaponDamage.Count; i++) {
-                    Debug.Log("Checking if can upgrade damage..");
+                    //Debug.Log("Checking if can upgrade damage..");
                     if (WeaponDamage[i].level > currentWeaponDamageLevel) {
-                        Debug.Log("Can upgrade damage.");
+                        //Debug.Log("Can upgrade damage.");
                         if (CheckCost(WeaponDamage[i].cost) == true) {
                             Debug.Log("Enough gold for damage.");
                             player.GetComponent<PlayerAttack>().damagePerHit += (int) WeaponDamage[i].upgradeAmount;
@@ -130,6 +140,14 @@ public class Shop : MonoBehaviour {
                             feedback.text = "Upgraded Weapon Damage.";
                             audio.clip = purchaseClip;
                             audio.Play();
+                            if (WeaponDamage.Count == currentWeaponDamageLevel) {
+                                DamageUpgrade.GetComponent<Text>().text = "Max Upgrade.";
+                                DamageCost.GetComponent<Text>().text = "-";
+                            }
+                            else if(WeaponDamage.Count > currentWeaponDamageLevel){
+                                DamageUpgrade.GetComponent<Text>().text = "+" + WeaponDamage[currentWeaponDamageLevel + 1].upgradeAmount + " Damage";
+                                DamageCost.GetComponent<Text>().text = WeaponDamage[currentWeaponDamageLevel + 1].cost + " G";
+                            }
                             break;
                         }
                     }
@@ -149,6 +167,14 @@ public class Shop : MonoBehaviour {
                             feedback.text = "Upgraded Attack Range.";
                             audio.clip = purchaseClip;
                             audio.Play();
+                            if (WeaponRange.Count == currentWeaponRangeLevel)  {
+                                RangeUpgrade.GetComponent<Text>().text = "Max Upgrade.";
+                                RangeCost.GetComponent<Text>().text = "-";
+                            }
+                            else if (WeaponRange.Count > currentWeaponRangeLevel)  {
+                                RangeUpgrade.GetComponent<Text>().text = "+" + WeaponRange[currentWeaponRangeLevel + 1].upgradeAmount + " Range";
+                                RangeCost.GetComponent<Text>().text = WeaponRange[currentWeaponRangeLevel + 1].cost + " G";
+                            }
                             break;
                         }
                     }
@@ -168,6 +194,14 @@ public class Shop : MonoBehaviour {
                             feedback.text = "Upgraded Attack Speed.";
                             audio.clip = purchaseClip;
                             audio.Play();
+                            if (WeaponSpeed.Count == currentWeaponSpeedLevel) {
+                                SpeedUpgrade.GetComponent<Text>().text = "Max Upgrade.";
+                                SpeedCost.GetComponent<Text>().text = "-";
+                            }
+                            else if (WeaponSpeed.Count > currentWeaponSpeedLevel) {
+                                SpeedUpgrade.GetComponent<Text>().text = "+" + WeaponSpeed[currentWeaponSpeedLevel + 1].upgradeAmount + " Speed";
+                                SpeedCost.GetComponent<Text>().text = WeaponSpeed[currentWeaponSpeedLevel + 1].cost + " G";
+                            }
                             break;
                         }
                     }
@@ -188,6 +222,14 @@ public class Shop : MonoBehaviour {
                             feedback.text = "Upgraded Armour.";
                             audio.clip = purchaseClip;
                             audio.Play();
+                            if (Armour.Count == currentArmourLevel)  {
+                                ArmorUpgrade.GetComponent<Text>().text = "Max Upgrade.";
+                                ArmorCost.GetComponent<Text>().text = "-";
+                            }
+                            else if (Armour.Count > currentArmourLevel) {
+                                ArmorUpgrade.GetComponent<Text>().text = "+" + Armour[currentArmourLevel + 1].upgradeAmount + " Health";
+                                ArmorCost.GetComponent<Text>().text = Armour[currentArmourLevel + 1].cost + " G";
+                            }
                             break;
                         }
                     }
@@ -226,17 +268,17 @@ public class Shop : MonoBehaviour {
 		//items type 1 (upgrades)
         // button type, upgrade name, weapon level--still upgradable?, cost, upgrade amount 
         //ALPHA 1
-        WeaponDamage.Add(new Upgrades(1, "Weapon Damage", 1, 100, 3));
-        WeaponDamage.Add(new Upgrades(1, "Weapon Damage", 2, 120, 3));
+        WeaponDamage.Add(new Upgrades(1, "Weapon Damage", 1, 100, 2));
+        WeaponDamage.Add(new Upgrades(1, "Weapon Damage", 2, 120, 2));
         WeaponDamage.Add(new Upgrades(1, "Weapon Damage", 3, 140, 3));
-        WeaponDamage.Add(new Upgrades(1, "Weapon Damage", 4, 180, 5));
+        WeaponDamage.Add(new Upgrades(1, "Weapon Damage", 4, 180, 4));
         WeaponDamage.Add(new Upgrades(1, "Weapon Damage", 5, 220, 5));
         WeaponDamage.Add(new Upgrades(1, "Weapon Damage", 6, 300, 10));
         //ALPHA 2
-        WeaponRange.Add(new Upgrades(2, "Weapon Range", 1, 200, 0.2f));
-        WeaponRange.Add(new Upgrades(2, "Weapon Range", 2, 200, 0.2f));
-        WeaponRange.Add(new Upgrades(2, "Weapon Range", 3, 300, 0.4f));
-        WeaponRange.Add(new Upgrades(2, "Weapon Range", 4, 450, 0.5f));
+        WeaponRange.Add(new Upgrades(2, "Weapon Range", 1, 200, 0.1f));
+        WeaponRange.Add(new Upgrades(2, "Weapon Range", 2, 200, 0.15f));
+        WeaponRange.Add(new Upgrades(2, "Weapon Range", 3, 300, 0.2f));
+        WeaponRange.Add(new Upgrades(2, "Weapon Range", 4, 450, 0.4f));
         //ALPHA 3
         WeaponSpeed.Add(new Upgrades(2, "Weapon Speed", 1, 200, 0.1f));
         WeaponSpeed.Add(new Upgrades(2, "Weapon Speed", 2, 200, 0.1f));
