@@ -127,6 +127,7 @@ public class Shop : MonoBehaviour {
                             Debug.Log("Enough gold for damage.");
                             player.GetComponent<PlayerAttack>().damagePerHit += (int) WeaponDamage[i].upgradeAmount;
                             currentWeaponDamageLevel = WeaponDamage[i].level;
+                            feedback.text = "Upgraded Weapon Damage.";
                             audio.clip = purchaseClip;
                             audio.Play();
                             break;
@@ -144,7 +145,8 @@ public class Shop : MonoBehaviour {
                         if (CheckCost(WeaponRange[i].cost) == true) {
                             Debug.Log("Enough gold for range.");
                             player.GetComponent<PlayerAttack>().range += WeaponRange[i].upgradeAmount;
-                            currentWeaponRangeLevel = WeaponRange[i].level;
+                            currentWeaponRangeLevel = WeaponRange[i].level; 
+                            feedback.text = "Upgraded Attack Range.";
                             audio.clip = purchaseClip;
                             audio.Play();
                             break;
@@ -163,6 +165,7 @@ public class Shop : MonoBehaviour {
                             Debug.Log("Enough gold for speed.");
                             player.GetComponent<PlayerAttack>().attackSpeed += WeaponSpeed[i].upgradeAmount;
                             currentWeaponSpeedLevel = WeaponSpeed[i].level;
+                            feedback.text = "Upgraded Attack Speed.";
                             audio.clip = purchaseClip;
                             audio.Play();
                             break;
@@ -182,6 +185,7 @@ public class Shop : MonoBehaviour {
                             Debug.Log("Enough gold for armour.");
                             player.GetComponent<PlayerHealth>().startingHealth += (int) Armour[i].upgradeAmount;
                             currentArmourLevel = Armour[i].level;
+                            feedback.text = "Upgraded Armour.";
                             audio.clip = purchaseClip;
                             audio.Play();
                             break;
@@ -196,6 +200,7 @@ public class Shop : MonoBehaviour {
                 if (CheckCost(0) == true) {
                     Debug.Log("Enough gold for potion.");
                     player.GetComponent<PlayerAssets>().numOfPotions += 1;
+                    feedback.text = "Purchase completed.";
                     audio.clip = purchaseClip;
                     audio.Play();
                 }
