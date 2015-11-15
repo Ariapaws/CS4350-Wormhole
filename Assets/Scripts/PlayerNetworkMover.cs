@@ -102,15 +102,13 @@ public class PlayerNetworkMover : Photon.MonoBehaviour {
 				if (child.gameObject.name=="Vanille") {
 					ChangeLayersRecursively(child, "Default");
 				}
-			}
-			
-			foreach (Transform child in transform) {
-				if (child.gameObject.name == "Machete_FPS") {
+
+				if (child.gameObject.name == "FirstPersonEyeballs") {
 					ChangeLayersRecursively(child, "3rdPersonModel");
 				}
 			}
 			
-			StartCoroutine("Update Data");
+			StartCoroutine(UpdateData());
 		}
 	}
 	
