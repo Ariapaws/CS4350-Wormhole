@@ -87,7 +87,7 @@ public class ZombieSpawner : MonoBehaviour {
 		for (int i=0; i<arrayOfEnemies.Length; i++) {
 			//Insert code to skip enemies if not in adjacentRoom.
 			GameObject currEnemy = arrayOfEnemies[i];
-			IntVector2 currEnemyPos = new IntVector2((int)currEnemy.transform.position.x,(int)currEnemy.transform.position.z);
+			IntVector2 currEnemyPos = getMazeCoordsFromWorldCoords(currEnemy.transform.position);
 			if(enemyIsInAdjRoom(listOfRooms, currEnemyPos)){
 				string nameOfEnemy = currEnemy.name;
 				if (nameOfEnemy == "Zombie(Clone)"){
