@@ -168,7 +168,8 @@ MonoBehaviour:
   slider2: 0
   Hour: 11.9448729
   sun: {fileID: 10809302}
-  speed: 150
+  speed: 960
+  nightSpeed: 240
   NightFogColor: {r: 0, g: 0, b: 0, a: 0}
   DuskFogColor: {r: .192307711, g: .1442893, b: .121301785, a: 0}
   MorningFogColor: {r: .461538434, g: .443076879, b: .415384591, a: 0}
@@ -261,6 +262,14 @@ Prefab:
       propertyPath: ObservedComponents.Array.data[1]
       value: 
       objectReference: {fileID: 11413244}
+    - target: {fileID: 0}
+      propertyPath: speed
+      value: 960
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: nightSpeed
+      value: 240
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 128948}

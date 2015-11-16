@@ -5,7 +5,8 @@ private var Tod: float;
 
 var sun: Light;
 
-var speed = 50;
+var speed = 960;
+var nightSpeed = 240;
 
 var NightFogColor : Color;
 var DuskFogColor : Color;
@@ -47,7 +48,12 @@ slider= GUI.HorizontalSlider( Rect(235,50,100,30), slider, 0,1.0);
 Hour= slider*24;
 Tod= slider2*24;
 sun.transform.localEulerAngles = Vector3((slider*360)-90, 0, 0);
-slider = slider +Time.deltaTime/speed;
+if(Hour>6&&Hour<18){
+	slider = slider +Time.deltaTime/speed;
+}
+else{
+	slider = slider +Time.deltaTime/nightSpeed;
+}
 sun.color = Color.Lerp (SunNight, SunDay, slider*2);
 
 //THIS WAS ADDED IN TUTORIAL NUMBER 24. It allows for changing the color that reflects of a water object.
