@@ -163,7 +163,7 @@ public class PhotonNetworkManager : Photon.PunBehaviour {
 		// Set Random Seed
 		Random.seed = (int) PhotonNetwork.room.customProperties ["randomSeed"];
 		StartCoroutine(StartGame());
-		PhotonNetwork.Instantiate ("Player", new Vector3(-90f,2f,-70f), Quaternion.identity, 0);
+		PhotonNetwork.player.TagObject = PhotonNetwork.Instantiate ("Player", new Vector3(-90f,2f,-70f), Quaternion.identity, 0);
 		GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<AudioListener> ().enabled = false;
 
 		if (PhotonNetwork.isMasterClient) {

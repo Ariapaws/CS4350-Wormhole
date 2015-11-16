@@ -24,23 +24,9 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _FrontTex2
-        second:
-          m_Texture: {fileID: 2800000, guid: d8deb1a891ccb3841aaea4d30f8e7086, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
           name: _BackTex
         second:
           m_Texture: {fileID: 2800000, guid: 0b286e25cf50df842b1475c298199b4d, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _BackTex2
-        second:
-          m_Texture: {fileID: 2800000, guid: d8deb1a891ccb3841aaea4d30f8e7086, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -52,23 +38,9 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _LeftTex2
-        second:
-          m_Texture: {fileID: 2800000, guid: d8deb1a891ccb3841aaea4d30f8e7086, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
           name: _RightTex
         second:
           m_Texture: {fileID: 2800000, guid: 0b286e25cf50df842b1475c298199b4d, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _RightTex2
-        second:
-          m_Texture: {fileID: 2800000, guid: d8deb1a891ccb3841aaea4d30f8e7086, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -80,16 +52,44 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _UpTex2
+          name: _DownTex
         second:
-          m_Texture: {fileID: 2800000, guid: bf100dab08c79db47b6d01473b19318d, type: 3}
+          m_Texture: {fileID: 2800000, guid: 29ea6f7886b23464084d613fd2d44a2d, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _DownTex
+          name: _FrontTex2
         second:
-          m_Texture: {fileID: 2800000, guid: 29ea6f7886b23464084d613fd2d44a2d, type: 3}
+          m_Texture: {fileID: 2800000, guid: d8deb1a891ccb3841aaea4d30f8e7086, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BackTex2
+        second:
+          m_Texture: {fileID: 2800000, guid: d8deb1a891ccb3841aaea4d30f8e7086, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _LeftTex2
+        second:
+          m_Texture: {fileID: 2800000, guid: d8deb1a891ccb3841aaea4d30f8e7086, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _RightTex2
+        second:
+          m_Texture: {fileID: 2800000, guid: d8deb1a891ccb3841aaea4d30f8e7086, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _UpTex2
+        second:
+          m_Texture: {fileID: 2800000, guid: bf100dab08c79db47b6d01473b19318d, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -103,12 +103,12 @@ Material:
       data:
         first:
           name: _Blend
-        second: .00343608856
+        second: 1
     m_Colors:
       data:
         first:
           name: _Tint
-        second: {r: .317336738, g: .308052093, b: .308052093, a: 0}
+        second: {r: .441888362, g: .47876212, b: .546522617, a: 0}
 --- !u!1002 &2100001
 EditorExtensionImpl:
   serializedVersion: 6

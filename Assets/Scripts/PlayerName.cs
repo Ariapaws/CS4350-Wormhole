@@ -5,15 +5,19 @@ using System.Collections;
 public class PlayerName : MonoBehaviour {
 
     public Text nameTag;
-    public Camera cameraToLookAt;
 
-    //Allow the text to keep facing you
-    void update()
+
+    public Transform target;
+    private Vector3 rotate180 = new Vector3(0, 180, 0);
+
+
+    void Update()
     {
-        Vector3 v = cameraToLookAt.transform.position - transform.position;
-        v.x = v.z = 0.0f;
-        transform.LookAt(cameraToLookAt.transform.position - v);
-        transform.Rotate(0, 180, 0);
+        if ((GameObject)PhotonNetwork.player.TagObject != null)
+        {
+            nameTag.transform.LookAt(((GameObject)PhotonNetwork.player.TagObject).transform);
+            nameTag.transform.Rotate(rotate180);
+        }
     }
 
     [PunRPC]
