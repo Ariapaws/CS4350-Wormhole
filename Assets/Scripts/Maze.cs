@@ -24,11 +24,11 @@ public class Maze : MonoBehaviour {
 	private CharacterMotor playerCharacterMotor;
 
 
-	public int zombieAmount = 5;
+	public int zombieAmount = 0;
 	public int potionAmount = 5;
 	public int crateAmount = 5;
-	public int golemAmount = 5;
-	public int clockAmount = 5;
+	public int golemAmount = 0;
+	public int clockAmount = 0;
 	public int teleportAmount = 0;
 	public GameObject clockInstance;
 	public GameObject golemInstance;
@@ -37,11 +37,11 @@ public class Maze : MonoBehaviour {
 	public GameObject crateInstance;
 	private BoxCollider mazeRangeCollider;
 	public Feedback feedback;
-	//public ZombieSpawner spawner;
+	public ZombieSpawner spawner;
 	private ArrayList teleporterList ;
-	public int skeletonAmount = 5;
+	public int skeletonAmount = 0;
 	public GameObject skeletonInstance;
-	public int monsterAmount = 5;
+	public int monsterAmount = 0;
 	public GameObject monsterInstance;
 	public GameObject teleportInstance;
 
@@ -73,16 +73,19 @@ public class Maze : MonoBehaviour {
             MazeCellEdge[] currentEdges = currentCell.edges;
             for (int j=0; j<currentEdges.Length; j++) {
                 MazeCell neighborCell = currentEdges[j].otherCell;
-                MazeRoom neighborRoom = neighborCell.room;
-                if (neighborRoom.settingsIndex != myRoom.settingsIndex){
-                    //MazeEdge suspectEdge = new MazeEdge(currentCell, neighborCell, 0);
-                    //suspectEdges.Add(suspectEdge);
-                    if (neighborRooms.Contains(neighborRoom)) {
-                        // no duplicates
-                    } else {
-                        neighborRooms.Add(neighborRoom);
-                    }
-                }
+				if (neighborCell != null) {
+					MazeRoom neighborRoom = neighborCell.room;
+					if (neighborRoom.settingsIndex != myRoom.settingsIndex){
+						//MazeEdge suspectEdge = new MazeEdge(currentCell, neighborCell, 0);
+						//suspectEdges.Add(suspectEdge);
+						if (neighborRooms.Contains(neighborRoom)) {
+							// no duplicates
+						} else {
+							neighborRooms.Add(neighborRoom);
+						}
+					}
+				}
+                
             }
         }
         return neighborRooms;
@@ -105,7 +108,7 @@ public class Maze : MonoBehaviour {
 	void Awake(){
 		gameManager = GameObject.FindGameObjectWithTag ("GameManager");
         feedback = GameObject.FindGameObjectWithTag("Feedback").GetComponent<Feedback>();
-		//spawner = GameObject.FindGameObjectWithTag ("GameManager").GetComponent<ZombieSpawner> ();
+		spawner = GameObject.FindGameObjectWithTag ("GameManager").GetComponent<ZombieSpawner> ();
 		teleporterList = new ArrayList();
 	}
 
@@ -114,14 +117,14 @@ public class Maze : MonoBehaviour {
 		if(other.gameObject.tag == "Player")
 		{
 			feedback.enterMaze();
-			//spawner.playerEntersMaze();
+			spawner.playerEntersMaze();
 		}
 	}
 
 	void OnTriggerEnter (Collider other){
 		if(other.gameObject.tag == "Player")
 		{
-			//spawner.playerExitsMaze();
+			spawner.playerExitsMaze();
 		}
 	}
 	
@@ -341,7 +344,7 @@ public class Maze : MonoBehaviour {
 			Instantiate(crateInstance, new Vector3(randomX, DROP_DISTANCE, randomZ), Quaternion.identity);
 			
 		}
-
+		/*
 		for (int i = 0; i < zombieAmount; i++) {
 			float randomX = Random.Range (-2 * size.x, 2 * size.x);
 			float randomZ = Random.Range (-2 * size.z, 2 * size.z);
@@ -391,6 +394,7 @@ public class Maze : MonoBehaviour {
 			Instantiate(monsterInstance, new Vector3(randomX, DROP_DISTANCE, randomZ), Quaternion.identity);
 			
 		}
+		*/
 		mazeRangeCollider = gameObject.GetComponent<BoxCollider>();
 		yield return new WaitForSeconds(0f);
 	}

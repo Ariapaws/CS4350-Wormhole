@@ -83,21 +83,22 @@ MonoBehaviour:
     floorMaterial: {fileID: 2100000, guid: 1d07db5e93ecebb4f9b89bf31e776227, type: 2}
   doorPrefab: {fileID: 11400000, guid: 83d7e9d87aca423429af81d2d0a9702d, type: 2}
   doorProbability: .100000001
-  zombieAmount: 50
+  zombieAmount: 0
   potionAmount: 2
   crateAmount: 2
   golemAmount: 0
-  clockAmount: 2
+  clockAmount: 0
   teleportAmount: 0
   clockInstance: {fileID: 128138, guid: 6bb63662e0281ac459e09b9e44ef5e3c, type: 2}
   golemInstance: {fileID: 107308, guid: 45cb3047c6c16134b894569e3d0a75ef, type: 2}
   zombieInstance: {fileID: 140358, guid: e8242719aa8023644ae950f2e0f22f8f, type: 2}
   potionInstance: {fileID: 127092, guid: d2b0d8fe57c72cb41b3f87b43cf2ebb1, type: 2}
   crateInstance: {fileID: 155610, guid: 2bfead458efc86d4584d5749a29330d1, type: 2}
-  countDown: {fileID: 0}
-  skeletonAmount: 20
+  feedback: {fileID: 0}
+  spawner: {fileID: 0}
+  skeletonAmount: 0
   skeletonInstance: {fileID: 124964, guid: 85fb7ba765c594f4caae77a300ac4f6e, type: 2}
-  monsterAmount: 20
+  monsterAmount: 0
   monsterInstance: {fileID: 186386, guid: 8c4fb82ce0884424dabff7429de4d0af, type: 2}
   teleportInstance: {fileID: 109784, guid: af80b74fac44a5b4487111b9640a3b6c, type: 2}
 --- !u!1001 &100100000
@@ -160,15 +161,15 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 36759d143d1780e44b4c75fe543e9799, type: 2}
     - target: {fileID: 0}
       propertyPath: monsterAmount
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: skeletonAmount
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: clockAmount
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: potionAmount
@@ -176,7 +177,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: zombieAmount
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: cellPrefab

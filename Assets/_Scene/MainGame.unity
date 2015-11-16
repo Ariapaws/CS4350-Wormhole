@@ -69286,6 +69286,7 @@ GameObject:
   - 114: {fileID: 1464554642}
   - 82: {fileID: 1464554644}
   - 114: {fileID: 1464554645}
+  - 114: {fileID: 1464554646}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: GameManager
@@ -69407,6 +69408,33 @@ MonoBehaviour:
   initGameTime: 180
   textDisplay: {fileID: 402173733}
   player: {fileID: 0}
+--- !u!114 &1464554646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1464554641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c292183f91d2c440297a928572b8a84d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 1
+  maxZombieAmount: 10
+  maxSkeletonAmount: 2
+  maxMonsterAmount: 3
+  maxGolemAmount: 0
+  zombieInstance: {fileID: 140358, guid: e8242719aa8023644ae950f2e0f22f8f, type: 2}
+  skeletonInstance: {fileID: 124964, guid: 85fb7ba765c594f4caae77a300ac4f6e, type: 2}
+  monsterInstance: {fileID: 186386, guid: 8c4fb82ce0884424dabff7429de4d0af, type: 2}
+  golemInstance: {fileID: 107308, guid: 45cb3047c6c16134b894569e3d0a75ef, type: 2}
+  player: {fileID: 0}
+  maze: {fileID: 0}
+  currentZombieAmount: 0
+  currentSkeletonAmount: 0
+  currentMonsterAmount: 0
+  currentGolemAmount: 0
+  playerIsInMaze: 0
 --- !u!1 &1465232489
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,6 +23,15 @@ public class MazeRoom : ScriptableObject
         return cells[randCellIndex];
     }
 
+	public bool isInRoom(IntVector2 pos){
+		for (int i=0; i<cells.Count;i++){
+			if (pos.x == cells[i].coordinates.x && pos.z ==cells[i].coordinates.z){
+				return true;
+			}
+		}
+		return false;
+	}
+
     public void Assimilate(MazeRoom room)
     {
         for (int i = 0; i < room.cells.Count; i++)
