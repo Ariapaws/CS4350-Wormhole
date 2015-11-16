@@ -37,7 +37,9 @@ public class ZombieSpawner : MonoBehaviour {
 
 				MazeCell myCell = maze.GetComponent<Maze>().GetCell(getMazeCoordsFromWorldCoords(player.gameObject.transform.position));
 				List<MazeRoom> listOfRooms = maze.GetComponent<Maze>().getAdjacentRooms(myCell);
-				updateEnemyCount(listOfRooms);
+				List<MazeRoom> listOfRoomsPlusCurrRoom = listOfRooms;
+				listOfRoomsPlusCurrRoom.Add(myCell.room);
+				updateEnemyCount(listOfRoomsPlusCurrRoom);
 				count = 0;
 				if(currentZombieAmount<maxZombieAmount){
 					MazeRoom randRoom = getRandomRoom(listOfRooms);
@@ -137,6 +139,6 @@ public class ZombieSpawner : MonoBehaviour {
 	public Vector3 getWorldCoordsFromMazeCoords(IntVector2 pos){
 		float worldX = ((float)pos.x - 19.5f)*4f;
 		float worldZ = ((float)pos.z - 19.5f)*4f;
-		return new Vector3 (worldX, 6, worldZ);
+		return new Vector3 (worldX, 3, worldZ);
 	}
 }
