@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+
 
 public class ZombieSpawner : MonoBehaviour {
 	public float radius = 1;
@@ -12,70 +14,86 @@ public class ZombieSpawner : MonoBehaviour {
 	public GameObject skeletonInstance;
 	public GameObject monsterInstance;
 	public GameObject golemInstance;
-	public GameObject player;
+	public GameObject[] players;
 	public GameObject maze;
 	public int currentZombieAmount = 0;
 	public int currentSkeletonAmount = 0;
 	public int currentMonsterAmount = 0;
 	public int currentGolemAmount = 0;
 	public bool playerIsInMaze = false;
+
+	public PhotonView photonView;
+
 	//private List<MazeRoom> listOfRooms;
 
 	private int count = 0;
 	// Use this for initialization
 	void Start () {
-		player = GameObject.FindGameObjectWithTag("Player");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (playerIsInMaze) {
-			if (count >= 100) {
-				Debug.Log (player.gameObject.transform.position);
-				Debug.Log (getMazeCoordsFromWorldCoords(player.gameObject.transform.position).x);
-				Debug.Log (getMazeCoordsFromWorldCoords(player.gameObject.transform.position).z);
+		if (PhotonNetwork.isMasterClient) {
+			if (playerIsInMaze) {
+				if (count >= 100) {
+//					Debug.Log (player.gameObject.transform.position);
+//					Debug.Log (getMazeCoordsFromWorldCoords (player.gameObject.transform.position).x);
+//					Debug.Log (getMazeCoordsFromWorldCoords (player.gameObject.transform.position).z);
+					players = GameObject.FindGameObjectsWithTag("Player");
 
-				MazeCell myCell = maze.GetComponent<Maze>().GetCell(getMazeCoordsFromWorldCoords(player.gameObject.transform.position));
-				List<MazeRoom> listOfRooms = maze.GetComponent<Maze>().getAdjacentRooms(myCell);
-				List<MazeRoom> listOfRoomsPlusCurrRoom = listOfRooms;
-				listOfRoomsPlusCurrRoom.Add(myCell.room);
-				updateEnemyCount(listOfRoomsPlusCurrRoom);
-				count = 0;
-				if(currentZombieAmount<maxZombieAmount){
-					MazeRoom randRoom = getRandomRoom(listOfRooms);
-					MazeCell randCell = randRoom.getRandomCell();
-					Vector3 randPos = getWorldCoordsFromMazeCoords(randCell.coordinates);
-					Instantiate (zombieInstance, randPos, Quaternion.identity);
-					Debug.Log("Zombie Spawn!");
-					currentZombieAmount++;
-				}
-				if(currentSkeletonAmount<maxSkeletonAmount){
-					MazeRoom randRoom = getRandomRoom(listOfRooms);
-					MazeCell randCell = randRoom.getRandomCell();
-					Vector3 randPos = getWorldCoordsFromMazeCoords(randCell.coordinates);
-					Instantiate (skeletonInstance, randPos, Quaternion.identity);
-					currentSkeletonAmount++;
-					Debug.Log("Skele Spawn!");
+					List<MazeRoom> listOfRooms = new List<MazeRoom>();
+					List<MazeRoom> listOfRoomsPlusCurrRoom = new List<MazeRoom>();
+//					Debug.Log ("Players number: " + players.Length);
+					foreach (GameObject player in players) { 
+						MazeCell myCell = maze.GetComponent<Maze> ().GetCell (getMazeCoordsFromWorldCoords (player.gameObject.transform.position));
+						if (myCell != null)	{
+							listOfRooms = listOfRooms.Union<MazeRoom>(maze.GetComponent<Maze> ().getAdjacentRooms (myCell)).ToList();
+							if (listOfRooms.Contains(myCell.room)) {
+								listOfRooms.Remove(myCell.room);
+							}
+							listOfRoomsPlusCurrRoom = listOfRoomsPlusCurrRoom.Union<MazeRoom> ( maze.GetComponent<Maze> ().getAdjacentRooms (myCell)).ToList();
+							listOfRoomsPlusCurrRoom.Add (myCell.room);
+						}
+					}
 
+					updateEnemyCount (listOfRoomsPlusCurrRoom);
+					count = 0;
+					if (currentZombieAmount < maxZombieAmount) {
+						MazeRoom randRoom = getRandomRoom (listOfRooms);
+						MazeCell randCell = randRoom.getRandomCell ();
+						Vector3 randPos = getWorldCoordsFromMazeCoords (randCell.coordinates);
+						PhotonNetwork.InstantiateSceneObject ("Zombie", randPos, Quaternion.identity, 0, null);
+						Debug.Log ("Zombie Spawn!");
+						currentZombieAmount++;
+					}
+					if (currentSkeletonAmount < maxSkeletonAmount) {
+						MazeRoom randRoom = getRandomRoom (listOfRooms);
+						MazeCell randCell = randRoom.getRandomCell ();
+						Vector3 randPos = getWorldCoordsFromMazeCoords (randCell.coordinates);
+						Instantiate (skeletonInstance, randPos, Quaternion.identity);
+						currentSkeletonAmount++;
+						Debug.Log ("Skele Spawn!");
+
+					}
+					if (currentMonsterAmount < maxMonsterAmount) {
+						MazeRoom randRoom = getRandomRoom (listOfRooms);
+						MazeCell randCell = randRoom.getRandomCell ();
+						Vector3 randPos = getWorldCoordsFromMazeCoords (randCell.coordinates);
+						Instantiate (monsterInstance, randPos, Quaternion.identity);
+						currentMonsterAmount++;
+						Debug.Log ("Monstaaaa Spawn!");
+					}
+					if (currentGolemAmount < maxGolemAmount) {
+						MazeRoom randRoom = getRandomRoom (listOfRooms);
+						MazeCell randCell = randRoom.getRandomCell ();
+						Vector3 randPos = getWorldCoordsFromMazeCoords (randCell.coordinates);
+						Instantiate (golemInstance, randPos, Quaternion.identity);
+						currentGolemAmount++;
+						Debug.Log ("YOU SHOULDNT BE Spawned!");
+					}
 				}
-				if(currentMonsterAmount<maxMonsterAmount){
-					MazeRoom randRoom = getRandomRoom(listOfRooms);
-					MazeCell randCell = randRoom.getRandomCell();
-					Vector3 randPos = getWorldCoordsFromMazeCoords(randCell.coordinates);
-					Instantiate (monsterInstance, randPos, Quaternion.identity);
-					currentMonsterAmount++;
-					Debug.Log("Monstaaaa Spawn!");
-				}
-				if(currentGolemAmount<maxGolemAmount){
-					MazeRoom randRoom = getRandomRoom(listOfRooms);
-					MazeCell randCell = randRoom.getRandomCell();
-					Vector3 randPos = getWorldCoordsFromMazeCoords(randCell.coordinates);
-					Instantiate (golemInstance, randPos, Quaternion.identity);
-					currentGolemAmount++;
-					Debug.Log("YOU SHOULDNT BE Spawned!");
-				}
+				count += 1;
 			}
-			count+=1;
 		}
 	}
 	
@@ -125,11 +143,19 @@ public class ZombieSpawner : MonoBehaviour {
 		}
 		return false;
 	}
-	public void playerEntersMaze(){
-		playerIsInMaze = true;
+	public void broadcastPlayerEntersMaze(){
+		photonView.RPC ("PlayerEnterMaze", PhotonTargets.MasterClient);
+
 	}
+
 	public void playerExitsMaze(){
 		playerIsInMaze = false;
+	}
+
+	[PunRPC]
+	void PlayerEnterMaze() {
+		Debug.Log ("siao liao");
+		playerIsInMaze = true;
 	}
 	public IntVector2 getMazeCoordsFromWorldCoords(Vector3 pos){
 		int mazeX = (int)(pos.x/4f + 19.5f);

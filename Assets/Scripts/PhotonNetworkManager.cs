@@ -174,7 +174,7 @@ public class PhotonNetworkManager : Photon.PunBehaviour {
 	public void OnPhotonPlayerDisconnected(PhotonPlayer player)
 	{    
 		Debug.Log ("Player Disconnected "+ player.name);
-
+		photonView.RPC("playerLeaveGameBroadcast", PhotonTargets.All, player.name);
 	}
 	
 	private IEnumerator StartGame() {

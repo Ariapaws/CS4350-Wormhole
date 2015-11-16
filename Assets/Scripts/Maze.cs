@@ -117,7 +117,7 @@ public class Maze : MonoBehaviour {
 		if(other.gameObject.tag == "Player")
 		{
 			feedback.enterMaze();
-			spawner.playerEntersMaze();
+			spawner.broadcastPlayerEntersMaze();
 		}
 	}
 
@@ -159,7 +159,11 @@ public class Maze : MonoBehaviour {
 	}
 
 	public MazeCell GetCell (IntVector2 coordinates) {
-		return cells[coordinates.x, coordinates.z];
+		try {
+			return cells[coordinates.x, coordinates.z];
+		} catch (System.IndexOutOfRangeException exception) {
+			return null;
+		}
 	}
 
 	public IEnumerator Generate () {

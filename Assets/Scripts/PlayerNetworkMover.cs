@@ -24,7 +24,6 @@ public class PlayerNetworkMover : Photon.MonoBehaviour {
             GameObject gm = GameObject.FindGameObjectWithTag("GameManager");
             gm.GetComponent<GameCountDown>().player = this.gameObject;
             gm.GetComponent<GameCountDown>().enabled = true;
-			gm.GetComponent<ZombieSpawner>().player = this.gameObject;
 			gm.GetComponent<ZombieSpawner>().maze = GameObject.FindGameObjectWithTag("Maze");
 
             GameObject.FindGameObjectWithTag("Samuzai").GetComponent<Shop>().enabled = true;

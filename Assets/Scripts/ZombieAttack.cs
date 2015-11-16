@@ -31,7 +31,8 @@ public class ZombieAttack : MonoBehaviour {
 	
 	void Awake ()
 	{
-       // player = GameObject.FindGameObjectWithTag ("Player");
+		GameObject[] playersInGame = GameObject.FindGameObjectsWithTag("Player");
+		player = playersInGame[Random.Range(0, playersInGame.Length)];
 		playerHealth = player.GetComponent <PlayerHealth> ();
 		zombieAudio = GetComponent <AudioSource> ();
 		zombieHealth = GetComponent<ZombieHealth>();

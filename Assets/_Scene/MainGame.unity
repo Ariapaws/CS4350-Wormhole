@@ -69287,6 +69287,7 @@ GameObject:
   - 82: {fileID: 1464554644}
   - 114: {fileID: 1464554645}
   - 114: {fileID: 1464554646}
+  - 114: {fileID: 1464554647}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: GameManager
@@ -69428,13 +69429,39 @@ MonoBehaviour:
   skeletonInstance: {fileID: 124964, guid: 85fb7ba765c594f4caae77a300ac4f6e, type: 2}
   monsterInstance: {fileID: 186386, guid: 8c4fb82ce0884424dabff7429de4d0af, type: 2}
   golemInstance: {fileID: 107308, guid: 45cb3047c6c16134b894569e3d0a75ef, type: 2}
-  player: {fileID: 0}
+  players: []
   maze: {fileID: 0}
   currentZombieAmount: 0
   currentSkeletonAmount: 0
   currentMonsterAmount: 0
   currentGolemAmount: 0
   playerIsInMaze: 0
+  photonView: {fileID: 1464554647}
+--- !u!114 &1464554647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1464554641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  prefixBackup: -1
+  observed: {fileID: 0}
+  synchronization: 3
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 1464554646}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 3
+  instantiationId: 3
+  isRuntimeInstantiated: 0
 --- !u!1 &1465232489
 GameObject:
   m_ObjectHideFlags: 0

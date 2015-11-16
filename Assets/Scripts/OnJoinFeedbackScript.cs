@@ -18,4 +18,11 @@ public class OnJoinFeedbackScript : MonoBehaviour {
 		textUI.color = new Color (0, 1, 0, 2);
 		textUI.text = playerName + " has joined the game!"; 
 	}
+
+	[PunRPC]
+	void playerLeaveGameBroadcast(string playerName) {
+		textUI.color = new Color (0, 1, 0, 2);
+		textUI.text = playerName + " has left the game!"; 
+	}
 }
+
