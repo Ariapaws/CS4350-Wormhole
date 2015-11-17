@@ -134,8 +134,10 @@ public class ZombieAttack : MonoBehaviour {
                 feedback.text = "Damage blocked!";
             }
             else {
-			    feedback.color = new Color(1,0,0,2);
-			    feedback.text = "Damage received: "+attackDamage.ToString();
+				if (player.GetComponent<PlayerNetworkMover>().photonView.isMine) {
+				    feedback.color = new Color(1,0,0,2);
+				    feedback.text = "Damage received: "+attackDamage.ToString();
+				}
             }
 			playerHealth.TakeDamage (attackDamage);
 
