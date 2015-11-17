@@ -78,7 +78,7 @@ public class PlayerAttackBak : MonoBehaviour {
 				ZombieHealth enemyHealth = shootHit.collider.GetComponent <ZombieHealth> ();
 				if(enemyHealth != null)
 				{
-					enemyHealth.TakeDamage (damagePerHit);
+//					enemyHealth.TakeDamage (damagePerHit);
 					playerAudio.clip = hitClip;
 					playerAudio.Play();
 				} else if (isSphereCastHit){

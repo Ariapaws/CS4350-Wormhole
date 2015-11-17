@@ -45,9 +45,11 @@ public class ZombieHealth : MonoBehaviour {
 		}
 	}
 	
-	
-	public void TakeDamage (int amount)
+
+	[PunRPC]
+	void TakeDamage (int amount)
 	{
+		Debug.Log ("Taking Damage OUCHY ouch ouch! " + currentHealth);
 		if(isDead)
 			return;
 		
@@ -63,13 +65,15 @@ public class ZombieHealth : MonoBehaviour {
 		
 		if(currentHealth <= 0)
 		{
-			Death ();
+			this.gameObject.GetComponent<PhotonView>().RPC("Death", PhotonTargets.All);
+			Death();
 		}
 	}
 	
-	
+	[PunRPC]
 	void Death ()
 	{
+		Debug.Log ("DEAD");
 		isDead = true;
 
 		if (anim) {
@@ -106,7 +110,8 @@ public class ZombieHealth : MonoBehaviour {
 
 		isSinking = true;
 		//ScoreManager.score += scoreValue;
-		Destroy (gameObject, 5f);
+		GameObject.Destroy (this.gameObject);
+		PhotonNetwork.Destroy (this.gameObject);
 	}
 }
 

@@ -168,10 +168,11 @@ public class PlayerAttack : MonoBehaviour
             if (Physics.Raycast(shootRay, out shootHit, range))
             {
                 Debug.DrawLine(shootRay.origin, shootHit.point);
-                ZombieHealth enemyHealth = shootHit.collider.GetComponent<ZombieHealth>();
-                if (enemyHealth != null)
+//                ZombieHealth enemyHealth = shootHit.collider.GetComponent<ZombieHealth>();
+				PhotonView targetsPhotonView = shootHit.collider.GetComponent<PhotonView>();
+				if (targetsPhotonView != null)
                 {
-                    enemyHealth.TakeDamage(damagePerHit);
+					targetsPhotonView.RPC("TakeDamage", PhotonTargets.MasterClient, damagePerHit);
                     playerAudio.clip = hitClip;
                     playerAudio.Play();
                 }

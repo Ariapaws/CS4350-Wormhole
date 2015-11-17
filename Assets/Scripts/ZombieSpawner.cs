@@ -75,7 +75,7 @@ public class ZombieSpawner : MonoBehaviour {
 						MazeRoom randRoom = getRandomRoom (listOfRooms);
 						MazeCell randCell = randRoom.getRandomCell ();
 						Vector3 randPos = getWorldCoordsFromMazeCoords (randCell.coordinates);
-						Instantiate (skeletonInstance, randPos, Quaternion.identity);
+						PhotonNetwork.InstantiateSceneObject ("Skeleton", randPos, Quaternion.identity, 0, null);
 						currentSkeletonAmount++;
 						Debug.Log ("Skele Spawn!");
 
@@ -84,7 +84,7 @@ public class ZombieSpawner : MonoBehaviour {
 						MazeRoom randRoom = getRandomRoom (listOfRooms);
 						MazeCell randCell = randRoom.getRandomCell ();
 						Vector3 randPos = getWorldCoordsFromMazeCoords (randCell.coordinates);
-						Instantiate (monsterInstance, randPos, Quaternion.identity);
+						PhotonNetwork.InstantiateSceneObject ("Monster", randPos, Quaternion.identity, 0, null);
 						currentMonsterAmount++;
 						Debug.Log ("Monstaaaa Spawn!");
 					}
@@ -92,7 +92,7 @@ public class ZombieSpawner : MonoBehaviour {
 						MazeRoom randRoom = getRandomRoom (listOfRooms);
 						MazeCell randCell = randRoom.getRandomCell ();
 						Vector3 randPos = getWorldCoordsFromMazeCoords (randCell.coordinates);
-						Instantiate (golemInstance, randPos, Quaternion.identity);
+						PhotonNetwork.InstantiateSceneObject ("Golem", randPos, Quaternion.identity, 0, null);
 						currentGolemAmount++;
 						Debug.Log ("YOU SHOULDNT BE Spawned!");
 					}
@@ -150,7 +150,6 @@ public class ZombieSpawner : MonoBehaviour {
 	}
 	public void broadcastPlayerEntersMaze(){
 		photonView.RPC ("PlayerEnterMaze", PhotonTargets.MasterClient);
-
 	}
 
 	public void playerExitsMaze(){

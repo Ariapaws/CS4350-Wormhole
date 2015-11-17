@@ -36,4 +36,6 @@ MonoBehaviour:
   - updateName
   - playerLeaveGameBroadcast
   - PlayerEnterMaze
+  - TakeDamage
+  - Death
   DisableAutoOpenWizard: 1

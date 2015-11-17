@@ -69425,7 +69425,6 @@ MonoBehaviour:
   maxSkeletonAmount: 2
   maxMonsterAmount: 3
   maxGolemAmount: 0
-  zombieInstance: {fileID: 140358, guid: e8242719aa8023644ae950f2e0f22f8f, type: 2}
   skeletonInstance: {fileID: 124964, guid: 85fb7ba765c594f4caae77a300ac4f6e, type: 2}
   monsterInstance: {fileID: 186386, guid: 8c4fb82ce0884424dabff7429de4d0af, type: 2}
   golemInstance: {fileID: 107308, guid: 45cb3047c6c16134b894569e3d0a75ef, type: 2}
