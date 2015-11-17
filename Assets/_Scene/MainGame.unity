@@ -89130,7 +89130,7 @@ Camera:
   far clip plane: 32
   field of view: 18
   orthographic: 1
-  orthographic size: 20
+  orthographic size: 15
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2

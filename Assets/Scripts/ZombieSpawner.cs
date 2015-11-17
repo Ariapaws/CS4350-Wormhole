@@ -20,6 +20,8 @@ public class ZombieSpawner : MonoBehaviour {
 	public int currentMonsterAmount = 0;
 	public int currentGolemAmount = 0;
 	public bool playerIsInMaze = false;
+	Ray shootRay;
+	RaycastHit shootHit;
 
 	public PhotonView photonView;
 
@@ -64,29 +66,68 @@ public class ZombieSpawner : MonoBehaviour {
 					updateEnemyCount (listOfRoomsPlusCurrRoom);
 					count = 0;
 					if (currentZombieAmount < maxZombieAmount) {
-						MazeRoom randRoom = getRandomRoom (listOfRooms);
-						MazeCell randCell = randRoom.getRandomCell ();
-						Vector3 randPos = getWorldCoordsFromMazeCoords (randCell.coordinates);
-						PhotonNetwork.InstantiateSceneObject ("Zombie", randPos, Quaternion.identity, 0, null);
-						Debug.Log ("Zombie Spawn!");
-						currentZombieAmount++;
-					}
-					if (currentSkeletonAmount < maxSkeletonAmount) {
-						MazeRoom randRoom = getRandomRoom (listOfRooms);
-						MazeCell randCell = randRoom.getRandomCell ();
-						Vector3 randPos = getWorldCoordsFromMazeCoords (randCell.coordinates);
-						PhotonNetwork.InstantiateSceneObject ("Skeleton", randPos, Quaternion.identity, 0, null);
-						currentSkeletonAmount++;
-						Debug.Log ("Skele Spawn!");
+						bool hasSpawned = false;
+						int numOfTries = 0;
+						while (!hasSpawned && numOfTries < 5){
+							MazeRoom randRoom = getRandomRoom (listOfRooms);
+							MazeCell randCell = randRoom.getRandomCell ();
+							Vector3 randPos = getWorldCoordsFromMazeCoords (randCell.coordinates);
+							shootRay.origin = new Vector3(randPos.x, 15f, randPos.z);
+							shootRay.direction = Vector3.down;
+							if (Physics.Raycast(shootRay, out shootHit, 25f))
+							{
+								if(shootHit.collider.gameObject.tag != "Enemy"){
+									PhotonNetwork.InstantiateSceneObject ("Zombie", randPos, Quaternion.identity, 0, null);
+									Debug.Log ("Zombie Spawn!");
+									currentZombieAmount++;
+									hasSpawned = true;
+								}
+							}
+							count += 1;
+						}
 
 					}
+					if (currentSkeletonAmount < maxSkeletonAmount) {
+						bool hasSpawned = false;
+						int numOfTries = 0;
+						while (!hasSpawned && numOfTries < 5){
+							MazeRoom randRoom = getRandomRoom (listOfRooms);
+							MazeCell randCell = randRoom.getRandomCell ();
+							Vector3 randPos = getWorldCoordsFromMazeCoords (randCell.coordinates);
+							shootRay.origin = new Vector3(randPos.x, 15f, randPos.z);
+							shootRay.direction = Vector3.down;
+							if (Physics.Raycast(shootRay, out shootHit, 25f))
+							{
+								if(shootHit.collider.gameObject.tag != "Enemy"){
+									PhotonNetwork.InstantiateSceneObject ("Skeleton", randPos, Quaternion.identity, 0, null);
+									currentSkeletonAmount++;
+									Debug.Log ("Skele Spawn!");
+									hasSpawned = true;
+								}
+							}
+							numOfTries += 1;
+						}
+					}
 					if (currentMonsterAmount < maxMonsterAmount) {
-						MazeRoom randRoom = getRandomRoom (listOfRooms);
-						MazeCell randCell = randRoom.getRandomCell ();
-						Vector3 randPos = getWorldCoordsFromMazeCoords (randCell.coordinates);
-						PhotonNetwork.InstantiateSceneObject ("Monster", randPos, Quaternion.identity, 0, null);
-						currentMonsterAmount++;
-						Debug.Log ("Monstaaaa Spawn!");
+						bool hasSpawned = false;
+						int numOfTries = 0;
+						while (!hasSpawned && numOfTries < 5){
+							MazeRoom randRoom = getRandomRoom (listOfRooms);
+							MazeCell randCell = randRoom.getRandomCell ();
+							Vector3 randPos = getWorldCoordsFromMazeCoords (randCell.coordinates);
+							shootRay.origin = new Vector3(randPos.x, 15f, randPos.z);
+							shootRay.direction = Vector3.down;
+							if (Physics.Raycast(shootRay, out shootHit, 25f))
+							{
+								if(shootHit.collider.gameObject.tag != "Enemy"){
+									PhotonNetwork.InstantiateSceneObject ("Monster", randPos, Quaternion.identity, 0, null);
+									currentMonsterAmount++;
+									Debug.Log ("Monstaaaa Spawn!");
+									hasSpawned = true;
+								}
+							}
+							numOfTries += 1;
+						}
 					}
 					if (currentGolemAmount < maxGolemAmount) {
 						MazeRoom randRoom = getRandomRoom (listOfRooms);
@@ -168,6 +209,8 @@ public class ZombieSpawner : MonoBehaviour {
 	public Vector3 getWorldCoordsFromMazeCoords(IntVector2 pos){
 		float worldX = ((float)pos.x - 19.5f)*4f;
 		float worldZ = ((float)pos.z - 19.5f)*4f;
-		return new Vector3 (worldX, 9, worldZ);
+		float worldY = Terrain.activeTerrain.SampleHeight (new Vector3 (worldX, 0, worldZ))+2.0f;
+		Debug.Log ("WORLDY:" + worldY.ToString ());
+		return new Vector3 (worldX, worldY, worldZ);
 	}
 }
