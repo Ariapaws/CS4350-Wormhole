@@ -89,6 +89,7 @@ public class ZombieMovement : MonoBehaviour
     {
         // Check if any players within immediate distance
         GameObject[] all_players = GameObject.FindGameObjectsWithTag("Player");
+
         float[] player_distances = new float[all_players.Length];
         for (int i = 0; i < all_players.Length; i++) {
             distanceFromTarget = Vector3.Distance(transform.position, all_players[i].transform.position);
@@ -103,7 +104,8 @@ public class ZombieMovement : MonoBehaviour
                 sphereDirection = (target.position - transform.position).normalized;
 
                 bool isSphereCastHit = Physics.SphereCast(sphereOrigin, sphereThickness, sphereDirection, out sphereHit, smell);
-                if (isSphereCastHit && sphereHit.transform.gameObject.tag == "Player")
+				Debug.Log (sphereHit.transform.gameObject.name);
+                if (isSphereCastHit && sphereHit.transform.gameObject.name == "Player(Clone)")
                 {
                     player = sphereHit.transform.gameObject;
                     target = player.transform;
@@ -111,6 +113,7 @@ public class ZombieMovement : MonoBehaviour
                     GetComponent<ZombieAttack>().playerHealth = player.GetComponent<PlayerHealth>();
                     GetComponent<ZombieHealth>().player = player;
                     GetComponent<ZombieHealth>().PlayerAssets = player.GetComponent<PlayerAssets>();
+					Debug.Log("FOUND TARGET");
                     playerObserved = true;
                     attentionCountdown = attentionTime;
                     playAnimationAndAudio(distanceFromTarget);
@@ -137,8 +140,8 @@ public class ZombieMovement : MonoBehaviour
                     if (Vector3.Angle(sphereDirection, transform.forward) <= angleOfVision) // only spherecast when within field of vision
                     {
                         bool isSphereCastHit = Physics.SphereCast(sphereOrigin, sphereThickness, sphereDirection, out sphereHit, sphereRange);
-                        if (isSphereCastHit && sphereHit.transform.gameObject.tag == "Player")
-                        {
+						if (isSphereCastHit && sphereHit.transform.gameObject.name == "Player(Clone)")
+						{
                             player = sphereHit.transform.gameObject;
                             target = player.transform;
                             GetComponent<ZombieAttack>().player = player;
@@ -148,6 +151,8 @@ public class ZombieMovement : MonoBehaviour
                             playerObserved = true;
                             attentionCountdown = attentionTime;
                             playAnimationAndAudio(distanceFromTarget);
+							Debug.Log("FOUND TARGET");
+
                             break;
                         }
 
@@ -257,62 +262,54 @@ public class ZombieMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        GameObject gameManagerObject = GameObject.FindGameObjectWithTag("GameManager");
-        GameManager gameManagerScript = (GameManager)gameManagerObject.GetComponent(typeof(GameManager));
-        bool isNight = gameManagerScript.isNight;
+    {	
+			GameObject gameManagerObject = GameObject.FindGameObjectWithTag ("GameManager");
+			GameManager gameManagerScript = (GameManager)gameManagerObject.GetComponent (typeof(GameManager));
+			bool isNight = gameManagerScript.isNight;
 
-        if (isNight)
-        {
-            moveSpeed = nightMoveSpeed;
-            rotateSpeed = nightRotateSpeed;
-            vision = nightVision;
-            sphereRange = vision;
-        }
-        else
-        {
-            moveSpeed = startingMoveSpeed;
-            rotateSpeed = startingRotateSpeed;
-            vision = startingVision;
-            sphereRange = vision;
-        }
+			if (isNight) {
+				moveSpeed = nightMoveSpeed;
+				rotateSpeed = nightRotateSpeed;
+				vision = nightVision;
+				sphereRange = vision;
+			} else {
+				moveSpeed = startingMoveSpeed;
+				rotateSpeed = startingRotateSpeed;
+				vision = startingVision;
+				sphereRange = vision;
+			}
 
-        bool isDead = GetComponent<ZombieHealth>().isDead;
-        if (!isDead)
-        {
-            attentionCountdown -= Time.deltaTime;
-            if (attentionCountdown <= 0) { 
-                attentionCountdown = 0;
-                playerTracks = new List<Vector3>();// Clear playerTracks when attentionCountdown reaches 0.
-                anim.SetBool("ObservedPlayer", false);
-            } 
-            if (target != null && attentionCountdown > 0)
-            {
-                if (playerTracks.Count == 0 || Vector3.Distance(playerTracks[playerTracks.Count - 1], target.position) > 0.1f)
-                {
-                    playerTracks.Add(target.position);
-                    string tracksString = "";
-                    for (int i=0; i<playerTracks.Count; i++)
-                    {
-                        tracksString += playerTracks[i].ToString()+",";
-                    }
-                    //Debug.Log("Added to playerTracks: " + tracksString);
-                }
-            }
+			bool isDead = GetComponent<ZombieHealth> ().isDead;
+			if (!isDead) {
+				attentionCountdown -= Time.deltaTime;
+				if (attentionCountdown <= 0) { 
+					attentionCountdown = 0;
+					playerTracks = new List<Vector3> ();// Clear playerTracks when attentionCountdown reaches 0.
+					anim.SetBool ("ObservedPlayer", false);
+				} 
+				if (target != null && attentionCountdown > 0) {
+					if (playerTracks.Count == 0 || Vector3.Distance (playerTracks [playerTracks.Count - 1], target.position) > 0.1f) {
+						playerTracks.Add (target.position);
+						string tracksString = "";
+						for (int i=0; i<playerTracks.Count; i++) {
+							tracksString += playerTracks [i].ToString () + ",";
+						}
+						//Debug.Log("Added to playerTracks: " + tracksString);
+					}
+				}
 
-            if (!playerObserved)
-                observePlayer(); //spherecast to check if any player within range/sight, also plays animation and audio and starts attentionCountdown
+				if (!playerObserved)
+					observePlayer (); //spherecast to check if any player within range/sight, also plays animation and audio and starts attentionCountdown
             else
-                updatePlayerObserved(); // if attentionCountdown > 0, spherecast to check if target player is within sight
-            if (attentionCountdown > 0)
-            {
-                if (!playerContact)
-                {
-                    //Movement();
-                    moveTowardsPlayer();
-                }
-            }
-        }
+					updatePlayerObserved (); // if attentionCountdown > 0, spherecast to check if target player is within sight
+				if (attentionCountdown > 0) {
+					if (!playerContact) {
+						//Movement();
+						moveTowardsPlayer ();
+					}
+				}
+			}
+
 
     }
 }

@@ -10,7 +10,9 @@ public class ZombieRandomMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Translate(Vector3.forward * (Time.deltaTime* 0.3f));
-		transform.Rotate (0,2*Time.deltaTime,0);
+		if (PhotonNetwork.isMasterClient) {
+			transform.Translate (Vector3.forward * (Time.deltaTime * 0.3f));
+			transform.Rotate (0, 2 * Time.deltaTime, 0);
+		}
 	}
 }

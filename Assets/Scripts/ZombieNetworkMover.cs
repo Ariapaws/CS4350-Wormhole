@@ -7,14 +7,13 @@ public class ZombieNetworkMover : Photon.MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		if (!PhotonNetwork.isMasterClient) {
-			StartCoroutine(UpdateData());
-		}
+			StartCoroutine (UpdateData ());
+		} 
 	}
 	IEnumerator UpdateData() {
 		while(true)
 		{
-			
-			if (!photonView.isMine) {
+			if (!PhotonNetwork.isMasterClient) {
 				transform.position = Vector3.Lerp(transform.position, correctZombiePosition, Time.deltaTime * 5);
 				transform.rotation = Quaternion.Lerp (transform.rotation, correctZombieRotation, Time.deltaTime * 5);
 				
@@ -28,14 +27,13 @@ public class ZombieNetworkMover : Photon.MonoBehaviour {
 	}
 
 	void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
-		Animator anim = transform.GetComponentInChildren<Animator> ();
-		
 		if (stream.isWriting) {
-			stream.SendNext(transform.position);	
-			stream.SendNext(transform.rotation);
+				stream.SendNext(transform.position);	
+				stream.SendNext(transform.rotation);
+
 		}  else {
-			this.correctZombiePosition = (Vector3) stream.ReceiveNext();
-			this.correctZombieRotation =  (Quaternion) stream.ReceiveNext();
+				this.correctZombiePosition = (Vector3) stream.ReceiveNext();
+				this.correctZombieRotation =  (Quaternion) stream.ReceiveNext();
 		}
 	}
 }

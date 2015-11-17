@@ -10,7 +10,6 @@ public class ZombieSpawner : MonoBehaviour {
 	public int maxSkeletonAmount = 2;
 	public int maxMonsterAmount = 3;
 	public int maxGolemAmount = 0;
-	public GameObject zombieInstance;
 	public GameObject skeletonInstance;
 	public GameObject monsterInstance;
 	public GameObject golemInstance;
@@ -48,11 +47,17 @@ public class ZombieSpawner : MonoBehaviour {
 						MazeCell myCell = maze.GetComponent<Maze> ().GetCell (getMazeCoordsFromWorldCoords (player.gameObject.transform.position));
 						if (myCell != null)	{
 							listOfRooms = listOfRooms.Union<MazeRoom>(maze.GetComponent<Maze> ().getAdjacentRooms (myCell)).ToList();
+							listOfRoomsPlusCurrRoom = listOfRoomsPlusCurrRoom.Union<MazeRoom> ( maze.GetComponent<Maze> ().getAdjacentRooms (myCell)).ToList();
+							listOfRoomsPlusCurrRoom.Add (myCell.room);
+						}
+					}
+
+					foreach (GameObject player in players) { 
+						MazeCell myCell = maze.GetComponent<Maze> ().GetCell (getMazeCoordsFromWorldCoords (player.gameObject.transform.position));
+						if (myCell != null)	{
 							if (listOfRooms.Contains(myCell.room)) {
 								listOfRooms.Remove(myCell.room);
 							}
-							listOfRoomsPlusCurrRoom = listOfRoomsPlusCurrRoom.Union<MazeRoom> ( maze.GetComponent<Maze> ().getAdjacentRooms (myCell)).ToList();
-							listOfRoomsPlusCurrRoom.Add (myCell.room);
 						}
 					}
 
@@ -149,12 +154,11 @@ public class ZombieSpawner : MonoBehaviour {
 	}
 
 	public void playerExitsMaze(){
-		playerIsInMaze = false;
+//		playerIsInMaze = false;
 	}
 
 	[PunRPC]
 	void PlayerEnterMaze() {
-		Debug.Log ("siao liao");
 		playerIsInMaze = true;
 	}
 	public IntVector2 getMazeCoordsFromWorldCoords(Vector3 pos){
