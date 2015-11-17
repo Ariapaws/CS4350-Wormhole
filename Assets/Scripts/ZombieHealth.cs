@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ZombieHealth : MonoBehaviour {
 
@@ -23,6 +24,7 @@ public class ZombieHealth : MonoBehaviour {
 	public GameObject clockInstance;
 	public GameObject player;
 	public PlayerAssets PlayerAssets;
+	public Text feedback;
 	
 	void Start ()
 	{
@@ -34,6 +36,8 @@ public class ZombieHealth : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag ("Player");
 		PlayerAssets = player.GetComponent <PlayerAssets> ();
 		currentHealth = startingHealth;
+		GameObject feedbackObject = GameObject.FindGameObjectWithTag("Feedback");
+		feedback = feedbackObject.GetComponent<Text>();
 	}
 	
 	
@@ -87,14 +91,21 @@ public class ZombieHealth : MonoBehaviour {
 
 		Vector3 dropOffPos = new Vector3(transform.position.x, 1.0f, transform.position.z);
 		float random = Random.Range(0f,1f);
-		PlayerAssets.AddCash(cashAmount);
+		feedback.color = new Color(1,1,1,2);
 		if (random<0.50f){
-			Instantiate(crateInstance,dropOffPos, Quaternion.identity);
+			PlayerAssets.AddCash(cashAmount+20);
+			feedback.text = "You have gained "+(cashAmount+20).ToString()+" points.";
+			//Instantiate(crateInstance,dropOffPos, Quaternion.identity);
 		} else if (random<0.75f){
+			PlayerAssets.AddCash(cashAmount);
+			feedback.text = "You have gained "+cashAmount.ToString()+" points.";
 			Instantiate(potionInstance,dropOffPos, Quaternion.identity);
 		} else {
-			Instantiate(clockInstance,dropOffPos, Quaternion.identity);
+			PlayerAssets.AddCash(cashAmount);
+			feedback.text = "You have gained "+cashAmount.ToString()+" points.";
+			//Instantiate(clockInstance,dropOffPos, Quaternion.identity);
 		}
+
 		StartCoroutine(StartSinking ());
 
 	}

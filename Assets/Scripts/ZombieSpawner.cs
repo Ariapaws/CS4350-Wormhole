@@ -168,6 +168,6 @@ public class ZombieSpawner : MonoBehaviour {
 	public Vector3 getWorldCoordsFromMazeCoords(IntVector2 pos){
 		float worldX = ((float)pos.x - 19.5f)*4f;
 		float worldZ = ((float)pos.z - 19.5f)*4f;
-		return new Vector3 (worldX, 3, worldZ);
+		return new Vector3 (worldX, 9, worldZ);
 	}
 }

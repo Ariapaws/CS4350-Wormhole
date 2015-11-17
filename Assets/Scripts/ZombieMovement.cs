@@ -41,7 +41,7 @@ public class ZombieMovement : MonoBehaviour
     private float distanceFromTarget = Mathf.Infinity;
     private List<Vector3> playerTracks = new List<Vector3>(); //list of positions of player
     private int updateCount = 0;
-
+		
     void OnTriggerStay(Collider other)
     {
         if (other.gameObject == player)
@@ -199,7 +199,7 @@ public class ZombieMovement : MonoBehaviour
         //target = player.transform;
         //anim.SetBool ("ObservedPlayer", true);
         sphereRange = vision;
-    }
+	}
 
     private void moveTowardsPlayer()
     {
@@ -235,21 +235,24 @@ public class ZombieMovement : MonoBehaviour
                 */
                 if (!isSphereCastHit || (isSphereCastHit && sphereHit.transform.gameObject.name != "Wall"))
                 {
-                    //Debug.Log("Moving, playerTracks.Count: "+playerTracks.Count.ToString());
-                    // remove older tracks and move towards point
-                    if (playerTracks.Count > 10 && i < playerTracks.Count - 2)
-                    {
-                        playerTracks = playerTracks.GetRange(i, playerTracks.Count - i);
-                    } else if (playerTracks.Count > 30)
-                    {
-                        playerTracks = playerTracks.GetRange(playerTracks.Count - 20, 20);
-                    }
-                    Vector3 directionToMove = new Vector3(currPoint.x, transform.position.y, currPoint.z) - transform.position;
-                    transform.position = Vector3.MoveTowards(transform.position, transform.position + directionToMove, Time.deltaTime * moveSpeed);
-                    newDir = Vector3.RotateTowards(transform.forward, directionToMove, rotateStep, 0.0F);
-                    transform.rotation = Quaternion.LookRotation(newDir);
-                    hasMoved = true;
-                    break;
+					if (gameObject.name.Contains("Skeleton") || //skeletons need to stand v near to attack
+					    (sphereHit.transform.gameObject.name.Contains("Player") && sphereHit.distance> 1.2f)){
+	                    //Debug.Log("Moving, playerTracks.Count: "+playerTracks.Count.ToString());
+	                    // remove older tracks and move towards point
+	                    if (playerTracks.Count > 10 && i < playerTracks.Count - 2)
+	                    {
+	                        playerTracks = playerTracks.GetRange(i, playerTracks.Count - i);
+	                    } else if (playerTracks.Count > 30)
+	                    {
+	                        playerTracks = playerTracks.GetRange(playerTracks.Count - 20, 20);
+	                    }
+	                    Vector3 directionToMove = new Vector3(currPoint.x, transform.position.y, currPoint.z) - transform.position;
+	                    transform.position = Vector3.MoveTowards(transform.position, transform.position + directionToMove, Time.deltaTime * moveSpeed);
+	                    newDir = Vector3.RotateTowards(transform.forward, directionToMove, rotateStep, 0.0F);
+	                    transform.rotation = Quaternion.LookRotation(newDir);
+	                    hasMoved = true;
+	                    break;
+					}
                 }
             }
         }

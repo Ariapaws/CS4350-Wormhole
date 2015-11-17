@@ -212,7 +212,10 @@ public class Maze : MonoBehaviour {
             GameObject child = childT.gameObject;
             if (child.name == "Maze Wall(Clone)" && (childT.rotation.eulerAngles.y > 89))
             {
-                Destroy(child);
+				{
+					if (childT.rotation.eulerAngles.y != 270)//The wall opposite the exit
+						Destroy(child);
+				}
             }
         }
         GameObject entryCell = GameObject.Find("Maze Cell 0, 1");
@@ -260,6 +263,7 @@ public class Maze : MonoBehaviour {
 			
 		}
 
+		/*
 		for (int i = 0; i < clockAmount; i++) {
 			float randomX = Random.Range (-2 * size.x, 2 * size.x);
 			float randomZ = Random.Range (-2 * size.z, 2 * size.z);
@@ -282,6 +286,7 @@ public class Maze : MonoBehaviour {
 			Instantiate(clockInstance, new Vector3(randomX, DROP_DISTANCE, randomZ), Quaternion.identity);
 			
 		}
+		*/
 
 		for (int i = 0; i < teleportAmount; i++) {
 			float randomX = Random.Range (-2 * size.x, 2 * size.x);
@@ -323,7 +328,7 @@ public class Maze : MonoBehaviour {
 			}
 		}
 
-
+		/*
 		for (int i = 0; i < crateAmount; i++) {
 			float randomX = Random.Range (-2 * size.x, 2 * size.x);
 			float randomZ = Random.Range (-2 * size.z, 2 * size.z);
@@ -348,6 +353,7 @@ public class Maze : MonoBehaviour {
 			Instantiate(crateInstance, new Vector3(randomX, DROP_DISTANCE, randomZ), Quaternion.identity);
 			
 		}
+		*/
 		/*
 		for (int i = 0; i < zombieAmount; i++) {
 			float randomX = Random.Range (-2 * size.x, 2 * size.x);

@@ -2485,6 +2485,10 @@ Prefab:
       propertyPath: ObservedComponents.Array.data[1]
       value: 
       objectReference: {fileID: 11479384}
+    - target: {fileID: 0}
+      propertyPath: durationOfAnimation
+      value: 1.06700003
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 124964}

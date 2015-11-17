@@ -1661,7 +1661,7 @@ MonoBehaviour:
   timeBetweenAttacks: 1
   ratioOftimeBeforeDamage: .400000006
   ratioOfTimeForDamage: .200000003
-  durationOfAnimation: 2
+  durationOfAnimation: 1.43299997
   attackDamage: 10
   startingDamage: 10
   nightDamage: 50
@@ -2477,6 +2477,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: durationOfAnimation
+      value: 1.43299997
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
